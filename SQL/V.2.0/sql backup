@@ -1,0 +1,130 @@
+CREATE DATABASE PROYECTO_V2 COLLATE="utf8mb4_spanish_ci";
+
+USE PROYECTO_V2;
+
+CREATE TABLE IF NOT EXISTS usuario(
+	id_usuario int unsigned auto_increment primary key,
+    email  varchar(100) NOT NULL,
+    constrasena varchar(100) NOT NULL,
+    nombre tinytext NOT NULL,
+	apellido tinytext NOT NULL,
+    nombre_usuario varchar(100) NOT NULL
+    );
+
+
+CREATE TABLE IF NOT EXISTS solista(
+	id_musico int unsigned auto_increment primary key,
+    id_usuario int unsigned NOT NULL,
+    busco enum('busco banda','busco actuacion') NOT NULL,
+    localizacion varchar(200) NOT NULL,
+    especialidad tinytext NOT NULL,
+    movilidad enum('local','provincial','nacional','internacional') NOT NULL,
+    descripcion varchar(500) DEFAULT NULL,
+    nombre_solista varchar(100) NOT NULL,
+    constraint solista_id_usuario_fk foreign key (id_usuario)
+		references usuario(id_usuario) on delete cascade
+    );
+
+CREATE TABLE IF NOT EXISTS banda(
+	id_banda int unsigned auto_increment primary key,
+    id_usuario int unsigned NOT NULL,
+    busco enum('busco solista','busco actuacion') NOT NULL,
+    localizacion varchar(200) NOT NULL,
+    movilidad enum('local','provincial','nacional','internacional') NOT NULL,
+    descripcion varchar(500) DEFAULT NULL,
+    nombre_banda varchar(100) NOT NULL,
+    constraint banda_id_usuario_fk foreign key (id_usuario)
+		references usuario(id_usuario) on delete cascade
+    );
+
+CREATE TABLE IF NOT EXISTS local_evento(
+	id_local_evento int unsigned auto_increment primary key,
+	id_usuario int unsigned NOT NULL,
+	nombre_local_evento varchar(100) NOT NULL,
+    localizacion varchar(200) NOT NULL,
+    constraint local_evento_id_usuario_fk foreign key (id_usuario)
+		references usuario(id_usuario) on delete cascade
+    );
+
+CREATE TABLE IF NOT EXISTS genero(
+	id_genero int unsigned auto_increment primary key,
+    genero varchar(100) NOT NULL
+    );
+
+   
+CREATE TABLE IF NOT EXISTS multimedia_solista(
+	id_multimedia int unsigned auto_increment primary key,
+    id_solista int unsigned NOT NULL,
+    tipo enum('video','imagen',"audio") NOT NULL,
+    url varchar(300) NOT NULL,
+    titulo varchar(100),
+    constraint multimedia_solista_id_solista_fk foreign key (id_solista)
+		references solista(id_solista) on delete cascade
+	);
+    
+CREATE TABLE IF NOT EXISTS multimedia_banda(
+	id_multimedia int unsigned auto_increment primary key,
+    id_banda int unsigned NOT NULL,
+    tipo enum('video','imagen',"audio") NOT NULL,
+    url varchar(300) NOT NULL,
+    titulo varchar(100),
+    constraint multimedia_banda_id_banda_fk foreign key (id_banda)
+		references banda(id_banda) on delete cascade
+	);
+    
+    
+-- CREACIÓN DE TABLAS GENERADAS POR LAS RELACIONES
+
+CREATE TABLE IF NOT EXISTS es_tocado_solista(
+	id_solista int unsigned NOT NULL,
+    id_genero int unsigned NOT NULL,
+    constraint es_tocado_solista_id_solista_fk foreign key (id_solista)
+		references solista(id_solista) on delete cascade,
+	constraint es_tocado_solista_id_genero_fk foreign key (id_genero)
+		references genero(id_genero) on delete cascade
+        );
+
+CREATE TABLE IF NOT EXISTS es_tocado_banda(
+	id_banda int unsigned NOT NULL,
+    id_genero int unsigned NOT NULL,
+    constraint es_tocado_banda_id_banda_fk foreign key (id_banda)
+		references banda(id_banda) on delete cascade,
+	constraint es_tocado_banda_id_genero_fk foreign key (id_genero)
+		references genero(id_genero) on delete cascade
+        );
+
+
+
+CREATE TABLE IF NOT EXISTS se_agrupa(
+	contrato varchar(1000) NOT NULL,
+    id_solista int unsigned NOT NULL,
+    id_banda int unsigned NOT NULL,
+    constraint se_agrupa_id_solista_fk foreign key (id_solista)
+		references solista(id_solista) on delete cascade,
+	constraint se_agrupa_id_banda_fk foreign key (id_banda)
+		references banda(id_banda) on delete cascade
+	);
+    
+
+CREATE TABLE IF NOT EXISTS es_contratado_solista(
+	id_solista int unsigned NOT NULL,
+    id_local_evento int unsigned NOT NULL,
+    fecha date NOT NULL,
+    contrato varchar(1000) NOT NULL,
+    constraint es_contratado_solista_id_solista_fk foreign key (id_solista)
+		references solista(id_solista) on delete cascade,
+	constraint es_contratado_solista_id_local_evento_fk foreign key (id_local_evento)
+		references local_evento(id_local_evento) on delete cascade
+	);
+	
+CREATE TABLE IF NOT EXISTS es_contratado_banda(
+	id_banda int unsigned NOT NULL,
+    id_local_evento int unsigned NOT NULL,
+    fecha date NOT NULL,
+    contrato varchar(1000) NOT NULL,
+    constraint es_contratado_banda_id_banda_fk foreign key (id_banda)
+		references banda(id_banda) on delete cascade,
+	constraint es_contratado_banda_id_local_evento_fk foreign key (id_local_evento)
+		references local_evento(id_local_evento) on delete cascade
+	);
+
