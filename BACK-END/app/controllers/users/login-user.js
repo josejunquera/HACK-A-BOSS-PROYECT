@@ -33,7 +33,7 @@ async function loginUser(req, res) {
 
     const secret = process.env.JWT_SECRET;
     const { id_usuario, nombre_usuario, rol } = user;
-    const jwtTokenExpiration = "1m";
+    const jwtTokenExpiration = "10m";
     const payload = {
       id_usuario,
       nombre_usuario,

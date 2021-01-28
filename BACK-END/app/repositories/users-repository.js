@@ -25,6 +25,8 @@ async function createUser(
   return created.insertId;
 }
 
+
+
 async function findUserByEmail(email) {
   const pool = await database.getPool();
   const query = "SELECT * FROM usuario WHERE email = ?";
@@ -33,4 +35,16 @@ async function findUserByEmail(email) {
   return users[0];
 }
 
-module.exports = { createUser, findUserByEmail };
+async function findUserById(id) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM usuario WHERE id_usuario = ?";
+  const [users] = await pool.query(query, id);
+
+  return users[0];
+}
+
+module.exports = {
+  createUser,
+  findUserByEmail,
+  findUserById,
+};

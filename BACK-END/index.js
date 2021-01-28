@@ -9,6 +9,7 @@ const path = require("path");
 app.use(express.json());
 
 const usersRouter = require("./app/routes/users-routes");
+const musiciansRouter = require("./app/routes/musicians-routes");
 // const coverRouter = require("./app/routes/cover-routes");
 // const browserRouter = require("./app/routes/browser-routes");
 
@@ -21,6 +22,8 @@ const accessLogStream = fs.createWriteStream(
 app.use(morgan("combined", { stream: accessLogStream }));
 
 app.use("/api/v1/users/", usersRouter);
+app.use("/api/v1/users/", musiciansRouter);
+
 // app.use("/api/v1/cover/", coverRouter);
 // app.use("/api/v1/browser/", browserRouter);
 
