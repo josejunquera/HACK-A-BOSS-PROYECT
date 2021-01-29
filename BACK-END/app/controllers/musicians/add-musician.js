@@ -2,31 +2,42 @@
 
 const Joi = require("joi");
 const { findUserById } = require("../../repositories/users-repository");
-const { createMusician } = require("../../repositories/musicians-repository");
+const {
+  createMusician,
+  findMusicianByUserID,
+} = require("../../repositories/musicians-repository");
 const createJsonError = require("../errors/create-json-errors");
+const jwt = require("jsonwebtoken");
 
+// idUsuario: Joi.number().positive().required(),
 const schema = Joi.object().keys({
-  idUsuario: Joi.number().positive().required(),
   nombreSolista: Joi.string().alphanum().min(2).max(100).required(),
   especialidad: Joi.string().alphanum().min(2).max(100).required(),
   localizacion: Joi.string().alphanum().min(2).max(100).required(),
   movilidad: Joi.string()
     .valid("local", "provincial", "nacional", "internacional")
     .required(),
-  buscoBanda: Joi.boolean().required(),
-  buscoActuación: Joi.boolean().required(),
+  buscoBanda: Joi.string().valid("si", "no").required(),
+  buscoActuacion: Joi.string().valid("si", "no").required(),
   descripcion: Joi.string().alphanum().min(10).max(500),
 });
 
 async function addMusician(req, res) {
   try {
-    console.log(req);
+    // let token = req.headers.authorization.split(" ")[1];
+    // let data = jwt.decode(token);
+    // let idUsuario = data.id_usuario;
     const { id_usuario } = req.auth;
-
     await schema.validateAsync(req.body);
 
+    const existMusicianWithUserId = await findMusicianByUserID(id_usuario);
+    if (existMusicianWithUserId) {
+      const error = new Error("Ya existe un solista asignado a este usuario");
+      error.status = 409;
+      throw error;
+    }
+
     const {
-      idUsuario,
       nombreSolista,
       especialidad,
       localizacion,
@@ -38,7 +49,6 @@ async function addMusician(req, res) {
 
     const idSolista = await createMusician(
       id_usuario,
-      idUsuario,
       nombreSolista,
       especialidad,
       localizacion,
@@ -50,7 +60,6 @@ async function addMusician(req, res) {
 
     res.status(201).send({
       idSolista,
-      idUsuario,
       nombreSolista,
       especialidad,
       localizacion,

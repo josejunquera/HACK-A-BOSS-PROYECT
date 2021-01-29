@@ -25,8 +25,6 @@ async function createUser(
   return created.insertId;
 }
 
-
-
 async function findUserByEmail(email) {
   const pool = await database.getPool();
   const query = "SELECT * FROM usuario WHERE email = ?";
@@ -43,8 +41,17 @@ async function findUserById(id) {
   return users[0];
 }
 
+async function removeUserById(id) {
+  const pool = await database.getPool();
+  const query = "DELETE FROM usuario WHERE id_usuario = ?";
+  await pool.query(query, id);
+
+  return true;
+}
+
 module.exports = {
   createUser,
   findUserByEmail,
   findUserById,
+  removeUserById,
 };
