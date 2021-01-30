@@ -9,11 +9,16 @@ const {
 const createJsonError = require("../errors/create-json-errors");
 const jwt = require("jsonwebtoken");
 
-// idUsuario: Joi.number().positive().required(),
 const schema = Joi.object().keys({
-  nombreSolista: Joi.string().alphanum().min(2).max(100).required(),
-  especialidad: Joi.string().alphanum().min(2).max(100).required(),
-  localizacion: Joi.string().alphanum().min(2).max(100).required(),
+  nombreSolista: Joi.string()
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*]{3,25}$/)
+    .required(),
+  especialidad: Joi.string()
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*]{3,25}$/)
+    .required(),
+  localizacion: Joi.string()
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*]{3,25}$/)
+    .required(),
   movilidad: Joi.string()
     .valid("local", "provincial", "nacional", "internacional")
     .required(),
@@ -24,9 +29,6 @@ const schema = Joi.object().keys({
 
 async function addMusician(req, res) {
   try {
-    // let token = req.headers.authorization.split(" ")[1];
-    // let data = jwt.decode(token);
-    // let idUsuario = data.id_usuario;
     const { id_usuario } = req.auth;
     await schema.validateAsync(req.body);
 

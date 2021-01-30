@@ -14,15 +14,8 @@ async function deleteUserById(req, res) {
   try {
     const { id_usuario } = req.auth;
     const { id } = req.params;
-    console.log(id);
-    console.log(id_usuario);
-    await schema.validateAsync(id);
 
-    if (req.auth.rol !== "admin" || id_usuario !== id) {
-      const error = new Error("No tienes permisos para realizar esta acción");
-      error.status = 403;
-      throw error;
-    }
+    await schema.validateAsync(id);
 
     const user = await findUserById(id);
     if (!user) {
@@ -31,8 +24,14 @@ async function deleteUserById(req, res) {
       throw error;
     }
 
+    if (req.auth.rol !== "admin" && id_usuario != id) {
+      const error = new Error("No tienes permisos para realizar esta acción");
+      error.status = 403;
+      throw error;
+    }
+
     await removeUserById(id);
-    res.status(204).send();
+    res.send({ message: `El usuario ${id} ha sido borrado` });
   } catch (err) {
     createJsonError(err, res);
   }

@@ -22,7 +22,7 @@ const accessLogStream = fs.createWriteStream(
 app.use(morgan("combined", { stream: accessLogStream }));
 
 app.use("/api/v1/users/", usersRouter);
-app.use("/api/v1/users/", musiciansRouter);
+app.use("/api/v1/musicians/", musiciansRouter);
 
 // app.use("/api/v1/cover/", coverRouter);
 // app.use("/api/v1/browser/", browserRouter);

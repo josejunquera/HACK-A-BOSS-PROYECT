@@ -46,7 +46,6 @@ async function loginUser(req, res) {
       accessToken: token,
       expiresIn: jwtTokenExpiration,
     };
-    console.log(response);
 
     res.send(response);
   } catch (err) {

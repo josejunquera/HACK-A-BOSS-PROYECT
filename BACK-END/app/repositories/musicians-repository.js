@@ -29,11 +29,60 @@ async function createMusician(
   return created.insertId;
 }
 
+async function findAllMusicians() {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista";
+  const [musicians] = await pool.query(query);
+  console.log(musicians);
+  return musicians;
+}
+
 async function findMusicianByUserID(userId) {
   const pool = await database.getPool();
   const query = "SELECT * FROM solista WHERE id_usuario = ?";
-  const [users] = await pool.query(query, userId);
+  const [musician] = await pool.query(query, userId);
 
-  return users[0];
+  return musician[0];
 }
-module.exports = { createMusician, findMusicianByUserID };
+
+async function findMusicianByLocation(location) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE localizacion = ?";
+  const [musician] = await pool.query(query, location);
+
+  return musician;
+}
+
+async function findMusicianBySpeciality(speciality) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE especialidad = ?";
+  const [musician] = await pool.query(query, speciality);
+
+  return musician;
+}
+
+async function findMusicianByMovility(movility) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE movilidad = ?";
+  const [musician] = await pool.query(query, movility);
+
+  return musician;
+}
+
+async function findMusicianByName(name) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE nombre_solista = ?";
+  const [musician] = await pool.query(query, name);
+
+  return musician;
+}
+
+module.exports = {
+  createMusician,
+  findAllMusicians,
+  findMusicianByLocation,
+  findMusicianByUserID,
+  findMusicianBySpeciality,
+  findMusicianByMovility,
+  findMusicianByName,
+};
