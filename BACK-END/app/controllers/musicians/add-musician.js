@@ -4,7 +4,7 @@ const Joi = require("joi");
 const { findUserById } = require("../../repositories/users-repository");
 const {
   createMusician,
-  findMusicianByUserID,
+  findMusicianByUserId,
 } = require("../../repositories/musicians-repository");
 const createJsonError = require("../errors/create-json-errors");
 const jwt = require("jsonwebtoken");
@@ -32,7 +32,7 @@ async function addMusician(req, res) {
     const { id_usuario } = req.auth;
     await schema.validateAsync(req.body);
 
-    const existMusicianWithUserId = await findMusicianByUserID(id_usuario);
+    const existMusicianWithUserId = await findMusicianByUserId(id_usuario);
     if (existMusicianWithUserId) {
       const error = new Error("Ya existe un solista asignado a este usuario");
       error.status = 409;

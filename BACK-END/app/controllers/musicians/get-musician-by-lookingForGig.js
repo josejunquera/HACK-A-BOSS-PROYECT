@@ -2,19 +2,18 @@
 
 const Joi = require("joi");
 const {
-  findMusicianByMovility,
+  findMusicianByLookingForGig,
 } = require("../../repositories/musicians-repository");
 const createJsonError = require("../errors/create-json-errors");
 
-const schema = Joi.string().regex(/^[a-zA-Z0-9ñÑ!@#$%&*]{3,25}$/);
+const schema = Joi.string().valid("si", "no").required();
 
-async function getMusicianByMovility(req, res) {
+async function getMusicianByLookingForGig(req, res) {
   try {
-    const { movility } = req.params;
+    const { response } = req.params;
 
-    await schema.validateAsync(movility);
-
-    const musician = await findMusicianByMovility(movility);
+    await schema.validateAsync(response);
+    const musician = await findMusicianByLookingForGig(response);
 
     if (!musician[0]) {
       const error = new Error(
@@ -29,4 +28,4 @@ async function getMusicianByMovility(req, res) {
   }
 }
 
-module.exports = getMusicianByMovility;
+module.exports = getMusicianByLookingForGig;

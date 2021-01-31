@@ -16,8 +16,10 @@ async function getMusicianByName(req, res) {
 
     const musician = await findMusicianByName(name);
 
-    if (!name) {
-      const error = new Error("No existe usuarios con este nombre");
+    if (!musician[0]) {
+      const error = new Error(
+        "No existen usuarios que cumplan los criterios de búsqueda"
+      );
       error.status = 400;
       throw error;
     }

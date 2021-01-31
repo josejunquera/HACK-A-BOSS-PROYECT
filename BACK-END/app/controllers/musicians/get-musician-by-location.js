@@ -16,8 +16,10 @@ async function getMusicianByLocation(req, res) {
 
     const musician = await findMusicianByLocation(location);
 
-    if (!location) {
-      const error = new Error("No existe usuarios en esa localizacion");
+    if (!musician[0]) {
+      const error = new Error(
+        "No existen usuarios que cumplan los criterios de búsqueda"
+      );
       error.status = 400;
       throw error;
     }

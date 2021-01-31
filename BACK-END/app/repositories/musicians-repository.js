@@ -33,14 +33,30 @@ async function findAllMusicians() {
   const pool = await database.getPool();
   const query = "SELECT * FROM solista";
   const [musicians] = await pool.query(query);
-  console.log(musicians);
+
   return musicians;
 }
 
-async function findMusicianByUserID(userId) {
+async function findUserIdOfMusician(musicianId) {
   const pool = await database.getPool();
   const query = "SELECT * FROM solista WHERE id_usuario = ?";
-  const [musician] = await pool.query(query, userId);
+  const [musician] = await pool.query(query, musicianId);
+
+  return musician[0];
+}
+
+async function findMusicianById(id) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE id_solista = ?";
+  const [musician] = await pool.query(query, id);
+
+  return musician[0];
+}
+
+async function findMusicianByUserId(id) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE id_usuario = ?";
+  const [musician] = await pool.query(query, id);
 
   return musician[0];
 }
@@ -77,12 +93,50 @@ async function findMusicianByName(name) {
   return musician;
 }
 
+async function findMusicianByLookingForBand(response) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE busco_banda = ?";
+  const [musician] = await pool.query(query, response);
+
+  return musician;
+}
+
+async function findMusicianByLookingForGig(response) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM solista WHERE busco_actuacion = ?";
+  const [musician] = await pool.query(query, response);
+
+  return musician;
+}
+
+async function removeMusicianByUserId(id) {
+  const pool = await database.getPool();
+  const query = "DELETE FROM solista WHERE id_usuario = ?";
+  await pool.query(query, id);
+
+  return true;
+}
+
+async function findMusicianIdOfUser(id) {
+  const pool = await database.getPool();
+  const query = "SELECT id_solista FROM solista WHERE id_usuario = ?";
+  const [musician] = await pool.query(query, id);
+
+  return musician[0];
+}
+
 module.exports = {
   createMusician,
+  findMusicianById,
   findAllMusicians,
-  findMusicianByLocation,
-  findMusicianByUserID,
-  findMusicianBySpeciality,
-  findMusicianByMovility,
   findMusicianByName,
+  findMusicianByLocation,
+  findMusicianByLookingForBand,
+  findMusicianByLookingForGig,
+  findMusicianByMovility,
+  findMusicianBySpeciality,
+  findUserIdOfMusician,
+  removeMusicianByUserId,
+  findMusicianByUserId,
+  findMusicianIdOfUser,
 };
