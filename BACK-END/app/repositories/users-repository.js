@@ -49,9 +49,35 @@ async function removeUserById(id) {
   return true;
 }
 
+async function updateUserById(data) {
+  const {
+    id_usuario,
+    nombreUsuario,
+    nombre,
+    apellido,
+    email,
+    contrasena,
+  } = data;
+
+  const pool = await database.getPool();
+  const updateQuery =
+    "UPDATE usuario SET nombre = ?, apellido = ?, nombre_usuario = ?, email = ?, contrasena = ? WHERE id_usuario = ?";
+  await pool.query(updateQuery, [
+    nombre,
+    apellido,
+    nombreUsuario,
+    email,
+    contrasena,
+    id_usuario,
+  ]);
+
+  return true;
+}
+
 module.exports = {
   createUser,
   findUserByEmail,
   findUserById,
   removeUserById,
+  updateUserById,
 };

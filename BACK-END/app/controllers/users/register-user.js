@@ -6,6 +6,7 @@ const {
   createUser,
   findUserByEmail,
 } = require("../../repositories/users-repository");
+// const sendEmailRegistration = require("../../helpers/mail-smtp");
 const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.object().keys({
@@ -40,6 +41,7 @@ async function registerUser(req, res) {
       "reader"
     );
 
+    // await sendEmailRegistration(nombre, email);
     res
       .status(201)
       .send({ id, nombreUsuario, nombre, apellido, email, rol: "reader" });
