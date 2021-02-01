@@ -125,6 +125,33 @@ async function findMusicianIdOfUser(id) {
   return musician[0];
 }
 
+async function updateMusicianByUserId(data) {
+  const {
+    id_usuario,
+    nombreSolista,
+    especialidad,
+    localizacion,
+    buscoBanda,
+    buscoActuacion,
+    descripcion,
+  } = data;
+
+  const pool = await database.getPool();
+  const updateQuery =
+    "UPDATE solista SET nombre_solista = ?, especialidad = ?, localizacion = ?, busco_banda = ?, busco_actuacion = ?, descripcion = ? WHERE id_usuario = ?";
+  await pool.query(updateQuery, [
+    nombreSolista,
+    especialidad,
+    localizacion,
+    buscoBanda,
+    buscoActuacion,
+    descripcion,
+    id_usuario,
+  ]);
+
+  return true;
+}
+
 module.exports = {
   createMusician,
   findMusicianById,
@@ -139,4 +166,5 @@ module.exports = {
   removeMusicianByUserId,
   findMusicianByUserId,
   findMusicianIdOfUser,
+  updateMusicianByUserId,
 };

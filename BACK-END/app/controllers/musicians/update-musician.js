@@ -2,11 +2,10 @@
 
 const Joi = require("joi");
 const {
-  createMusician,
+  updateMusicianByUserId,
   findMusicianByUserId,
 } = require("../../repositories/musicians-repository");
 const createJsonError = require("../errors/create-json-errors");
-const jwt = require("jsonwebtoken");
 
 const schema = Joi.object().keys({
   nombreSolista: Joi.string()
@@ -26,17 +25,11 @@ const schema = Joi.object().keys({
   descripcion: Joi.string().min(10).max(500),
 });
 
-async function addMusician(req, res) {
+async function updateMusician(req, res) {
   try {
     const { id_usuario } = req.auth;
-    await schema.validateAsync(req.body);
 
-    const existMusicianWithUserId = await findMusicianByUserId(id_usuario);
-    if (existMusicianWithUserId) {
-      const error = new Error("Ya existe un solista asignado a este usuario");
-      error.status = 409;
-      throw error;
-    }
+    await schema.validateAsync(req.body);
 
     const {
       nombreSolista,
@@ -48,7 +41,15 @@ async function addMusician(req, res) {
       descripcion,
     } = req.body;
 
-    const idSolista = await createMusician(
+    const musicianOfUser = await findMusicianByUserId(id_usuario);
+
+    if (!musicianOfUser) {
+      const error = new Error("No existe un solista asignado al usuario");
+      error.status = 409;
+      throw error;
+    }
+
+    await updateMusicianByUserId({
       id_usuario,
       nombreSolista,
       especialidad,
@@ -56,11 +57,11 @@ async function addMusician(req, res) {
       movilidad,
       buscoBanda,
       buscoActuacion,
-      descripcion
-    );
+      descripcion,
+    });
 
-    res.status(201).send({
-      idSolista,
+    res.send({
+      id_usuario,
       nombreSolista,
       especialidad,
       localizacion,
@@ -74,4 +75,4 @@ async function addMusician(req, res) {
   }
 }
 
-module.exports = addMusician;
+module.exports = updateMusician;
