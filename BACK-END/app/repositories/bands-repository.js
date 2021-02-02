@@ -120,6 +120,7 @@ async function updateBandByUserId(data) {
     id_usuario,
     nombreBanda,
     localizacion,
+    movilidad,
     buscoSolista,
     buscoActuacion,
     descripcion,
@@ -127,10 +128,11 @@ async function updateBandByUserId(data) {
 
   const pool = await database.getPool();
   const updateQuery =
-    "UPDATE banda SET nombre_banda = ?,localizacion = ?, busco_solista = ?, busco_actuacion = ?, descripcion = ? WHERE id_usuario = ?";
+    "UPDATE banda SET nombre_banda = ?,localizacion = ?, movilidad = ?, busco_solista = ?, busco_actuacion = ?, descripcion = ? WHERE id_usuario = ?";
   await pool.query(updateQuery, [
     nombreBanda,
     localizacion,
+    movilidad,
     buscoSolista,
     buscoActuacion,
     descripcion,

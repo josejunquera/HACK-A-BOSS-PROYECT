@@ -8,9 +8,13 @@ const getBandByLocation = require("../controllers/bands/get-band-by-location");
 const getBandByLookingForMusician = require("../controllers/bands/get-band-by-lookingForMusician");
 const getBandByLookingForGig = require("../controllers/bands/get-band-by-lookingForGig");
 const getBandByMovility = require("../controllers/bands/get-band-by-movility");
+const getBands = require("../controllers/bands/get-bands");
+const updateBand = require("../controllers/bands/update-band");
 const getBandByName = require("../controllers/bands/get-band-by-name");
 
 const router = express.Router();
+
+router.route("/").get((req, res) => getBands(req, res));
 
 router
   .route("/add")
@@ -39,5 +43,10 @@ router
   .get((req, res) => getBandByMovility(req, res));
 
 router.route("/name/:name").get((req, res) => getBandByName(req, res));
+
+router
+  .route("/")
+  .all(validateAuth)
+  .put((req, res) => updateBand(req, res));
 
 module.exports = router;

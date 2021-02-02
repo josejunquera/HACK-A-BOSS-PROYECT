@@ -2,11 +2,10 @@
 
 const Joi = require("joi");
 const {
-  createBand,
+  updateBandByUserId,
   findBandByUserId,
 } = require("../../repositories/bands-repository");
 const createJsonError = require("../errors/create-json-errors");
-const jwt = require("jsonwebtoken");
 
 const schema = Joi.object().keys({
   nombreBanda: Joi.string()
@@ -23,17 +22,11 @@ const schema = Joi.object().keys({
   descripcion: Joi.string().min(10).max(500),
 });
 
-async function addBand(req, res) {
+async function updateBand(req, res) {
   try {
     const { id_usuario } = req.auth;
-    await schema.validateAsync(req.body);
 
-    const existBandWithUserId = await findBandByUserId(id_usuario);
-    if (existBandWithUserId) {
-      const error = new Error("Ya existe una banda asignado a este usuario");
-      error.status = 409;
-      throw error;
-    }
+    await schema.validateAsync(req.body);
 
     const {
       nombreBanda,
@@ -44,18 +37,26 @@ async function addBand(req, res) {
       descripcion,
     } = req.body;
 
-    const idBanda = await createBand(
+    const bandOfUser = await findBandByUserId(id_usuario);
+
+    if (!bandOfUser) {
+      const error = new Error("No existe una banda asignado al usuario");
+      error.status = 409;
+      throw error;
+    }
+
+    await updateBandByUserId({
       id_usuario,
       nombreBanda,
       localizacion,
       movilidad,
       buscoSolista,
       buscoActuacion,
-      descripcion
-    );
+      descripcion,
+    });
 
-    res.status(201).send({
-      idBanda,
+    res.send({
+      id_usuario,
       nombreBanda,
       localizacion,
       movilidad,
@@ -68,4 +69,4 @@ async function addBand(req, res) {
   }
 }
 
-module.exports = addBand;
+module.exports = updateBand;
