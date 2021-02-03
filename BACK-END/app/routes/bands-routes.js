@@ -11,6 +11,8 @@ const getBandByMovility = require("../controllers/bands/get-band-by-movility");
 const getBands = require("../controllers/bands/get-bands");
 const updateBand = require("../controllers/bands/update-band");
 const getBandByName = require("../controllers/bands/get-band-by-name");
+const addGenreToBand = require("../controllers/bands/add-genre");
+const deleteGenreToBand = require("../controllers/bands/delete-genre");
 
 const router = express.Router();
 
@@ -48,5 +50,15 @@ router
   .route("/")
   .all(validateAuth)
   .put((req, res) => updateBand(req, res));
+
+router
+  .route("/addgenre")
+  .all(validateAuth)
+  .post((req, res) => addGenreToBand(req, res));
+
+router
+  .route("/")
+  .all(validateAuth)
+  .delete((req, res) => deleteGenreToBand(req, res));
 
 module.exports = router;

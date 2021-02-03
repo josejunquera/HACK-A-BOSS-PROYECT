@@ -25,16 +25,16 @@ DROP TABLE IF EXISTS `banda`;
 CREATE TABLE `banda` (
   `id_banda` int unsigned NOT NULL AUTO_INCREMENT,
   `id_usuario` int unsigned NOT NULL,
-  `busco_banda` bit(1) NOT NULL,
-  `busco_actuacion` bit(1) NOT NULL,
-  `localizacion` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `movilidad` enum('local','provincial','nacional','internacional') COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripcion` varchar(500) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `nombre_banda` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `busco_solista` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `busco_actuacion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `localizacion` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `movilidad` enum('local','provincial','nacional','internacional') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripcion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `nombre_banda` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`id_banda`),
   KEY `banda_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `banda_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `banda` (
 
 LOCK TABLES `banda` WRITE;
 /*!40000 ALTER TABLE `banda` DISABLE KEYS */;
+INSERT INTO `banda` VALUES (1,2,'si','no','localizacion1','local','descripcion123456','banda7');
 /*!40000 ALTER TABLE `banda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +58,7 @@ CREATE TABLE `es_contratado_banda` (
   `id_banda` int unsigned NOT NULL,
   `id_local_evento` int unsigned NOT NULL,
   `fecha` date NOT NULL,
-  `contrato` varchar(1000) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `contrato` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   KEY `es_contratado_banda_id_banda_fk` (`id_banda`),
   KEY `es_contratado_banda_id_local_evento_fk` (`id_local_evento`),
   CONSTRAINT `es_contratado_banda_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE,
@@ -85,7 +86,7 @@ CREATE TABLE `es_contratado_solista` (
   `id_solista` int unsigned NOT NULL,
   `id_local_evento` int unsigned NOT NULL,
   `fecha` date NOT NULL,
-  `contrato` varchar(1000) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `contrato` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   KEY `es_contratado_solista_id_solista_fk` (`id_solista`),
   KEY `es_contratado_solista_id_local_evento_fk` (`id_local_evento`),
   CONSTRAINT `es_contratado_solista_id_local_evento_fk` FOREIGN KEY (`id_local_evento`) REFERENCES `local_evento` (`id_local_evento`) ON DELETE CASCADE,
@@ -112,6 +113,8 @@ DROP TABLE IF EXISTS `es_tocado_banda`;
 CREATE TABLE `es_tocado_banda` (
   `id_banda` int unsigned NOT NULL,
   `id_genero` int unsigned NOT NULL,
+  `id_usuario` int DEFAULT NULL,
+  `nombre_genero` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   KEY `es_tocado_banda_id_banda_fk` (`id_banda`),
   KEY `es_tocado_banda_id_genero_fk` (`id_genero`),
   CONSTRAINT `es_tocado_banda_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE,
@@ -138,6 +141,8 @@ DROP TABLE IF EXISTS `es_tocado_solista`;
 CREATE TABLE `es_tocado_solista` (
   `id_solista` int unsigned NOT NULL,
   `id_genero` int unsigned NOT NULL,
+  `id_usuario` int DEFAULT NULL,
+  `nombre_genero` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   KEY `es_tocado_solista_id_solista_fk` (`id_solista`),
   KEY `es_tocado_solista_id_genero_fk` (`id_genero`),
   CONSTRAINT `es_tocado_solista_id_genero_fk` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id_genero`) ON DELETE CASCADE,
@@ -151,6 +156,7 @@ CREATE TABLE `es_tocado_solista` (
 
 LOCK TABLES `es_tocado_solista` WRITE;
 /*!40000 ALTER TABLE `es_tocado_solista` DISABLE KEYS */;
+INSERT INTO `es_tocado_solista` VALUES (8,2,2,'Pop'),(9,1,3,'Rock'),(8,1,2,'Rock');
 /*!40000 ALTER TABLE `es_tocado_solista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,9 +169,9 @@ DROP TABLE IF EXISTS `genero`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genero` (
   `id_genero` int unsigned NOT NULL AUTO_INCREMENT,
-  `genero` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `genero` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`id_genero`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,6 +180,7 @@ CREATE TABLE `genero` (
 
 LOCK TABLES `genero` WRITE;
 /*!40000 ALTER TABLE `genero` DISABLE KEYS */;
+INSERT INTO `genero` VALUES (1,'Rock'),(2,'Pop'),(3,'Metal'),(4,'Jazz'),(5,'Trash');
 /*!40000 ALTER TABLE `genero` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,8 +194,9 @@ DROP TABLE IF EXISTS `local_evento`;
 CREATE TABLE `local_evento` (
   `id_local_evento` int unsigned NOT NULL AUTO_INCREMENT,
   `id_usuario` int unsigned NOT NULL,
-  `nombre_local_evento` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `localizacion` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre_local_evento` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `localizacion` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripcion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_local_evento`),
   KEY `local_evento_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `local_evento_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
@@ -214,9 +222,9 @@ DROP TABLE IF EXISTS `multimedia_banda`;
 CREATE TABLE `multimedia_banda` (
   `id_multimedia` int unsigned NOT NULL AUTO_INCREMENT,
   `id_banda` int unsigned NOT NULL,
-  `tipo` enum('video','imagen','audio') COLLATE utf8mb4_spanish_ci NOT NULL,
-  `url` varchar(300) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `titulo` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `tipo` enum('video','imagen','audio') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `url` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `titulo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_multimedia`),
   KEY `multimedia_banda_id_banda_fk` (`id_banda`),
   CONSTRAINT `multimedia_banda_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE
@@ -242,9 +250,9 @@ DROP TABLE IF EXISTS `multimedia_solista`;
 CREATE TABLE `multimedia_solista` (
   `id_multimedia` int unsigned NOT NULL AUTO_INCREMENT,
   `id_solista` int unsigned NOT NULL,
-  `tipo` enum('video','imagen','audio') COLLATE utf8mb4_spanish_ci NOT NULL,
-  `url` varchar(300) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `titulo` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `tipo` enum('video','imagen','audio') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `url` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `titulo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_multimedia`),
   KEY `multimedia_solista_id_solista_fk` (`id_solista`),
   CONSTRAINT `multimedia_solista_id_solista_fk` FOREIGN KEY (`id_solista`) REFERENCES `solista` (`id_solista`) ON DELETE CASCADE
@@ -268,7 +276,7 @@ DROP TABLE IF EXISTS `se_agrupa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `se_agrupa` (
-  `contrato` varchar(1000) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `contrato` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `id_solista` int unsigned NOT NULL,
   `id_banda` int unsigned NOT NULL,
   KEY `se_agrupa_id_solista_fk` (`id_solista`),
@@ -297,17 +305,17 @@ DROP TABLE IF EXISTS `solista`;
 CREATE TABLE `solista` (
   `id_solista` int unsigned NOT NULL AUTO_INCREMENT,
   `id_usuario` int unsigned NOT NULL,
-  `busco_banda` bit(1) NOT NULL,
-  `busco_actuacion` bit(1) NOT NULL,
-  `localizacion` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `especialidad` tinytext COLLATE utf8mb4_spanish_ci NOT NULL,
-  `movilidad` enum('local','provincial','nacional','internacional') COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripcion` varchar(500) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `nombre_solista` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `busco_banda` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `busco_actuacion` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `localizacion` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `especialidad` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `movilidad` enum('local','provincial','nacional','internacional') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripcion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `nombre_solista` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`id_solista`),
   KEY `solista_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `solista_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +324,7 @@ CREATE TABLE `solista` (
 
 LOCK TABLES `solista` WRITE;
 /*!40000 ALTER TABLE `solista` DISABLE KEYS */;
+INSERT INTO `solista` VALUES (8,2,'no','si','Carballo','jaiteiro','local','el putoa mosddddddddd','Antonio'),(9,3,'si','no','localizacion1','especialidad1','local',NULL,'solista1');
 /*!40000 ALTER TABLE `solista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,14 +337,14 @@ DROP TABLE IF EXISTS `usuario`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
   `id_usuario` int unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `contrasena` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `nombre` tinytext COLLATE utf8mb4_spanish_ci NOT NULL,
-  `apellido` tinytext COLLATE utf8mb4_spanish_ci NOT NULL,
-  `nombre_usuario` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `rol` enum('admin','reader') COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `contrasena` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `apellido` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre_usuario` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `rol` enum('admin','reader') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -344,7 +353,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'user1@email.com','$2b$12$tBTw.FNADF8.UCnr7BbO4.NRe92XA5.cKICcxKx4cpj3oIoOjG1Hi','nombre1','apellido1','user1','admin'),(2,'user2@email.com','$2b$12$JYOy1J/lL7DQzALO/q3xK.e2nrhKwVeM18YXnGDjJFLHhmviHRLg6','nombre2','apellido2','user2','reader'),(3,'user3@email.com','$2b$12$Jd2wX6mm99Zm.b0hVkFg6.eL90gosxqLoPYAJHBOM13ipEalYErwC','nombre3','apellido3','user3','reader');
+INSERT INTO `usuario` VALUES (1,'user1@email.com','$2b$12$tBTw.FNADF8.UCnr7BbO4.NRe92XA5.cKICcxKx4cpj3oIoOjG1Hi','nombre1','apellido1','user1','admin'),(2,'user2@email.com','$2b$12$FCjTlNkBdkM4w6t6hhTZBejU.jwrjxyjc3A46gLD49mFjlK/djJmi','Antonio','Yomismo','Antonio','reader'),(3,'user3@email.com','$2b$12$4kSuE3U15W1z59K6taUwFe2jFfrTiA.fBx6C4tc2Rdyk/HDmHiquC','nombre2','apellido2','user','reader'),(4,'user4@email.com','$2b$12$sOuk4GQ0VipnzujsRv8sc.psrkdLjtDlVM4yn2jex6MaL59NxtAQ.','nombre2','apellido2','user','reader'),(5,'user1906@yopmail.com','$2b$12$G82DvjyzyVexVZhaNdZUEOrYFjkNU/3wFs95Qh0wVrE0chZCH53ca','nombre2','apellido2','user','reader');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -357,5 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-28 11:34:35
- 
+-- Dump completed on 2021-02-03 19:46:54

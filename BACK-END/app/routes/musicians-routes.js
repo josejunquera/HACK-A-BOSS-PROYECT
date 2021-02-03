@@ -14,10 +14,14 @@ const deleteMusicianByUserId = require("../controllers/musicians/delete-musician
 const updateMusician = require("../controllers/musicians/update-musician");
 const addGenreToMusician = require("../controllers/musicians/add-genre");
 const deleteGenreToMusician = require("../controllers/musicians/delete-genre");
+const getMusicianByGenre = require("../controllers/musicians/get-musician-by-genre");
+const getMusiciansWithGenre = require("../controllers/musicians/get-musicians-with-genre");
 
 const router = express.Router();
 
 router.route("/").get((req, res) => getMusicians(req, res));
+
+router.route("/withgenres").get((req, res) => getMusiciansWithGenre(req, res));
 
 router
   .route("/location/:location")
@@ -40,6 +44,8 @@ router
   .get((req, res) => getMusicianByLookingForGig(req, res));
 
 router.route("/name/:name").get((req, res) => getMusicianByName(req, res));
+
+router.route("/genre/:genre").get((req, res) => getMusicianByGenre(req, res));
 
 router
   .route("/add")

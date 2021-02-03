@@ -18,6 +18,14 @@ async function removeMusicianGenre(musicianId, genre) {
   return true;
 }
 
+async function removeBandGenre(bandId, genre) {
+  const pool = await database.getPool();
+  const query =
+    "DELETE FROM es_tocado_banda WHERE id_banda = ? AND nombre_genero = ?";
+  await pool.query(query, [bandId, genre]);
+  return true;
+}
+
 async function insertMusicianIdAndGenreIdIntoIsPlayed(
   musicianId,
   genreId,
@@ -37,6 +45,25 @@ async function insertMusicianIdAndGenreIdIntoIsPlayed(
   return created;
 }
 
+async function insertBandIdAndGenreIdIntoIsPlayed(
+  bandId,
+  genreId,
+  genre,
+  userId
+) {
+  const pool = await database.getPool();
+  const insertQuery =
+    "INSERT INTO es_tocado_banda(id_banda, id_genero, nombre_genero,id_usuario) VALUES(?,?,?,?)";
+  const [created] = await pool.query(insertQuery, [
+    bandId,
+    genreId,
+    genre,
+    userId,
+  ]);
+
+  return created;
+}
+
 async function findGenreIdByMusicianId(musicianId, genre) {
   const pool = await database.getPool();
   const query =
@@ -46,9 +73,42 @@ async function findGenreIdByMusicianId(musicianId, genre) {
   return genreId;
 }
 
+async function findGenreIdByBandId(bandId, genre) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT id_genero FROM es_tocado_banda WHERE id_banda= ? AND nombre_genero= ?";
+  const [genreId] = await pool.query(query, [bandId, genre]);
+
+  return genreId;
+}
+
+async function findMusicianByGenre(genre) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT solista.nombre_solista, solista.especialidad,solista.localizacion, solista.movilidad, solista.busco_banda, solista.busco_actuacion, solista.descripcion, es_tocado_solista.nombre_genero FROM solista INNER JOIN es_tocado_solista ON solista.id_solista = es_tocado_solista.id_solista WHERE nombre_genero = ?";
+  const [musician] = await pool.query(query, genre);
+
+  return musician;
+}
+
+async function findGenresOfMusician(musicianId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT nombre_genero FROM es_tocado_solista WHERE id_solista = ? ";
+
+  const [genre] = await pool.query(query, musicianId);
+
+  return genre;
+}
+
 module.exports = {
   findGenreId,
   insertMusicianIdAndGenreIdIntoIsPlayed,
+  insertBandIdAndGenreIdIntoIsPlayed,
   findGenreIdByMusicianId,
+  findGenreIdByBandId,
+  findGenresOfMusician,
+  findMusicianByGenre,
   removeMusicianGenre,
+  removeBandGenre,
 };
