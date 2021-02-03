@@ -8,6 +8,7 @@ const {
 const {
   findGenreId,
   insertMusicianIdAndGenreIdIntoIsPlayed,
+  findGenreIdByMusicianId,
 } = require("../../repositories/genres-repository");
 
 const schema = Joi.object().keys({
@@ -24,8 +25,6 @@ async function addGenreToMusician(req, res) {
     const musicianIdOfUser = await findMusicianIdOfUser(id_usuario);
     const { genero } = req.body;
     const genreId = await findGenreId(genero);
-    console.log(musicianIdOfUser.id_solista);
-    console.log(genreId[0].id_genero);
 
     if (!musicianIdOfUser) {
       const error = new Error("El musico no existe");
@@ -39,9 +38,22 @@ async function addGenreToMusician(req, res) {
       throw error;
     }
 
+    const existsGenreIdIntoMusician = await findGenreIdByMusicianId(
+      musicianIdOfUser.id_solista,
+      genero
+    );
+
+    if (existsGenreIdIntoMusician[0]) {
+      const error = new Error("El músico ya tiene asociado este género");
+      error.status = 409;
+      throw error;
+    }
+
     await insertMusicianIdAndGenreIdIntoIsPlayed(
       musicianIdOfUser.id_solista,
-      genreId[0].id_genero
+      genreId[0].id_genero,
+      genero,
+      id_usuario
     );
 
     res.status(201).send({ message: `El genero se ha asociado al musico` });

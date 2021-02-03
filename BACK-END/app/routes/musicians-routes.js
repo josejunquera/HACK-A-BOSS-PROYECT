@@ -13,6 +13,7 @@ const getMusicianByLookingForGig = require("../controllers/musicians/get-musicia
 const deleteMusicianByUserId = require("../controllers/musicians/delete-musician-by-user-id");
 const updateMusician = require("../controllers/musicians/update-musician");
 const addGenreToMusician = require("../controllers/musicians/add-genre");
+const deleteGenreToMusician = require("../controllers/musicians/delete-genre");
 
 const router = express.Router();
 
@@ -59,5 +60,10 @@ router
   .route("/addgenre")
   .all(validateAuth)
   .post((req, res) => addGenreToMusician(req, res));
+
+router
+  .route("/")
+  .all(validateAuth)
+  .delete((req, res) => deleteGenreToMusician(req, res));
 
 module.exports = router;
