@@ -5,48 +5,47 @@ const Joi = require("joi");
 const {
   insertBandAndMusicianIntoContactTable,
   findBandIdOfUser,
+  findUserIdOfBandByName,
 } = require("../../repositories/bands-repository");
 const {
-  findUserIdOfMusicianByName,
-  findMusicianIdByMusicianName,
   findMusicianIdOfUser,
 } = require("../../repositories/musicians-repository");
 const { findEmailByUser } = require("../../repositories/users-repository");
 const createJsonError = require("../errors/create-json-errors");
-const { sendEmailBandToMusician } = require("../../helpers/mail-smtp");
+const { sendEmailMusicianToBand } = require("../../helpers/mail-smtp");
 
 const schema = Joi.object().keys({
-  nombreSolista: Joi.string()
+  nombreBanda: Joi.string()
     .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
     .required(),
   mensaje: Joi.string().min(10).max(500).required(),
 });
 
-async function contactToMusician(req, res) {
+async function contactToBand(req, res) {
   try {
     const { id_usuario } = req.auth;
     const { mensaje } = req.body;
-    const { nombreSolista } = req.body;
+    const { nombreBanda } = req.body;
 
     await schema.validateAsync(req.body);
 
-    const bandEmail = await findEmailByUser(id_usuario);
+    const musicianEmail = await findEmailByUser(id_usuario);
 
-    const musicianUserId = await findUserIdOfMusicianByName(nombreSolista);
+    const bandUserId = await findUserIdOfBandByName(nombreBanda);
 
-    if (!musicianUserId[0]) {
+    if (!bandUserId[0]) {
       const error = new Error(
-        "El músico con el que intentas contactar no existe"
+        "La banda con la que intentas contactar no existe"
       );
       error.status = 400;
       throw error;
     }
 
-    const musicianEmail = await findEmailByUser(musicianUserId[0].id_usuario);
+    const bandEmail = await findEmailByUser(bandUserId[0].id_usuario);
 
-    const musicianId = await findMusicianIdOfUser(musicianUserId[0].id_usuario);
+    const bandId = await findBandIdOfUser(bandUserId[0].id_usuario);
 
-    const bandId = await findBandIdOfUser(id_usuario);
+    const musicianId = await findMusicianIdOfUser(id_usuario);
 
     await insertBandAndMusicianIntoContactTable(
       mensaje,
@@ -54,9 +53,9 @@ async function contactToMusician(req, res) {
       bandId.id_banda
     );
 
-    await sendEmailBandToMusician(
-      musicianEmail[0].email,
+    await sendEmailMusicianToBand(
       bandEmail[0].email,
+      musicianEmail[0].email,
       mensaje
     );
 
@@ -66,4 +65,4 @@ async function contactToMusician(req, res) {
   }
 }
 
-module.exports = contactToMusician;
+module.exports = contactToBand;

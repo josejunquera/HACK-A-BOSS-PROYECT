@@ -43,6 +43,14 @@ async function findUserIdOfBand(bandId) {
   return band[0];
 }
 
+async function findUserIdOfBandByName(bandName) {
+  const pool = await database.getPool();
+  const query = "SELECT id_usuario FROM banda WHERE nombre_banda = ?";
+  const [userId] = await pool.query(query, bandName);
+
+  return userId;
+}
+
 async function findBandById(id) {
   const pool = await database.getPool();
   const query = "SELECT * FROM banda WHERE id_banda = ?";
@@ -169,6 +177,7 @@ module.exports = {
   findBandByLookingForGig,
   findBandByMovility,
   findUserIdOfBand,
+  findUserIdOfBandByName,
   removeBandByUserId,
   findBandByUserId,
   findBandIdOfUser,

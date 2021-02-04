@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: PROYECTO_V2
 -- ------------------------------------------------------
--- Server version	8.0.22-0ubuntu0.20.04.3
+-- Server version	8.0.23-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -34,7 +34,7 @@ CREATE TABLE `banda` (
   PRIMARY KEY (`id_banda`),
   KEY `banda_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `banda_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `banda` (
 
 LOCK TABLES `banda` WRITE;
 /*!40000 ALTER TABLE `banda` DISABLE KEYS */;
-INSERT INTO `banda` VALUES (1,2,'no','si','localizacion112!!','local','descripcion ñ 12312121212456','banda7'),(2,7,'si','no','localizacion1','local','descripcion123456','banda8');
+INSERT INTO `banda` VALUES (1,2,'no','si','localizacion112!!','local','descripcion ñ 12312121212456','banda7'),(2,7,'si','no','localizacion1','local','descripcion123456','banda8'),(3,5,'si','no','localizacion1','local','descripcion123456','Los Mecanicos');
 /*!40000 ALTER TABLE `banda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,11 +280,13 @@ CREATE TABLE `se_agrupa` (
   `mensaje` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `id_solista` int unsigned NOT NULL,
   `id_banda` int unsigned NOT NULL,
+  `id_mensaje` int NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `id_mensaje` (`id_mensaje`),
   KEY `se_agrupa_id_solista_fk` (`id_solista`),
   KEY `se_agrupa_id_banda_fk` (`id_banda`),
   CONSTRAINT `se_agrupa_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE,
   CONSTRAINT `se_agrupa_id_solista_fk` FOREIGN KEY (`id_solista`) REFERENCES `solista` (`id_solista`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,6 +295,7 @@ CREATE TABLE `se_agrupa` (
 
 LOCK TABLES `se_agrupa` WRITE;
 /*!40000 ALTER TABLE `se_agrupa` DISABLE KEYS */;
+INSERT INTO `se_agrupa` VALUES ('manuel quiero que toques con nosotros',13,1,1),('manuel quiero que toques con nosotros',13,1,2),('manuel quiero que toques con nosotros',13,1,3),('manuel quiero que toques con nosotros',13,1,4),('manuel quiero que toques con nosotros',13,1,5),('manuel quiero que toques con nosotros',13,1,6),('manuel quiero que toques con nosotros',13,1,7),('Estoy interesado en tocar vosotros',11,3,8);
 /*!40000 ALTER TABLE `se_agrupa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,7 +319,7 @@ CREATE TABLE `solista` (
   PRIMARY KEY (`id_solista`),
   KEY `solista_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `solista_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,7 +328,7 @@ CREATE TABLE `solista` (
 
 LOCK TABLES `solista` WRITE;
 /*!40000 ALTER TABLE `solista` DISABLE KEYS */;
-INSERT INTO `solista` VALUES (8,2,'no','si','Carballo','jaiteiro','local','el putoa mosddddddddd','Antonio'),(10,1,'si','no','localizacion1','especialidad1','local','descripcion123456','solista1'),(11,6,'si','no','localizacion1','especialidad1','local','descripcion123456','solista2'),(12,7,'si','no','localizacion1','especialidad1','local','descripcion123456','solista27');
+INSERT INTO `solista` VALUES (8,2,'no','si','Carballo','jaiteiro','local','el putoa mosddddddddd','Antonio'),(10,1,'si','no','localizacion1','especialidad1','local','descripcion123456','solista1'),(11,6,'si','no','localizacion1','especialidad1','local','descripcion123456','solista2'),(12,7,'si','no','localizacion1','especialidad1','local','descripcion123456','solista27'),(13,5,'si','no','localizacion3','especialidad3','local','descripcion123456','Juanito');
 /*!40000 ALTER TABLE `solista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,4 +370,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-04 13:05:56
+-- Dump completed on 2021-02-04 19:40:38

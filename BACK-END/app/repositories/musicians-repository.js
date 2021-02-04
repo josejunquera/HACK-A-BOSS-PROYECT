@@ -45,7 +45,7 @@ async function findUserIdOfMusician(musicianId) {
   return musician[0];
 }
 
-async function findUserIdOfMusician(musicianName) {
+async function findUserIdOfMusicianByName(musicianName) {
   const pool = await database.getPool();
   const query = "SELECT id_usuario FROM solista WHERE nombre_solista = ?";
   const [userId] = await pool.query(query, musicianName);
@@ -183,6 +183,6 @@ module.exports = {
   findMusicianByUserId,
   findMusicianIdOfUser,
   updateMusicianByUserId,
-  findUserIdOfMusician,
   findMusicianIdByMusicianName,
+  findUserIdOfMusicianByName,
 };

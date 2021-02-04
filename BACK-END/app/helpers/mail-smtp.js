@@ -28,12 +28,12 @@ async function sendEmailRegistration(name, email) {
   return data;
 }
 
-async function sendEmailBandToMusician(bandName, email, message) {
+async function sendEmailBandToMusician(musicianEmail, bandEmail, message) {
   const mailData = {
-    from: `${bandName}`,
-    to: email,
+    from: "musicapphab@gmail.com",
+    to: musicianEmail,
     subject: "Solicitud para tocar en nuestra banda",
-    text: `${message}`,
+    text: `${message};puedes contestar a esta solicitud escribiéndonos a nuestro mail ${bandEmail}`,
     // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
   };
 
@@ -42,4 +42,22 @@ async function sendEmailBandToMusician(bandName, email, message) {
   return data;
 }
 
-module.exports = { sendEmailRegistration, sendEmailBandToMusician };
+async function sendEmailMusicianToBand(bandEmail, musicianEmail, message) {
+  const mailData = {
+    from: "musicapphab@gmail.com",
+    to: bandEmail,
+    subject: "Solicitud para tocar con vuestra banda",
+    text: `${message};puedes contestar a esta solicitud escribiéndome a mi mail ${musicianEmail}`,
+    // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
+  };
+
+  const data = await transporter.sendMail(mailData);
+
+  return data;
+}
+
+module.exports = {
+  sendEmailRegistration,
+  sendEmailBandToMusician,
+  sendEmailMusicianToBand,
+};
