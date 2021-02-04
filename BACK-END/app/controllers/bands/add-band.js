@@ -4,6 +4,7 @@ const Joi = require("joi");
 const {
   createBand,
   findBandByUserId,
+  findBandByName,
 } = require("../../repositories/bands-repository");
 const createJsonError = require("../errors/create-json-errors");
 const jwt = require("jsonwebtoken");
@@ -44,6 +45,13 @@ async function addBand(req, res) {
       descripcion,
     } = req.body;
 
+    const existBandWithName = await findBandByName(nombreBanda);
+
+    if (existBandWithName[0]) {
+      const error = new Error("Ya existe una banda con ese nombre");
+      error.status = 409;
+      throw error;
+    }
     const idBanda = await createBand(
       id_usuario,
       nombreBanda,

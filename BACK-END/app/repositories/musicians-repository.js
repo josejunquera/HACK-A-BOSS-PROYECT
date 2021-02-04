@@ -45,6 +45,14 @@ async function findUserIdOfMusician(musicianId) {
   return musician[0];
 }
 
+async function findUserIdOfMusician(musicianName) {
+  const pool = await database.getPool();
+  const query = "SELECT id_usuario FROM solista WHERE nombre_solista = ?";
+  const [userId] = await pool.query(query, musicianName);
+
+  return userId;
+}
+
 async function findMusicianById(id) {
   const pool = await database.getPool();
   const query = "SELECT * FROM solista WHERE id_solista = ?";
@@ -91,6 +99,14 @@ async function findMusicianByName(name) {
   const [musician] = await pool.query(query, name);
 
   return musician;
+}
+
+async function findMusicianIdByMusicianName(name) {
+  const pool = await database.getPool();
+  const query = "SELECT id_solista FROM solista WHERE nombre_solista = ?";
+  const [musicianId] = await pool.query(query, name);
+
+  return musicianId[0];
 }
 
 async function findMusicianByLookingForBand(response) {
@@ -167,4 +183,6 @@ module.exports = {
   findMusicianByUserId,
   findMusicianIdOfUser,
   updateMusicianByUserId,
+  findUserIdOfMusician,
+  findMusicianIdByMusicianName,
 };

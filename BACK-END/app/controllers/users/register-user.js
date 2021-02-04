@@ -6,7 +6,7 @@ const {
   createUser,
   findUserByEmail,
 } = require("../../repositories/users-repository");
-const sendEmailRegistration = require("../../helpers/mail-smtp");
+const { sendEmailRegistration } = require("../../helpers/mail-smtp");
 const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.object().keys({

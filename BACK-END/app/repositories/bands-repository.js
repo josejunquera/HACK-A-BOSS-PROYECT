@@ -142,6 +142,23 @@ async function updateBandByUserId(data) {
   return true;
 }
 
+async function insertBandAndMusicianIntoContactTable(
+  message,
+  musicianId,
+  bandId
+) {
+  const pool = await database.getPool();
+  const insertQuery =
+    "INSERT INTO se_agrupa (mensaje, id_solista, id_banda) VALUES (?, ?, ?)";
+  const [created] = await pool.query(insertQuery, [
+    message,
+    musicianId,
+    bandId,
+  ]);
+
+  return created;
+}
+
 module.exports = {
   createBand,
   findBandById,
@@ -156,4 +173,5 @@ module.exports = {
   findBandByUserId,
   findBandIdOfUser,
   updateBandByUserId,
+  insertBandAndMusicianIntoContactTable,
 };

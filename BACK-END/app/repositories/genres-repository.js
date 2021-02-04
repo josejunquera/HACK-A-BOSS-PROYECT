@@ -91,6 +91,15 @@ async function findMusicianByGenre(genre) {
   return musician;
 }
 
+async function findBandByGenre(genre) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT banda.nombre_banda,banda.localizacion, banda.movilidad, banda.busco_solista, banda.busco_actuacion, banda.descripcion, es_tocado_banda.nombre_genero FROM banda INNER JOIN es_tocado_banda ON banda.id_banda = es_tocado_banda.id_banda WHERE nombre_genero = ?";
+  const [band] = await pool.query(query, genre);
+
+  return band;
+}
+
 async function findGenresOfMusician(musicianId) {
   const pool = await database.getPool();
   const query =
@@ -104,6 +113,7 @@ async function findGenresOfMusician(musicianId) {
 module.exports = {
   findGenreId,
   insertMusicianIdAndGenreIdIntoIsPlayed,
+  findBandByGenre,
   insertBandIdAndGenreIdIntoIsPlayed,
   findGenreIdByMusicianId,
   findGenreIdByBandId,

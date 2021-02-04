@@ -33,6 +33,14 @@ async function findUserByEmail(email) {
   return users[0];
 }
 
+async function findEmailByUser(id) {
+  const pool = await database.getPool();
+  const query = "SELECT email FROM usuario WHERE id_usuario = ?";
+  const [email] = await pool.query(query, id);
+
+  return email;
+}
+
 async function findUserById(id) {
   const pool = await database.getPool();
   const query = "SELECT * FROM usuario WHERE id_usuario = ?";
@@ -80,4 +88,5 @@ module.exports = {
   findUserById,
   removeUserById,
   updateUserById,
+  findEmailByUser,
 };

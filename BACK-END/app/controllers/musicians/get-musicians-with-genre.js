@@ -10,17 +10,16 @@ const createJsonError = require("../errors/create-json-errors");
 async function getMusiciansWithGenre(req, res) {
   try {
     const musicians = await findAllMusicians();
-    console.log(musicians);
 
-    await musicians.forEach((musician) => {
-      const test = findGenresOfMusician(musician.id_solista);
-      console.log(test);
+    await musicians.forEach(async function (musician) {
+      let genresOfMusician = await findGenresOfMusician(musician.id_solista);
+
+      console.log(musician);
+      console.log(genresOfMusician);
     });
 
-    // const genres = await findGenresOfMusician();
-    // console.log(genres);
-
-    res.send(genres);
+    res.send({ a: "1" });
+    // res.send(genres);
   } catch (err) {
     createJsonError(err, res);
   }
