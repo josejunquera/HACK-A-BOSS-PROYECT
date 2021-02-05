@@ -2,15 +2,15 @@
 const Joi = require("joi");
 const createJsonError = require("../errors/create-json-errors");
 const {
-  findVenueEventIdByContractId,
+  findVenueEventIdByContractMusicianId,
   findVenueEventUserIdByVenueEventId,
 } = require("../../repositories/venues-events-repository");
 const { findEmailByUser } = require("../../repositories/users-repository");
 const {
-  findBandIdOfUser,
-  findBandIdByContractId,
-  insertBandResponseIntoContractTable,
-} = require("../../repositories/bands-repository");
+  findMusicianIdOfUser,
+  findMusicianIdByContractId,
+  insertMusicianResponseIntoContractTable,
+} = require("../../repositories/musicians-repository");
 const { sendEmailReplyContractRequest } = require("../../helpers/mail-smtp");
 
 const schema = Joi.object().keys({
@@ -24,7 +24,7 @@ async function replyContractRequest(req, res) {
     const { idContrato, mensaje, respuestaSolicitud } = req.body;
     const { id_usuario } = req.auth;
 
-    const venueEventId = await findVenueEventIdByContractId(idContrato);
+    const venueEventId = await findVenueEventIdByContractMusicianId(idContrato);
 
     if (!venueEventId) {
       const error = new Error("No existen contratos con este ID ");
@@ -38,19 +38,23 @@ async function replyContractRequest(req, res) {
 
     const venueEventEmail = await findEmailByUser(venueEventUserId.id_usuario);
 
-    const bandId = await findBandIdOfUser(id_usuario);
+    const musicianId = await findMusicianIdOfUser(id_usuario);
 
-    const existBandId = await findBandIdByContractId(idContrato);
+    const existMusicianId = await findMusicianIdByContractId(idContrato);
 
-    if (existBandId[0].id_banda !== bandId.id_banda) {
+    if (existMusicianId[0].id_solista !== musicianId.id_solista) {
       const error = new Error(
-        "El contrato indicado no está asociado a esa banda"
+        "El contrato indicado no está asociado a ese músico"
       );
       error.status = 400;
       throw error;
     }
 
-    await insertBandResponseIntoContractTable(respuestaSolicitud, idContrato);
+    await insertMusicianResponseIntoContractTable(
+      respuestaSolicitud,
+      idContrato
+    );
+    console.log(venueEventEmail[0].email);
 
     await sendEmailReplyContractRequest(
       venueEventEmail[0].email,

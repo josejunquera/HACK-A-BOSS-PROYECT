@@ -18,6 +18,7 @@ const getMusicianByGenre = require("../controllers/musicians/get-musician-by-gen
 const getMusiciansWithGenre = require("../controllers/musicians/get-musicians-with-genre");
 const contactToBand = require("../controllers/musicians/contact-musician-to band");
 const getAllContractRequests = require("../controllers/musicians/get-all-contract-requests");
+const replyContractRequest = require("../controllers/musicians/reply-contract-request-by-request-id");
 
 const router = express.Router();
 
@@ -29,6 +30,11 @@ router
   .route("/contracts")
   .all(validateAuth)
   .get((req, res) => getAllContractRequests(req, res));
+
+router
+  .route("/contract-reply")
+  .all(validateAuth)
+  .post((req, res) => replyContractRequest(req, res));
 
 router
   .route("/contact-band")

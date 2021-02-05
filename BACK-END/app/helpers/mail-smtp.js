@@ -88,9 +88,28 @@ async function sendEmailVenueEventToMusician(
   return data;
 }
 
+async function sendEmailReplyContractRequest(
+  venueEventEmail,
+  message,
+  responseToContract
+) {
+  const mailData = {
+    from: "musicapphab@gmail.com",
+    to: venueEventEmail,
+    subject: "Respuesta a su solicitud de contrato",
+    text: `Su solicitud de contratación ha sido ${responseToContract}. ${message}`,
+    // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
+  };
+
+  const data = await transporter.sendMail(mailData);
+
+  return data;
+}
+
 module.exports = {
   sendEmailRegistration,
   sendEmailBandToMusician,
   sendEmailMusicianToBand,
   sendEmailVenueEventToBand,
+  sendEmailReplyContractRequest,
 };

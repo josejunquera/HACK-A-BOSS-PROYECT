@@ -7,7 +7,7 @@ const { findMusicianByGenre } = require("../../repositories/genres-repository");
 const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.string()
-  .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+  .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
   .required();
 
 async function getMusicianByGenre(req, res) {

@@ -148,6 +148,15 @@ async function findVenueEventIdByContractId(contractId) {
   return venueEventId[0];
 }
 
+async function findVenueEventIdByContractMusicianId(contractId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT id_local_evento FROM es_contratado_solista WHERE id_contrato = ?";
+  const [venueEventId] = await pool.query(query, contractId);
+
+  return venueEventId[0];
+}
+
 async function findVenueEventUserIdByVenueEventId(venueEventId) {
   const pool = await database.getPool();
   const query = "SELECT id_usuario FROM local_evento WHERE id_local_evento = ?";
@@ -166,6 +175,7 @@ module.exports = {
   findVenueEventIdOfUser,
   findVenueEventByUserId,
   findVenueEventIdByContractId,
+  findVenueEventIdByContractMusicianId,
   findVenueEventUserIdByVenueEventId,
   insertVenueAndBandIntoContractTable,
   insertVenueAndMusicianIntoContractTable,

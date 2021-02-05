@@ -19,7 +19,7 @@ const { sendEmailVenueEventToBand } = require("../../helpers/mail-smtp");
 
 const schema = Joi.object().keys({
   nombreBanda: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   contrato: Joi.string().min(10).max(500).required(),
 });
@@ -51,8 +51,6 @@ async function contractBand(req, res) {
     // const fecha = Date.now();
 
     const fecha = new Date().toISOString().slice(0, 10);
-
-    console.log(fecha);
 
     await insertVenueAndBandIntoContractTable(
       bandId.id_banda,

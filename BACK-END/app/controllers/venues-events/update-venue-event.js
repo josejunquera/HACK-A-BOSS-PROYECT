@@ -9,10 +9,10 @@ const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.object().keys({
   nombreLocalEvento: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   localizacion: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   descripcion: Joi.string().min(10).max(500),
 });

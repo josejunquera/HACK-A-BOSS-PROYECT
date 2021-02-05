@@ -10,9 +10,15 @@ const {
 const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.object().keys({
-  nombreUsuario: Joi.string().alphanum().min(2).max(100).required(),
-  nombre: Joi.string().alphanum().min(2).max(30).required(),
-  apellido: Joi.string().alphanum().min(2).max(30).required(),
+  nombreUsuario: Joi.string()
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
+    .required(),
+  nombre: Joi.string()
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
+    .required(),
+  apellido: Joi.string()
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
+    .required(),
   email: Joi.string().email().required(),
   password: Joi.string().optional(),
   repeatPassword: Joi.string().optional(),

@@ -9,13 +9,13 @@ const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.object().keys({
   nombreSolista: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   especialidad: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   localizacion: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   movilidad: Joi.string()
     .valid("local", "provincial", "nacional", "internacional")

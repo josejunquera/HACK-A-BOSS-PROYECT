@@ -167,6 +167,18 @@ async function insertBandAndMusicianIntoContactTable(
   return created;
 }
 
+async function insertBandResponseIntoContractTable(response, contractID) {
+  const pool = await database.getPool();
+  const insertQuery =
+    "UPDATE es_contratado_banda SET respuesta = ? WHERE id_contrato = ?";
+  const [insertResponse] = await pool.query(insertQuery, [
+    response,
+    contractID,
+  ]);
+
+  return insertResponse;
+}
+
 async function findAllContractRequests(bandId) {
   const pool = await database.getPool();
   const query =
@@ -174,6 +186,15 @@ async function findAllContractRequests(bandId) {
   const [contracts] = await pool.query(query, bandId);
 
   return contracts;
+}
+
+async function findBandIdByContractId(contractId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT id_banda FROM es_contratado_banda WHERE id_contrato = ?";
+  const [bandId] = await pool.query(query, contractId);
+
+  return bandId;
 }
 
 module.exports = {
@@ -189,8 +210,10 @@ module.exports = {
   findBandByUserId,
   findUserIdOfBand,
   findUserIdOfBandByName,
+  findBandIdByContractId,
   findBandIdOfUser,
   insertBandAndMusicianIntoContactTable,
+  insertBandResponseIntoContractTable,
   removeBandByUserId,
   updateBandByUserId,
 };

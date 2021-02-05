@@ -13,7 +13,7 @@ const {
 
 const schema = Joi.object().keys({
   genero: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*áéíóú]{3,25}$/)
     .required(),
 });
 

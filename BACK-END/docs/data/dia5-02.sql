@@ -34,7 +34,7 @@ CREATE TABLE `banda` (
   PRIMARY KEY (`id_banda`),
   KEY `banda_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `banda_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,6 @@ CREATE TABLE `banda` (
 
 LOCK TABLES `banda` WRITE;
 /*!40000 ALTER TABLE `banda` DISABLE KEYS */;
-INSERT INTO `banda` VALUES (1,2,'no','si','localizacion112!!','local','descripcion ñ 12312121212456','banda7'),(2,7,'si','no','localizacion1','local','descripcion123456','banda8'),(3,5,'si','no','localizacion1','local','descripcion123456','Los Mecanicos');
 /*!40000 ALTER TABLE `banda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,13 +59,13 @@ CREATE TABLE `es_contratado_banda` (
   `fecha` date NOT NULL,
   `contrato` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `id_contrato` int NOT NULL AUTO_INCREMENT,
-  `respuesta` enum('Aceptada','Rechazada','Pendiente') COLLATE utf8mb4_spanish_ci DEFAULT 'Pendiente',
+  `respuesta` enum('Aceptada','Rechazada','Pendiente') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT 'Pendiente',
   UNIQUE KEY `id_contrato` (`id_contrato`),
   KEY `es_contratado_banda_id_banda_fk` (`id_banda`),
   KEY `es_contratado_banda_id_local_evento_fk` (`id_local_evento`),
   CONSTRAINT `es_contratado_banda_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE,
   CONSTRAINT `es_contratado_banda_id_local_evento_fk` FOREIGN KEY (`id_local_evento`) REFERENCES `local_evento` (`id_local_evento`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +74,6 @@ CREATE TABLE `es_contratado_banda` (
 
 LOCK TABLES `es_contratado_banda` WRITE;
 /*!40000 ALTER TABLE `es_contratado_banda` DISABLE KEYS */;
-INSERT INTO `es_contratado_banda` VALUES (3,1,'2021-02-05','Paco quiero que toques en nuestro local',1,'Pendiente'),(3,1,'2021-02-05','Paco quiero que toques en nuestro local',2,'Pendiente');
 /*!40000 ALTER TABLE `es_contratado_banda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,13 +90,13 @@ CREATE TABLE `es_contratado_solista` (
   `fecha` date NOT NULL,
   `contrato` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `id_contrato` int NOT NULL AUTO_INCREMENT,
-  `respuesta` enum('Aceptada','Rechazada','Pendiente') COLLATE utf8mb4_spanish_ci DEFAULT 'Pendiente',
+  `respuesta` enum('Aceptada','Rechazada','Pendiente') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT 'Pendiente',
   UNIQUE KEY `id_contrato` (`id_contrato`),
   KEY `es_contratado_solista_id_solista_fk` (`id_solista`),
   KEY `es_contratado_solista_id_local_evento_fk` (`id_local_evento`),
   CONSTRAINT `es_contratado_solista_id_local_evento_fk` FOREIGN KEY (`id_local_evento`) REFERENCES `local_evento` (`id_local_evento`) ON DELETE CASCADE,
   CONSTRAINT `es_contratado_solista_id_solista_fk` FOREIGN KEY (`id_solista`) REFERENCES `solista` (`id_solista`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +105,6 @@ CREATE TABLE `es_contratado_solista` (
 
 LOCK TABLES `es_contratado_solista` WRITE;
 /*!40000 ALTER TABLE `es_contratado_solista` DISABLE KEYS */;
-INSERT INTO `es_contratado_solista` VALUES (13,1,'2021-02-05','Juanito quiero que toques en nuestro local',1,'Pendiente');
 /*!40000 ALTER TABLE `es_contratado_solista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +133,6 @@ CREATE TABLE `es_tocado_banda` (
 
 LOCK TABLES `es_tocado_banda` WRITE;
 /*!40000 ALTER TABLE `es_tocado_banda` DISABLE KEYS */;
-INSERT INTO `es_tocado_banda` VALUES (1,5,2,'Trash');
 /*!40000 ALTER TABLE `es_tocado_banda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +161,7 @@ CREATE TABLE `es_tocado_solista` (
 
 LOCK TABLES `es_tocado_solista` WRITE;
 /*!40000 ALTER TABLE `es_tocado_solista` DISABLE KEYS */;
-INSERT INTO `es_tocado_solista` VALUES (8,2,2,'Pop'),(8,1,2,'Rock');
+INSERT INTO `es_tocado_solista` VALUES (1,1,1,'Rock'),(1,5,1,'Trash');
 /*!40000 ALTER TABLE `es_tocado_solista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +205,7 @@ CREATE TABLE `local_evento` (
   PRIMARY KEY (`id_local_evento`),
   KEY `local_evento_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `local_evento_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +214,6 @@ CREATE TABLE `local_evento` (
 
 LOCK TABLES `local_evento` WRITE;
 /*!40000 ALTER TABLE `local_evento` DISABLE KEYS */;
-INSERT INTO `local_evento` VALUES (1,7,'Jazz Filloa','Coruña','Todo Jazz a tope de power');
 /*!40000 ALTER TABLE `local_evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +290,7 @@ CREATE TABLE `se_agrupa` (
   KEY `se_agrupa_id_banda_fk` (`id_banda`),
   CONSTRAINT `se_agrupa_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE,
   CONSTRAINT `se_agrupa_id_solista_fk` FOREIGN KEY (`id_solista`) REFERENCES `solista` (`id_solista`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +299,6 @@ CREATE TABLE `se_agrupa` (
 
 LOCK TABLES `se_agrupa` WRITE;
 /*!40000 ALTER TABLE `se_agrupa` DISABLE KEYS */;
-INSERT INTO `se_agrupa` VALUES ('manuel quiero que toques con nosotros',13,1,1),('manuel quiero que toques con nosotros',13,1,2),('manuel quiero que toques con nosotros',13,1,3),('manuel quiero que toques con nosotros',13,1,4),('manuel quiero que toques con nosotros',13,1,5),('manuel quiero que toques con nosotros',13,1,6),('manuel quiero que toques con nosotros',13,1,7),('Estoy interesado en tocar vosotros',11,3,8);
 /*!40000 ALTER TABLE `se_agrupa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +322,7 @@ CREATE TABLE `solista` (
   PRIMARY KEY (`id_solista`),
   KEY `solista_id_usuario_fk` (`id_usuario`),
   CONSTRAINT `solista_id_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +331,7 @@ CREATE TABLE `solista` (
 
 LOCK TABLES `solista` WRITE;
 /*!40000 ALTER TABLE `solista` DISABLE KEYS */;
-INSERT INTO `solista` VALUES (8,2,'no','si','Carballo','jaiteiro','local','el putoa mosddddddddd','Antonio'),(10,1,'si','no','localizacion1','especialidad1','local','descripcion123456','solista1'),(11,6,'si','no','localizacion1','especialidad1','local','descripcion123456','solista2'),(12,7,'si','no','localizacion1','especialidad1','local','descripcion123456','solista27'),(13,5,'si','no','localizacion3','especialidad3','local','descripcion123456','Juanito');
+INSERT INTO `solista` VALUES (1,1,'si','no','A Coruña','Guitarra','local','Gran guitarrista y mejor persona','Manolo');
 /*!40000 ALTER TABLE `solista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -357,7 +351,7 @@ CREATE TABLE `usuario` (
   `nombre_usuario` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `rol` enum('admin','reader') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -366,7 +360,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'user1@email.com','$2b$12$tBTw.FNADF8.UCnr7BbO4.NRe92XA5.cKICcxKx4cpj3oIoOjG1Hi','nombre1','apellido1','user1','admin'),(2,'user2@email.com','$2b$12$FCjTlNkBdkM4w6t6hhTZBejU.jwrjxyjc3A46gLD49mFjlK/djJmi','Antonio','Yomismo','Antonio','reader'),(3,'user3@email.com','$2b$12$4kSuE3U15W1z59K6taUwFe2jFfrTiA.fBx6C4tc2Rdyk/HDmHiquC','nombre2','apellido2','user','reader'),(4,'user4@email.com','$2b$12$sOuk4GQ0VipnzujsRv8sc.psrkdLjtDlVM4yn2jex6MaL59NxtAQ.','nombre2','apellido2','user','reader'),(5,'user1906@yopmail.com','$2b$12$G82DvjyzyVexVZhaNdZUEOrYFjkNU/3wFs95Qh0wVrE0chZCH53ca','nombre2','apellido2','user','reader'),(6,'user10@email.com','$2b$12$ebwuESgQWFD7p9seDOkvp.Pzf8.7G8IZlLVTMwUFeeHBnxpyrv5Sy','nombre','apellido','user7','reader'),(7,'user11@email.com','$2b$12$DG2tiCHF0vMezgmgdMI4leTAqIQ4DqpSJzSv3SBUHaN1Vv4B8HJFW','nombre','apellido','user7','reader');
+INSERT INTO `usuario` VALUES (1,'manolo981@yopmail.com','$2b$12$T0Oftgihkh7tzjSval9LZOYpQbV9OseGRh05uLhjJAcyT/LirfWlG','Manolo','Fernández Fernández','Manolo','reader');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -379,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-05 13:48:13
+-- Dump completed on 2021-02-05 19:55:27

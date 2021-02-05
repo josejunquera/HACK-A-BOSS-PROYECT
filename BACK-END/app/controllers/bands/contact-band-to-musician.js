@@ -17,7 +17,7 @@ const { sendEmailBandToMusician } = require("../../helpers/mail-smtp");
 
 const schema = Joi.object().keys({
   nombreSolista: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/)
+    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
     .required(),
   mensaje: Joi.string().min(10).max(500).required(),
 });

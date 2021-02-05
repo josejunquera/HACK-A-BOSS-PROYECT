@@ -177,9 +177,31 @@ async function findAllContractRequests(musicianId) {
   return contracts;
 }
 
+async function findMusicianIdByContractId(contractId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT id_solista FROM es_contratado_solista WHERE id_contrato = ?";
+  const [musicianId] = await pool.query(query, contractId);
+
+  return musicianId;
+}
+
+async function insertMusicianResponseIntoContractTable(response, contractID) {
+  const pool = await database.getPool();
+  const insertQuery =
+    "UPDATE es_contratado_solista SET respuesta = ? WHERE id_contrato = ?";
+  const [insertResponse] = await pool.query(insertQuery, [
+    response,
+    contractID,
+  ]);
+
+  return insertResponse;
+}
+
 module.exports = {
   createMusician,
   findAllMusicians,
+  findMusicianIdByContractId,
   findMusicianById,
   findMusicianByLocation,
   findMusicianByLookingForBand,
@@ -193,6 +215,7 @@ module.exports = {
   findUserIdOfMusician,
   findUserIdOfMusicianByName,
   findAllContractRequests,
+  insertMusicianResponseIntoContractTable,
   removeMusicianByUserId,
   updateMusicianByUserId,
 };
