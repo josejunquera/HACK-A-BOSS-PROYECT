@@ -84,9 +84,9 @@ async function updateUserById(data) {
 
 module.exports = {
   createUser,
+  findEmailByUser,
   findUserByEmail,
   findUserById,
   removeUserById,
   updateUserById,
-  findEmailByUser,
 };

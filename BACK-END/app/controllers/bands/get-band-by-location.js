@@ -4,7 +4,7 @@ const Joi = require("joi");
 const { findBandByLocation } = require("../../repositories/bands-repository");
 const createJsonError = require("../errors/create-json-errors");
 
-const schema = Joi.string().regex(/^[a-zA-Z0-9ñÑ!@#$%&*]{3,25}$/);
+const schema = Joi.string().regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "]{3,25}$/);
 
 async function getBandByLocation(req, res) {
   try {

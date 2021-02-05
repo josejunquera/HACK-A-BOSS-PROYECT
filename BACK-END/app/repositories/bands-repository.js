@@ -167,20 +167,30 @@ async function insertBandAndMusicianIntoContactTable(
   return created;
 }
 
+async function findAllContractRequests(bandId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT es_contratado_banda.contrato, es_contratado_banda.id_contrato, es_contratado_banda.fecha FROM es_contratado_banda WHERE id_banda = ?";
+  const [contracts] = await pool.query(query, bandId);
+
+  return contracts;
+}
+
 module.exports = {
   createBand,
-  findBandById,
   findAllBands,
-  findBandByName,
+  findAllContractRequests,
+  findBandById,
   findBandByLocation,
-  findBandByLookingForMusician,
   findBandByLookingForGig,
+  findBandByLookingForMusician,
+  findBandByName,
   findBandByMovility,
+  findBandByUserId,
   findUserIdOfBand,
   findUserIdOfBandByName,
-  removeBandByUserId,
-  findBandByUserId,
   findBandIdOfUser,
-  updateBandByUserId,
   insertBandAndMusicianIntoContactTable,
+  removeBandByUserId,
+  updateBandByUserId,
 };

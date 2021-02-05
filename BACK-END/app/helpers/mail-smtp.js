@@ -56,8 +56,41 @@ async function sendEmailMusicianToBand(bandEmail, musicianEmail, message) {
   return data;
 }
 
+async function sendEmailVenueEventToBand(bandEmail, venueEventEmail, contract) {
+  const mailData = {
+    from: "musicapphab@gmail.com",
+    to: bandEmail,
+    subject: "Solicitud para tocar en nuestro local evento banda",
+    text: `${contract};puedes contestar a esta solicitud escribiéndome a mi mail ${venueEventEmail}`,
+    // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
+  };
+
+  const data = await transporter.sendMail(mailData);
+
+  return data;
+}
+
+async function sendEmailVenueEventToMusician(
+  musicianEmail,
+  venueEventEmail,
+  contract
+) {
+  const mailData = {
+    from: "musicapphab@gmail.com",
+    to: musicianEmail,
+    subject: "Solicitud para tocar en nuestro local evento banda",
+    text: `${contract};puedes contestar a esta solicitud escribiéndome a mi mail ${venueEventEmail}`,
+    // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
+  };
+
+  const data = await transporter.sendMail(mailData);
+
+  return data;
+}
+
 module.exports = {
   sendEmailRegistration,
   sendEmailBandToMusician,
   sendEmailMusicianToBand,
+  sendEmailVenueEventToBand,
 };

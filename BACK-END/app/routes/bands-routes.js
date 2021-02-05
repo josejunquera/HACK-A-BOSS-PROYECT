@@ -15,10 +15,22 @@ const addGenreToBand = require("../controllers/bands/add-genre");
 const deleteGenreToBand = require("../controllers/bands/delete-genre");
 const getBandByGenre = require("../controllers/bands/get-band-by-genre");
 const contactToMusician = require("../controllers/bands/contact-band-to-musician");
+const getAllContractRequests = require("../controllers/bands/get-all-contract-requests");
+const replyContractRequest = require("../controllers/bands/reply-contract-request-by-request-id");
 
 const router = express.Router();
 
 router.route("/").get((req, res) => getBands(req, res));
+
+router
+  .route("/contracts")
+  .all(validateAuth)
+  .get((req, res) => getAllContractRequests(req, res));
+
+router
+  .route("/contract-reply")
+  .all(validateAuth)
+  .post((req, res) => replyContractRequest(req, res));
 
 router
   .route("/contact-musician")

@@ -101,15 +101,74 @@ async function updateVenueEventByUserId(data) {
   return true;
 }
 
+async function insertVenueAndBandIntoContractTable(
+  bandId,
+  venueEventId,
+  date,
+  contract
+) {
+  const pool = await database.getPool();
+  const insertQuery =
+    "INSERT INTO es_contratado_banda (id_banda, id_local_evento, fecha, contrato) VALUES(?,?,?,?)";
+  const [created] = await pool.query(insertQuery, [
+    bandId,
+    venueEventId,
+    date,
+    contract,
+  ]);
+
+  return created;
+}
+
+async function insertVenueAndMusicianIntoContractTable(
+  musicianId,
+  venueEventId,
+  date,
+  contract
+) {
+  const pool = await database.getPool();
+  const insertQuery =
+    "INSERT INTO es_contratado_solista (id_solista, id_local_evento, fecha, contrato) VALUES(?,?,?,?)";
+  const [created] = await pool.query(insertQuery, [
+    musicianId,
+    venueEventId,
+    date,
+    contract,
+  ]);
+
+  return created;
+}
+
+async function findVenueEventIdByContractId(contractId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT id_local_evento FROM es_contratado_banda WHERE id_contrato = ?";
+  const [venueEventId] = await pool.query(query, contractId);
+
+  return venueEventId[0];
+}
+
+async function findVenueEventUserIdByVenueEventId(venueEventId) {
+  const pool = await database.getPool();
+  const query = "SELECT id_usuario FROM local_evento WHERE id_local_evento = ?";
+  const [userId] = await pool.query(query, venueEventId);
+
+  return userId[0];
+}
+
 module.exports = {
   createVenueEvent,
-  findVenueEventById,
   findAllVenuesEvents,
-  findVenueEventByName,
-  findVenueEventByLocation,
   findUserIdOfVenueEvent,
-  findVenueEventByUserId,
+  findVenueEventById,
+  findVenueEventByLocation,
+  findVenueEventByName,
   findVenueEventIdOfUser,
-  updateVenueEventByUserId,
+  findVenueEventByUserId,
+  findVenueEventIdByContractId,
+  findVenueEventUserIdByVenueEventId,
+  insertVenueAndBandIntoContractTable,
+  insertVenueAndMusicianIntoContractTable,
   removeVenueEventByUserId,
+  updateVenueEventByUserId,
 };

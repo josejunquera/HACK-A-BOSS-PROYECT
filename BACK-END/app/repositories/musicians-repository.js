@@ -168,21 +168,31 @@ async function updateMusicianByUserId(data) {
   return true;
 }
 
+async function findAllContractRequests(musicianId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT es_contratado_solista.contrato, es_contratado_solista.id_contrato, es_contratado_solista.fecha FROM es_contratado_solista WHERE id_solista = ?";
+  const [contracts] = await pool.query(query, musicianId);
+
+  return contracts;
+}
+
 module.exports = {
   createMusician,
-  findMusicianById,
   findAllMusicians,
-  findMusicianByName,
+  findMusicianById,
   findMusicianByLocation,
   findMusicianByLookingForBand,
   findMusicianByLookingForGig,
   findMusicianByMovility,
+  findMusicianByName,
   findMusicianBySpeciality,
-  findUserIdOfMusician,
-  removeMusicianByUserId,
   findMusicianByUserId,
-  findMusicianIdOfUser,
-  updateMusicianByUserId,
   findMusicianIdByMusicianName,
+  findMusicianIdOfUser,
+  findUserIdOfMusician,
   findUserIdOfMusicianByName,
+  findAllContractRequests,
+  removeMusicianByUserId,
+  updateMusicianByUserId,
 };

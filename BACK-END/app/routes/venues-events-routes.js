@@ -9,6 +9,8 @@ const getVenuesEvents = require("../controllers/venues-events/get-venues-events"
 const getVenueEventByLocation = require("../controllers/venues-events/get-venue-event-by-location");
 const getVenueEventByName = require("../controllers/venues-events/get-venue-event-by-name");
 const updateVenueEvent = require("../controllers/venues-events/update-venue-event");
+const contractBand = require("../controllers/venues-events/contract-band");
+const contractMusician = require("../controllers/venues-events/contract-musician");
 
 const router = express.Router();
 
@@ -34,5 +36,15 @@ router
   .route("/")
   .all(validateAuth)
   .put((req, res) => updateVenueEvent(req, res));
+
+router
+  .route("/contract-band")
+  .all(validateAuth)
+  .post((req, res) => contractBand(req, res));
+
+router
+  .route("/contract-musician")
+  .all(validateAuth)
+  .post((req, res) => contractMusician(req, res));
 
 module.exports = router;

@@ -17,12 +17,18 @@ const deleteGenreToMusician = require("../controllers/musicians/delete-genre");
 const getMusicianByGenre = require("../controllers/musicians/get-musician-by-genre");
 const getMusiciansWithGenre = require("../controllers/musicians/get-musicians-with-genre");
 const contactToBand = require("../controllers/musicians/contact-musician-to band");
+const getAllContractRequests = require("../controllers/musicians/get-all-contract-requests");
 
 const router = express.Router();
 
 router.route("/").get((req, res) => getMusicians(req, res));
 
 router.route("/withgenres").get((req, res) => getMusiciansWithGenre(req, res));
+
+router
+  .route("/contracts")
+  .all(validateAuth)
+  .get((req, res) => getAllContractRequests(req, res));
 
 router
   .route("/contact-band")

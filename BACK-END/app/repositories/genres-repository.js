@@ -111,14 +111,14 @@ async function findGenresOfMusician(musicianId) {
 }
 
 module.exports = {
-  findGenreId,
-  insertMusicianIdAndGenreIdIntoIsPlayed,
   findBandByGenre,
-  insertBandIdAndGenreIdIntoIsPlayed,
-  findGenreIdByMusicianId,
+  findGenreId,
   findGenreIdByBandId,
+  findGenreIdByMusicianId,
   findGenresOfMusician,
   findMusicianByGenre,
-  removeMusicianGenre,
+  insertBandIdAndGenreIdIntoIsPlayed,
+  insertMusicianIdAndGenreIdIntoIsPlayed,
   removeBandGenre,
+  removeMusicianGenre,
 };
