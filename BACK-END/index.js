@@ -6,6 +6,9 @@ const app = express();
 const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
+const fileUpload = require("express-fileupload");
+
+app.use(fileUpload());
 app.use(express.json());
 
 const usersRouter = require("./app/routes/users-routes");

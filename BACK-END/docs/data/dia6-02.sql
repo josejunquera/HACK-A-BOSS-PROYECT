@@ -238,7 +238,7 @@ CREATE TABLE `multimedia_banda` (
   PRIMARY KEY (`id_multimedia`),
   KEY `multimedia_banda_id_banda_fk` (`id_banda`),
   CONSTRAINT `multimedia_banda_id_banda_fk` FOREIGN KEY (`id_banda`) REFERENCES `banda` (`id_banda`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,6 +247,7 @@ CREATE TABLE `multimedia_banda` (
 
 LOCK TABLES `multimedia_banda` WRITE;
 /*!40000 ALTER TABLE `multimedia_banda` DISABLE KEYS */;
+INSERT INTO `multimedia_banda` VALUES (4,1,'imagen','http://localhost:3000/band-media/foto2.jpg','foto2'),(5,1,'imagen','http://localhost:3000/band-media/foto1.jpg','foto1'),(6,1,'video','http://localhost:3000/band-media/foto1.mp4','foto1');
 /*!40000 ALTER TABLE `multimedia_banda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,7 +356,7 @@ CREATE TABLE `usuario` (
   `apellido` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `nombre_usuario` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `rol` enum('admin','reader') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `imagen_perfil` varchar(500) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `imagen_perfil` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -366,7 +367,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'manolo981@yopmail.com','$2b$12$T0Oftgihkh7tzjSval9LZOYpQbV9OseGRh05uLhjJAcyT/LirfWlG','Manolo','Fernández Fernández','Manolo','reader',NULL),(2,'javier981@yopmail.com','$2b$12$pLDucMLrMTt4HO1f501aVur27btCS.aO/ZkmrdF7VEJvYBd2fUiIK','Javier','Martínez','Javier','reader',NULL),(3,'patricia981@yopmail.com','$2b$12$PSNBavpKB0nkiLRxnRNTuOOOTdMmoN/UvuqtZomvoudALQh/zcHAa','Patricia','Smith','Patricia','reader',NULL),(4,'sandra981@yopmail.com','$2b$12$pimf9ks/hjYdtCpV3m7jg.hiSRttLzAApa4Q1OQo3TswPQILAcm4K','Sandra','Bermúdez','Sandra','reader',NULL),(5,'marta981@yopmail.com','$2b$12$NCdHgMcLUlNxc53IaQM62.GHiUl9OXm3Mh/XG74JQ..M58VWobjhO','Marta','Sanchez','Marta','reader',NULL);
+INSERT INTO `usuario` VALUES (1,'manolo981@yopmail.com','$2b$12$T0Oftgihkh7tzjSval9LZOYpQbV9OseGRh05uLhjJAcyT/LirfWlG','Manolo','Fernández Fernández','Manolo','reader','http://localhost:3000/images/profiles/1.jpg'),(2,'javier981@yopmail.com','$2b$12$pLDucMLrMTt4HO1f501aVur27btCS.aO/ZkmrdF7VEJvYBd2fUiIK','Javier','Martínez','Javier','reader',NULL),(3,'patricia981@yopmail.com','$2b$12$PSNBavpKB0nkiLRxnRNTuOOOTdMmoN/UvuqtZomvoudALQh/zcHAa','Patricia','Smith','Patricia','reader',NULL),(4,'sandra981@yopmail.com','$2b$12$pimf9ks/hjYdtCpV3m7jg.hiSRttLzAApa4Q1OQo3TswPQILAcm4K','Sandra','Bermúdez','Sandra','reader',NULL),(5,'marta981@yopmail.com','$2b$12$NCdHgMcLUlNxc53IaQM62.GHiUl9OXm3Mh/XG74JQ..M58VWobjhO','Marta','Sanchez','Marta','reader',NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -379,4 +380,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-06 12:56:54
+-- Dump completed on 2021-02-06 20:14:30
