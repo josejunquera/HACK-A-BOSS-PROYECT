@@ -19,6 +19,7 @@ const getMusiciansWithGenre = require("../controllers/musicians/get-musicians-wi
 const contactToBand = require("../controllers/musicians/contact-musician-to band");
 const getAllContractRequests = require("../controllers/musicians/get-all-contract-requests");
 const replyContractRequest = require("../controllers/musicians/reply-contract-request-by-request-id");
+const uploadMusicianMedia = require("../controllers/musicians/upload-musicians-media");
 
 const router = express.Router();
 
@@ -30,6 +31,11 @@ router
   .route("/contracts")
   .all(validateAuth)
   .get((req, res) => getAllContractRequests(req, res));
+
+router
+  .route("/upload-media")
+  .all(validateAuth)
+  .post((req, res) => uploadMusicianMedia(req, res));
 
 router
   .route("/contract-reply")
