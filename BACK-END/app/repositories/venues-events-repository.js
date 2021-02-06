@@ -165,8 +165,28 @@ async function findVenueEventUserIdByVenueEventId(venueEventId) {
   return userId[0];
 }
 
+async function findAllMusicianContractRequests(venueId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT es_contratado_solista.contrato, es_contratado_solista.id_contrato, es_contratado_solista.fecha FROM es_contratado_solista WHERE id_local_evento = ?";
+  const [contracts] = await pool.query(query, venueId);
+
+  return contracts;
+}
+
+async function findAllBandContractRequests(venueId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT es_contratado_banda.contrato, es_contratado_banda.id_contrato, es_contratado_banda.fecha FROM es_contratado_banda WHERE id_local_evento = ?";
+  const [contracts] = await pool.query(query, venueId);
+
+  return contracts;
+}
+
 module.exports = {
   createVenueEvent,
+  findAllBandContractRequests,
+  findAllMusicianContractRequests,
   findAllVenuesEvents,
   findUserIdOfVenueEvent,
   findVenueEventById,

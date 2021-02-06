@@ -17,10 +17,12 @@ const getBandByGenre = require("../controllers/bands/get-band-by-genre");
 const contactToMusician = require("../controllers/bands/contact-band-to-musician");
 const getAllContractRequests = require("../controllers/bands/get-all-contract-requests");
 const replyContractRequest = require("../controllers/bands/reply-contract-request-by-request-id");
-
+const getBandsWithGenre = require("../controllers/bands/get-bands-with-genre");
 const router = express.Router();
 
 router.route("/").get((req, res) => getBands(req, res));
+
+router.route("/withgenres").get((req, res) => getBandsWithGenre(req, res));
 
 router
   .route("/contracts")

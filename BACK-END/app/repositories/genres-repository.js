@@ -110,11 +110,21 @@ async function findGenresOfMusician(musicianId) {
   return genre;
 }
 
+async function findGenresOfBand(bandId) {
+  const pool = await database.getPool();
+  const query = "SELECT nombre_genero FROM es_tocado_banda WHERE id_banda = ? ";
+
+  const [genre] = await pool.query(query, bandId);
+
+  return genre;
+}
+
 module.exports = {
   findBandByGenre,
   findGenreId,
   findGenreIdByBandId,
   findGenreIdByMusicianId,
+  findGenresOfBand,
   findGenresOfMusician,
   findMusicianByGenre,
   insertBandIdAndGenreIdIntoIsPlayed,

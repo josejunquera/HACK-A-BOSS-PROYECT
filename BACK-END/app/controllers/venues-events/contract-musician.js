@@ -48,11 +48,7 @@ async function contractMusician(req, res) {
 
     const venueEventId = await findVenueEventIdOfUser(id_usuario);
 
-    // const fecha = Date.now();
-
     const fecha = new Date().toISOString().slice(0, 10);
-
-    console.log(fecha);
 
     await insertVenueAndMusicianIntoContractTable(
       musicianId.id_solista,
