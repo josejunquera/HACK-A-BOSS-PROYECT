@@ -81,12 +81,14 @@ async function uploadBandMedia(req, res) {
       titulo
     );
 
-    console.log(existsUserBandMedia);
+    let dir = `${__dirname}/../../../public/${PATH_BAND_MEDIA}/${"user"}${id_usuario}`;
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
 
     const pathBandMediaFolder = `${__dirname}/../../../public/${PATH_BAND_MEDIA}`;
 
-    const pathMediaBand = `${pathBandMediaFolder}/${titulo}${extension}`;
-    console.log(pathMediaBand);
+    const pathMediaBand = `${pathBandMediaFolder}/${"user"}${id_usuario}/${titulo}${extension}`;
 
     if (existsUserBandMedia) {
       const error = new Error(
@@ -106,7 +108,7 @@ async function uploadBandMedia(req, res) {
       );
 
       res.send({
-        url: `${HTTP_SERVER_DOMAIN}/${PATH_BAND_MEDIA}/${titulo}${extension}`,
+        message: "Tu archivo ha sido subido correctamente",
       });
     });
   } catch (err) {

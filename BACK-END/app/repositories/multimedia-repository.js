@@ -43,9 +43,65 @@ async function uploadMusicianMultimedia(musicianId, type, url, title) {
   return created.insertId;
 }
 
+async function findMusicianMedia(musicianId) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM multimedia_solista WHERE id_solista = ?";
+  const [media] = await pool.query(query, musicianId);
+
+  return media;
+}
+
+async function findBandMedia(bandId) {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM multimedia_banda WHERE id_banda = ?";
+  const [media] = await pool.query(query, bandId);
+
+  return media;
+}
+
+async function findMusicianMediaByMusicianIdandMediaId(mediaId, musicianId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT * FROM multimedia_solista WHERE id_multimedia = ? AND id_solista = ?";
+  const [media] = await pool.query(query, [mediaId, musicianId]);
+
+  return media;
+}
+
+async function removeMusicianMediaById(mediaId) {
+  const pool = await database.getPool();
+  const query = "DELETE FROM multimedia_solista WHERE id_multimedia = ? ";
+  await pool.query(query, mediaId);
+
+  return true;
+}
+
+async function findBandMediaByBandIdandMediaId(mediaId, bandId) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT * FROM multimedia_banda WHERE id_multimedia = ? AND id_banda = ?";
+  const [media] = await pool.query(query, [mediaId, bandId]);
+
+  return media;
+}
+
+async function removeBandMediaById(mediaId) {
+  const pool = await database.getPool();
+  const query = "DELETE FROM multimedia_banda WHERE id_multimedia = ? ";
+  await pool.query(query, mediaId);
+
+  return true;
+}
+
 module.exports = {
+  findBandMedia,
+  findMusicianMedia,
+  findBandMediaByBandIdandMediaId,
+  findMusicianMediaByMusicianIdandMediaId,
   findMultimediaOfBand,
   findMultimediaOfMusician,
+  removeBandMediaById,
+  removeMusicianMediaById,
   uploadBandMultimedia,
   uploadMusicianMultimedia,
 };

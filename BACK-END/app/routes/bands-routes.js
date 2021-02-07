@@ -19,6 +19,8 @@ const getAllContractRequests = require("../controllers/bands/get-all-contract-re
 const replyContractRequest = require("../controllers/bands/reply-contract-request-by-request-id");
 const getBandsWithGenre = require("../controllers/bands/get-bands-with-genre");
 const uploadBandMedia = require("../controllers/bands/upload-band-media");
+const getBandMedia = require("../controllers/bands/get-band-media");
+const deleteBandMedia = require("../controllers/bands/delete-band-media");
 const router = express.Router();
 
 router.route("/").get((req, res) => getBands(req, res));
@@ -29,6 +31,16 @@ router
   .route("/contracts")
   .all(validateAuth)
   .get((req, res) => getAllContractRequests(req, res));
+
+router
+  .route("/delete-media/:id")
+  .all(validateAuth)
+  .delete((req, res) => deleteBandMedia(req, res));
+
+router
+  .route("/get-media")
+  .all(validateAuth)
+  .get((req, res) => getBandMedia(req, res));
 
 router
   .route("/upload-media")

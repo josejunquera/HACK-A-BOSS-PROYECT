@@ -83,12 +83,14 @@ async function uploadMusicianMedia(req, res) {
       titulo
     );
 
-    console.log(existsUserMusicianMedia);
+    let dir = `${__dirname}/../../../public/${PATH_MUSICIAN_MEDIA}/${"user"}${id_usuario}`;
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
 
     const pathMusicianMediaFolder = `${__dirname}/../../../public/${PATH_MUSICIAN_MEDIA}`;
 
-    const pathMediaMusician = `${pathMusicianMediaFolder}/${titulo}${extension}`;
-    console.log(pathMediaMusician);
+    const pathMediaMusician = `${pathMusicianMediaFolder}/${"user"}${id_usuario}/${titulo}${extension}`;
 
     if (existsUserMusicianMedia) {
       const error = new Error(
@@ -108,7 +110,7 @@ async function uploadMusicianMedia(req, res) {
       );
 
       res.send({
-        url: `${HTTP_SERVER_DOMAIN}/${PATH_MUSICIAN_MEDIA}/${titulo}${extension}`,
+        message: "Tu archivo ha sido subido correctamente",
       });
     });
   } catch (err) {
