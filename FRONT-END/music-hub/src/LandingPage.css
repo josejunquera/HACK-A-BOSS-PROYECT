@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+}
+.links a {
+  padding: 10px;
+}
+
+.sign a {
+  padding: 10px;
+}
+
+.cover {
+  background-color: aliceblue;
+}
+
+.sectionContent {
+  display: flex;
+}
+.sectionContent div {
+  width: 200px;
+  padding: 15px;
+  margin: 15px;
+  background-color: aqua;
+}
