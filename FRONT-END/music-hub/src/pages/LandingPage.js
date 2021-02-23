@@ -8,9 +8,9 @@ import CoverBrowser from "../components/CoverBrowser";
 
 function LandingPage() {
   return (
-    <div class="container">
+    <div className="container">
       <NavBar />
-      <section class="cover">
+      <section className="cover">
         <h1>DISCOVER ARTISTS</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
@@ -21,11 +21,11 @@ function LandingPage() {
         <CoverBrowser />
       </section>
 
-      <section class="info">
-        <div class="sectionTitle">
+      <section className="info">
+        <div className="sectionTitle">
           <h1>¿Qué puedes hacer en musicHub?</h1>
         </div>
-        <div class="sectionContent">
+        <div className="sectionContent">
           <div>
             <p>Músicos y bandas que buscan actuaciones</p>
           </div>

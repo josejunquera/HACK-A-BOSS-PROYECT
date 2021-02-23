@@ -1,20 +1,38 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import NavBar from "./NavBar";
 
 function Musicians() {
-  const [people, setPeople] = useState([]);
-  const loadPeople = async () => {
-    const response = await fetch("http://localhost:3000/api/v1/musicians", {
-      mode: "no-cors",
-    });
-    if (response.status === 200) {
-      const body = await response.json();
-      setPeople(body);
-      console.log(people);
-    }
-  };
-  loadPeople();
-  return <div>{people[0]}</div>;
+  const [musician, setMusician] = useState([]);
+
+  useEffect(() => {
+    const loadMusician = async () => {
+      const response = await fetch(
+        "https://api.github.com/users/hacktivist123/repos"
+      );
+      if (response.status === 200) {
+        const body = await response.json();
+        setMusician(body);
+      }
+    };
+    loadMusician();
+    console.log(musician);
+  });
+
+  return (
+    <>
+      <NavBar />
+      <ul>
+        {musician.map((repo) => {
+          return (
+            <li key={repo.id} className="list">
+              <span className="repo-text">{repo.name} </span>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
 }
 
 export default Musicians;
