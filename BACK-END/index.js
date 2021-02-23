@@ -7,9 +7,11 @@ const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 app.use(fileUpload());
 app.use(express.json());
+app.use(cors());
 
 const usersRouter = require("./app/routes/users-routes");
 const musiciansRouter = require("./app/routes/musicians-routes");

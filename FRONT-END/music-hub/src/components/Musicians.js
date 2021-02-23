@@ -7,9 +7,7 @@ function Musicians() {
 
   useEffect(() => {
     const loadMusician = async () => {
-      const response = await fetch(
-        "https://api.github.com/users/hacktivist123/repos"
-      );
+      const response = await fetch("http://localhost:3000/api/v1/musicians");
       if (response.status === 200) {
         const body = await response.json();
         setMusician(body);
@@ -17,16 +15,19 @@ function Musicians() {
     };
     loadMusician();
     console.log(musician);
-  });
+  }, []);
 
   return (
     <>
       <NavBar />
       <ul>
-        {musician.map((repo) => {
+        {musician.map((musiciann) => {
           return (
-            <li key={repo.id} className="list">
-              <span className="repo-text">{repo.name} </span>
+            <li key={musiciann.id_solista} className="list">
+              <span className="repo-text">{musiciann.nombre_solista} </span>
+              <span className="repo-text">{musiciann.localizacion} </span>
+              <span className="repo-text">{musiciann.movilidad} </span>
+              <span className="repo-text">{musiciann.descripcion} </span>
             </li>
           );
         })}
