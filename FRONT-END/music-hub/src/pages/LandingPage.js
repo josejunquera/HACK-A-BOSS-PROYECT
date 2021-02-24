@@ -5,6 +5,8 @@ import Contact from "../components/Contact";
 import ArtistSample from "../components/ArtistSample";
 import VenueEventSample from "../components/VenueEventsSample";
 import CoverBrowser from "../components/CoverBrowser";
+import CompaniesSlider from "../components/CompaniesSlider";
+import PageInfo from "../components/PageInfo";
 
 function LandingPage() {
   return (
@@ -15,32 +17,22 @@ function LandingPage() {
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
           non veniam quod alias, repellat itaque, fugiat illo nostrum cumque quo
-          consequuntur provident deserunt neque asperiores!
+          consequuntur provident deserunt neque asperiores! Lorem ipsum dolor,
+          sit amet consectetur adipisicing elit. Cupiditate non veniam quod
+          alias, repellat itaque, fugiat illo nostrum cumque quo consequuntur
+          provident deserunt neque asperiores!
         </p>
 
         <CoverBrowser />
       </section>
 
-      <section className="info">
-        <div className="sectionTitle">
-          <h1>¿Qué puedes hacer en musicHub?</h1>
-        </div>
-        <div className="sectionContent">
-          <div>
-            <p>Músicos y bandas que buscan actuaciones</p>
-          </div>
-          <div>
-            <p>Bandas que buscan músicos</p>
-          </div>
-          <div>
-            <p>Músicos que buscan banda</p>
-          </div>
-        </div>
-      </section>
+      <PageInfo />
 
       <ArtistSample />
 
       <VenueEventSample />
+
+      <CompaniesSlider />
 
       <Contact />
 

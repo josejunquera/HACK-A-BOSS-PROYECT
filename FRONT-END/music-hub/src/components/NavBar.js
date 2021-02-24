@@ -9,20 +9,16 @@ function NavBar() {
   return (
     <nav className="nav">
       <div className="logo">
-        <Link to="/">
-          <img src="" alt="logo" />
-        </Link>
+        <Link to="/">musicHub</Link>
       </div>
 
-      <div className="links">
-        <a href="">Músicos</a>
-        <a href="">Bandas</a>
-        <a href="">Sobre Nosotros</a>
-      </div>
+      <div className="links"></div>
 
       <div className="sign">
-        <Link to="/login">Sign In</Link>
-        <Link to="/register">Sign Up</Link>
+        <a href="">Músicos</a>
+        <a href="">Bandas</a>
+        <Link to="/login">SIGN IN</Link>
+        <Link to="/register">SIGN UP</Link>
       </div>
     </nav>
   );
