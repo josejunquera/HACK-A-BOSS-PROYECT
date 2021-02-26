@@ -72,6 +72,10 @@ h1 {
   list-style: none;
 }
 
+.login {
+  padding: 100px;
+}
+
 /* INFINITE SLIDER */
 #root > div > div > section.slide-option > div.container > h3 {
   text-align: center;

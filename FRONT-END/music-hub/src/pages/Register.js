@@ -1,11 +1,11 @@
 import React from "react";
-import Musicians from "../components/Musicians";
+import NavBar from "../components/NavBar";
 import RegisterForm from "../components/RegisterForm";
 
 function Register() {
   return (
     <>
-      <Musicians />
+      <NavBar />
       <RegisterForm />
     </>
   );
