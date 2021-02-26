@@ -65,6 +65,13 @@ h1 {
   background-color: aqua;
 }
 
+.musicians-list {
+  margin-top: 60px;
+  padding: 10px;
+  border-style: dotted;
+  list-style: none;
+}
+
 /* INFINITE SLIDER */
 #root > div > div > section.slide-option > div.container > h3 {
   text-align: center;

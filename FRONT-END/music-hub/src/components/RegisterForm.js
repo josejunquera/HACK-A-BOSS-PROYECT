@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function LoginForm() {
+function RegisterForm() {
   const [token, setToken] = useState([]);
 
   useEffect(() => {
@@ -22,6 +22,18 @@ function LoginForm() {
     <div className="login-wrapper">
       <form>
         <label>
+          <p>Nombre Usuario</p>
+          <input type="text" />
+        </label>
+        <label>
+          <p>Nombre</p>
+          <input type="text" />
+        </label>
+        <label>
+          <p>Apellido</p>
+          <input type="text" />
+        </label>
+        <label>
           <p>Email</p>
           <input type="email" />
         </label>
@@ -29,30 +41,16 @@ function LoginForm() {
           <p>Password</p>
           <input type="password" />
         </label>
+        <label>
+          <p>Repeat Password</p>
+          <input type="password" />
+        </label>
         <div>
           <button type="submit">Envíar</button>
         </div>
       </form>
-
-      <li key={token.id_usuario} className="list">
-        <span className="repo-text">Token: {token.contrasena} </span>
-      </li>
-      <li key={token.id_usuario} className="list">
-        <span className="repo-text">
-          Nombre usuario: {token.nombre_usuario}
-        </span>
-      </li>
-      <li key={token.id_usuario} className="list">
-        <span className="repo-text">Nombre: {token.nombre} </span>
-      </li>
-      <li key={token.id_usuario} className="list">
-        <span className="repo-text">Apellido: {token.apellido} </span>
-      </li>
-      <li key={token.id_usuario} className="list">
-        <span className="repo-text">Rol de usuario: {token.rol} </span>
-      </li>
     </div>
   );
 }
 
-export default LoginForm;
+export default RegisterForm;

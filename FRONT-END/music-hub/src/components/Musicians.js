@@ -15,23 +15,39 @@ function Musicians() {
     };
     loadMusician();
     console.log(musician);
-  }, []);
+  }, [musician, setMusician]);
 
   return (
     <>
       <NavBar />
-      <ul>
-        {musician.map((musiciann) => {
-          return (
-            <li key={musiciann.id_solista} className="list">
-              <span className="repo-text">{musiciann.nombre_solista} </span>
-              <span className="repo-text">{musiciann.localizacion} </span>
-              <span className="repo-text">{musiciann.movilidad} </span>
-              <span className="repo-text">{musiciann.descripcion} </span>
-            </li>
-          );
-        })}
-      </ul>
+      {musician.map((musiciann) => {
+        return (
+          <>
+            <ul key={musiciann.id_solista} className="musicians-list">
+              <li className="list">
+                <span className="repo-text">
+                  Nombre solista: {musiciann.nombre_solista}{" "}
+                </span>
+              </li>
+              <li className="list">
+                <span className="repo-text">
+                  Descripción: {musiciann.descripcion}{" "}
+                </span>
+              </li>
+              <li className="list">
+                <span className="repo-text">
+                  Especialidad:{musiciann.especialidad}{" "}
+                </span>
+              </li>
+              <li className="list">
+                <span className="repo-text">
+                  Movilidad: {musiciann.movilidad}{" "}
+                </span>
+              </li>
+            </ul>
+          </>
+        );
+      })}
     </>
   );
 }
