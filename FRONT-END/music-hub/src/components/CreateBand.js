@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../App";
 
-function CreateMusician() {
-  const [musicianName, setMusicianName] = useState("");
-  const [speciality, setSpeciality] = useState("");
+function CreateBand() {
+  const [bandName, setBandName] = useState("");
   const [location, setLocation] = useState("");
   const [movility, setMovility] = useState("local");
-  const [lookingForBand, setLookingForBand] = useState("si");
+  const [lookingForMusician, setLookingForMusician] = useState("si");
   const [lookingForGig, setLookingForGig] = useState("si");
   const [description, setDescription] = useState("");
   const [response, setResponse] = useState("");
@@ -16,23 +15,22 @@ function CreateMusician() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const newMusicianServer = {
-      nombreSolista: musicianName,
-      especialidad: speciality,
+    const newBandServer = {
+      nombreBanda: bandName,
       localizacion: location,
       movilidad: movility,
-      buscoBanda: lookingForBand,
+      buscoSolista: lookingForMusician,
       buscoActuacion: lookingForGig,
       descripcion: description,
     };
 
-    const res = await fetch("http://localhost:3000/api/v1/musicians/add", {
+    const res = await fetch("http://localhost:3000/api/v1/bands/add", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(newMusicianServer),
+      body: JSON.stringify(newBandServer),
     });
     if (res.status === 201) {
       const resMessage = await res.json();
@@ -43,24 +41,15 @@ function CreateMusician() {
     }
   }
   return (
-    <div className="create-musician">
+    <div className="create-band">
       <form onSubmit={handleSubmit}>
         <label>
-          <p>Nombre Solista</p>
+          <p>Nombre Banda</p>
           <input
             type="text"
-            name="musicianName"
-            value={musicianName}
-            onChange={(e) => setMusicianName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Especialidad</p>
-          <input
-            type="text"
-            name="speciality"
-            value={speciality}
-            onChange={(e) => setSpeciality(e.target.value)}
+            name="bandName"
+            value={bandName}
+            onChange={(e) => setBandName(e.target.value)}
           />
         </label>
         <label>
@@ -86,11 +75,11 @@ function CreateMusician() {
           </select>
         </label>
         <label>
-          <p>Busco Banda</p>
+          <p>Busco Músico</p>
           <select
-            id="lookingForBand"
-            name="lookingForBand"
-            onChange={(e) => setLookingForBand(e.target.value)}
+            id="lookingForMusician"
+            name="lookingForMusician"
+            onChange={(e) => setLookingForMusician(e.target.value)}
           >
             <option value="si">Si</option>
             <option value="no">No</option>
@@ -121,11 +110,11 @@ function CreateMusician() {
           {errorMsg && <div>{errorMsg}</div>}
         </div>
         <div>
-          <button type="submit">Crear Músico</button>
+          <button type="submit">Crear Banda</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default CreateMusician;
+export default CreateBand;

@@ -1,7 +1,9 @@
 import React from "react";
 
 import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
+import CreateBand from "./CreateBand";
 import CreateMusician from "./CreateMusicians";
+import CreateVenueEvent from "./CreateVenueEvent";
 
 function Create(props) {
   // const { path } = props
@@ -26,10 +28,10 @@ function Create(props) {
           <CreateMusician />
         </Route>
         <Route path={`${path}/create-band`}>
-          <CreateMusician />
+          <CreateBand />
         </Route>
         <Route path={`${path}/create-venue-event`}>
-          <CreateMusician />
+          <CreateVenueEvent />
         </Route>
       </Switch>
     </div>

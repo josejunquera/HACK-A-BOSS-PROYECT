@@ -1,12 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import React, { useContext } from "react";
+import { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { AuthContext } from "../App";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
-  const [token, setToken] = useLocalStorage("token", "");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [token, setToken] = useContext(AuthContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -39,7 +40,9 @@ function LoginForm() {
     }
   }
 
-  return (
+  const jsxToReturn = token ? (
+    <Redirect to="/" />
+  ) : (
     <div className="login">
       <form onSubmit={handleSubmit}>
         <label>
@@ -67,6 +70,8 @@ function LoginForm() {
       </form>
     </div>
   );
+
+  return jsxToReturn;
 }
 
 export default LoginForm;
