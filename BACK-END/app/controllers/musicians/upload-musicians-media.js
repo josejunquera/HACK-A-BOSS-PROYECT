@@ -83,12 +83,12 @@ async function uploadMusicianMedia(req, res) {
       titulo
     );
 
-    let dir = `${__dirname}/../../../public/${PATH_MUSICIAN_MEDIA}/${"user"}${id_usuario}`;
+    let dir = `${__dirname}/../../../../FRONT-END/music-hub/public/${PATH_MUSICIAN_MEDIA}/${"user"}${id_usuario}`;
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    const pathMusicianMediaFolder = `${__dirname}/../../../public/${PATH_MUSICIAN_MEDIA}`;
+    const pathMusicianMediaFolder = `${__dirname}/../../../../FRONT-END/music-hub/public/${PATH_MUSICIAN_MEDIA}`;
 
     const pathMediaMusician = `${pathMusicianMediaFolder}/${"user"}${id_usuario}/${titulo}${extension}`;
 

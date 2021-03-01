@@ -33,7 +33,7 @@ async function uploadImageProfile(req, res) {
     const { HTTP_SERVER_DOMAIN, PATH_USER_IMAGE } = process.env;
 
     const userProfileImage = await findUserProfileImage(id_usuario);
-    const pathProfileImageFolder = `${__dirname}/../../../public/${PATH_USER_IMAGE}`;
+    const pathProfileImageFolder = `${__dirname}/../../../../FRONT-END/music-hub/public/${PATH_USER_IMAGE}`;
 
     if (userProfileImage.imagen_perfil) {
       await fs.unlink(

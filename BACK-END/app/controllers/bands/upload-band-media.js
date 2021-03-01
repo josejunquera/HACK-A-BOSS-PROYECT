@@ -81,12 +81,12 @@ async function uploadBandMedia(req, res) {
       titulo
     );
 
-    let dir = `${__dirname}/../../../public/${PATH_BAND_MEDIA}/${"user"}${id_usuario}`;
+    let dir = `${__dirname}/../../../../FRONT-END/music-hub/public/${PATH_BAND_MEDIA}/${"user"}${id_usuario}`;
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    const pathBandMediaFolder = `${__dirname}/../../../public/${PATH_BAND_MEDIA}`;
+    const pathBandMediaFolder = `${__dirname}/../../../../FRONT-END/music-hub/public/${PATH_BAND_MEDIA}`;
 
     const pathMediaBand = `${pathBandMediaFolder}/${"user"}${id_usuario}/${titulo}${extension}`;
 
