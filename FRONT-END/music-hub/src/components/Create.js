@@ -4,6 +4,7 @@ import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
 import CreateBand from "./CreateBand";
 import CreateMusician from "./CreateMusicians";
 import CreateVenueEvent from "./CreateVenueEvent";
+import NavBar from "./NavBar";
 
 function Create(props) {
   // const { path } = props
@@ -11,6 +12,7 @@ function Create(props) {
 
   return (
     <div>
+      <NavBar />
       <div>
         <button type="submit">
           <Link to={`${url}/create-musician`}>Crear Músico</Link>

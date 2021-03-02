@@ -20,7 +20,6 @@ export function Avatar() {
       }
     };
     loadUserInfo();
-    console.log(userInfo);
   }, []);
 
   const jsxToReturn = userInfo.imagen_perfil ? (

@@ -8,6 +8,7 @@ import Musicians from "./components/Musicians";
 import Create from "./components/Create";
 import { useLocalStorage } from "./components/useLocalStorage";
 import Bands from "./components/Bands";
+import ProfilePage from "./pages/ProfilePage";
 
 export const AuthContext = React.createContext();
 
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/create">
               <Create />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
             </Route>
             <Route path="/">
               <LandingPage />

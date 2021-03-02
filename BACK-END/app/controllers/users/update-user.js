@@ -10,22 +10,21 @@ const {
 const createJsonError = require("../errors/create-json-errors");
 
 const schema = Joi.object().keys({
-  nombreUsuario: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
-    .required(),
-  nombre: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
-    .required(),
-  apellido: Joi.string()
-    .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
-    .required(),
-  email: Joi.string().email().required(),
+  nombreUsuario: Joi.string().regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/),
+  // .required(),
+  nombre: Joi.string().regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/),
+  // .required(),
+  apellido: Joi.string().regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/),
+  // .required(),
+  email: Joi.string().email(),
+  // .required(),
   password: Joi.string().optional(),
   repeatPassword: Joi.string().optional(),
 });
 
 const schemaPassword = Joi.object().keys({
-  password: Joi.string().min(4).max(100).required(),
+  password: Joi.string().min(4).max(100),
+  // .required(),
   repeatPassword: Joi.ref("password"),
 });
 
