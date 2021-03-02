@@ -1,17 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../App";
+import jwt_decode from "jwt-decode";
 
 function UpdateUser() {
   const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [repeatPassword, setRepeatPassword] = useState("");
   const [response, setResponse] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState("");
+  const decodedToken = jwt_decode(token);
+  const { id_usuario } = decodedToken;
+
+  useEffect(() => {
+    const loadUserInfo = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/users/${id_usuario}`
+      );
+      if (response.status === 200) {
+        const body = await response.json();
+        setUserInfo(body);
+        setUserName(userInfo.nombre_usuario);
+        setName(userInfo.nombre);
+        setSurname(userInfo.apellido);
+        setEmail(userInfo.email);
+        // setPassword(userInfo.contrasena);
+        // setRepeatPassword(userInfo.contrasena);
+      }
+    };
+    loadUserInfo();
+  }, [userName]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -21,12 +44,12 @@ function UpdateUser() {
       nombre: name,
       apellido: surname,
       email: email,
-      password: password,
-      repeatPassword: repeatPassword,
+      // password: password,
+      // repeatPassword: repeatPassword,
     };
 
     const res = await fetch("http://localhost:3000/api/v1/users/", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -35,22 +58,14 @@ function UpdateUser() {
     });
     if (res.status === 201) {
       const resMessage = await res.json();
-      // const nuevaListaUsuarios = [resMessage];
       setResponse(resMessage);
-      // setUserName("");
-      // setName("");
-      // setSurname("");
-      // setEmail("");
-      // setPassword("");
-      // setRepeatPassword("");
-      // setErrorMsg("");
     } else {
       const resMessage = await res.json();
-      // const nuevaListaUsuarios = [resMessage];
-      // setResponse(resMessage);
+
       setErrorMsg(resMessage.error);
     }
   }
+
   return (
     <div className="login-wrapper">
       <form onSubmit={handleSubmit}>
@@ -90,7 +105,7 @@ function UpdateUser() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label>
+        {/* <label>
           <p>Password</p>
           <input
             type="password"
@@ -107,7 +122,7 @@ function UpdateUser() {
             value={repeatPassword}
             onChange={(e) => setRepeatPassword(e.target.value)}
           />
-        </label>
+        </label> */}
         <div>
           {errorMsg && <div>{errorMsg}</div>}
           <button type="submit">Envíar</button>

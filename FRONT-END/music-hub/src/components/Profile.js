@@ -6,6 +6,7 @@ import UpdateUser from "./UpdateUser";
 import UpdateMusician from "./UpdateMusician";
 import UpdateBand from "./UpdateBand";
 import UpdateVenueEvent from "./UpdateVenueEvent";
+import UpdatePassword from "./UpdatePassword";
 
 function Profile() {
   let { path, url } = useRouteMatch();
@@ -20,10 +21,13 @@ function Profile() {
           <Link to={`${url}/musician-profile`}>Informacion de músico</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/band-profile`}>Informacion de Banda</Link>
+          <Link to={`${url}/band-profile`}>Informacion de banda</Link>
         </button>
         <button type="submit">
           <Link to={`${url}/venue-event-profile`}>Informacion del local</Link>
+        </button>
+        <button type="submit">
+          <Link to={`${url}/change-password`}>Cambiar contraseña</Link>
         </button>
       </div>
 
@@ -39,6 +43,9 @@ function Profile() {
         </Route>
         <Route path={`${path}/venue-event-profile`}>
           <UpdateVenueEvent />
+        </Route>
+        <Route path={`${path}/change-password`}>
+          <UpdatePassword />
         </Route>
       </Switch>
     </div>

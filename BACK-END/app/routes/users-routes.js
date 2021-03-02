@@ -9,6 +9,7 @@ const getUserByEmail = require("../controllers/users/get-user-by-email");
 const deleteUserById = require("../controllers/users/delete-user-by-id");
 const validateAuth = require("../middleware/validate-auth");
 const updateUser = require("../controllers/users/update-user");
+const updatePassword = require("../controllers/users/update-user-password");
 const uploadImageProfile = require("../controllers/users/upload-image-profile");
 const router = express.Router();
 
@@ -26,6 +27,11 @@ router
   .route("/")
   .all(validateAuth)
   .put((req, res) => updateUser(req, res));
+
+router
+  .route("/update-password")
+  .all(validateAuth)
+  .put((req, res) => updatePassword(req, res));
 
 router
   .route("/upload-profile-image")

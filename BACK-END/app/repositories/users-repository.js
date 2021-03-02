@@ -58,26 +58,28 @@ async function removeUserById(id) {
 }
 
 async function updateUserById(data) {
-  const {
-    id_usuario,
-    nombreUsuario,
-    nombre,
-    apellido,
-    email,
-    contrasena,
-  } = data;
+  const { id_usuario, nombreUsuario, nombre, apellido, email } = data;
 
   const pool = await database.getPool();
   const updateQuery =
-    "UPDATE usuario SET nombre = ?, apellido = ?, nombre_usuario = ?, email = ?, contrasena = ? WHERE id_usuario = ?";
+    "UPDATE usuario SET nombre = ?, apellido = ?, nombre_usuario = ?, email = ?  WHERE id_usuario = ?";
   await pool.query(updateQuery, [
     nombre,
     apellido,
     nombreUsuario,
     email,
-    contrasena,
     id_usuario,
   ]);
+
+  return true;
+}
+
+async function updateUserPasswordById(data) {
+  const { contrasena, id_usuario } = data;
+
+  const pool = await database.getPool();
+  const updateQuery = "UPDATE usuario SET contrasena = ? WHERE id_usuario = ?";
+  await pool.query(updateQuery, [contrasena, id_usuario]);
 
   return true;
 }
@@ -108,4 +110,5 @@ module.exports = {
   updateUserById,
   findUserProfileImage,
   uploadUserProfileImage,
+  updateUserPasswordById,
 };
