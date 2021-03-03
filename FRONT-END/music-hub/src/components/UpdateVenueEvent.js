@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
+import CreateVenueEvent from "./CreateVenueEvent";
 
 function UpdateVenueEvent() {
   const [venueEventName, setVenueEventName] = useState("");
@@ -7,7 +8,33 @@ function UpdateVenueEvent() {
   const [description, setDescription] = useState("");
   const [response, setResponse] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [venueEventInfo, setVenueEventInfo] = useState("");
   const [token, setToken] = useContext(AuthContext);
+  const [formState, setFormState] = useState("");
+
+  useEffect(() => {
+    const loadVenueEventInfo = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/venues-events/get-venue-event/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        const body = await response.json();
+        setVenueEventInfo(body);
+        setVenueEventName(venueEventInfo.nombre_local_evento);
+        setLocation(venueEventInfo.localizacion);
+        setDescription(venueEventInfo.descripcion);
+        setFormState("activo");
+      }
+    };
+    loadVenueEventInfo();
+  }, [formState]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +46,7 @@ function UpdateVenueEvent() {
     };
 
     const res = await fetch("http://localhost:3000/api/v1/venues-events/", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -34,7 +61,8 @@ function UpdateVenueEvent() {
       setErrorMsg(resMessage.error);
     }
   }
-  return (
+
+  const jsxToReturn = venueEventInfo ? (
     <div className="create-venue-event">
       <form onSubmit={handleSubmit}>
         <label>
@@ -59,7 +87,7 @@ function UpdateVenueEvent() {
           <label>
             <p>Descripción</p>
             <textarea
-              placeholder="Introduce tu descripción de músico aquí"
+              placeholder="Introduce tu descripción de local o evento aquí"
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -72,7 +100,11 @@ function UpdateVenueEvent() {
         </div>
       </form>
     </div>
+  ) : (
+    <CreateVenueEvent />
   );
+
+  return jsxToReturn;
 }
 
 export default UpdateVenueEvent;

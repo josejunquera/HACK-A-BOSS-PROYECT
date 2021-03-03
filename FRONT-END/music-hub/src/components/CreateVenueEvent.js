@@ -10,8 +10,6 @@ function CreateVenueEvent() {
   const [token, setToken] = useContext(AuthContext);
 
   async function handleSubmit(event) {
-    event.preventDefault();
-
     const newVenueEventServer = {
       nombreLocalEvento: venueEventName,
       localizacion: location,

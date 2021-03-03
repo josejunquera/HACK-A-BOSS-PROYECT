@@ -13,8 +13,6 @@ function CreateBand() {
   const [token, setToken] = useContext(AuthContext);
 
   async function handleSubmit(event) {
-    event.preventDefault();
-
     const newBandServer = {
       nombreBanda: bandName,
       localizacion: location,

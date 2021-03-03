@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
+import CreateMusicians from "./CreateMusicians";
 
 function UpdateMusician() {
   const [musicianName, setMusicianName] = useState("");
@@ -9,9 +10,39 @@ function UpdateMusician() {
   const [lookingForBand, setLookingForBand] = useState("si");
   const [lookingForGig, setLookingForGig] = useState("si");
   const [description, setDescription] = useState("");
+  const [musicianInfo, setMusicianInfo] = useState("");
   const [response, setResponse] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
+  const [formState, setFormState] = useState("");
+
+  useEffect(() => {
+    const loadMusicianInfo = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/musicians/get-musician/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        const body = await response.json();
+        setMusicianInfo(body);
+        setMusicianName(musicianInfo.nombre_solista);
+        setLocation(musicianInfo.localizacion);
+        setSpeciality(musicianInfo.especialidad);
+        setMovility(musicianInfo.movilidad);
+        setLookingForBand(musicianInfo.busco_banda);
+        setLookingForGig(musicianInfo.busco_actuacion);
+        setDescription(musicianInfo.descripcion);
+        setFormState("activo");
+      }
+    };
+    loadMusicianInfo();
+  }, [formState]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -42,7 +73,8 @@ function UpdateMusician() {
       setErrorMsg(resMessage.error);
     }
   }
-  return (
+
+  const jsxToReturn = musicianInfo ? (
     <div className="create-musician">
       <form onSubmit={handleSubmit}>
         <label>
@@ -125,7 +157,11 @@ function UpdateMusician() {
         </div>
       </form>
     </div>
+  ) : (
+    <CreateMusicians />
   );
+
+  return jsxToReturn;
 }
 
 export default UpdateMusician;

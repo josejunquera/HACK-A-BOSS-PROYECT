@@ -8,14 +8,13 @@ function UpdateUser() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [repeatPassword, setRepeatPassword] = useState("");
   const [response, setResponse] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState("");
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
+  const [formState, setFormState] = useState("");
 
   useEffect(() => {
     const loadUserInfo = async () => {
@@ -29,12 +28,11 @@ function UpdateUser() {
         setName(userInfo.nombre);
         setSurname(userInfo.apellido);
         setEmail(userInfo.email);
-        // setPassword(userInfo.contrasena);
-        // setRepeatPassword(userInfo.contrasena);
+        setFormState("activo");
       }
     };
     loadUserInfo();
-  }, [userName]);
+  }, [formState]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -44,8 +42,6 @@ function UpdateUser() {
       nombre: name,
       apellido: surname,
       email: email,
-      // password: password,
-      // repeatPassword: repeatPassword,
     };
 
     const res = await fetch("http://localhost:3000/api/v1/users/", {
@@ -105,24 +101,7 @@ function UpdateUser() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        {/* <label>
-          <p>Password</p>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Repeat Password</p>
-          <input
-            type="password"
-            name="password"
-            value={repeatPassword}
-            onChange={(e) => setRepeatPassword(e.target.value)}
-          />
-        </label> */}
+
         <div>
           {errorMsg && <div>{errorMsg}</div>}
           <button type="submit">Envíar</button>

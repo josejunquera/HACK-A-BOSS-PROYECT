@@ -12,8 +12,14 @@ const updateVenueEvent = require("../controllers/venues-events/update-venue-even
 const contractBand = require("../controllers/venues-events/contract-band");
 const contractMusician = require("../controllers/venues-events/contract-musician");
 const getAllContractRequest = require("../controllers/venues-events/get-all-contract-requests");
+const getVenueEventByUserId = require("../controllers/venues-events/get-venue-event-by-user-id");
 
 const router = express.Router();
+
+router
+  .route("/get-venue-event")
+  .all(validateAuth)
+  .get((req, res) => getVenueEventByUserId(req, res));
 
 router
   .route("/add")

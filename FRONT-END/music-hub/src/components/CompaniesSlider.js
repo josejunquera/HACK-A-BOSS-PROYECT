@@ -2,14 +2,14 @@ import React from "react";
 
 function CompaniesSlider() {
   return (
-    <section class="slide-option">
-      <div class="container">
-        <h3 class="no-marg">EMPRESAS COLABORADORAS</h3>
+    <section className="slide-option">
+      <div className="container">
+        <h3 className="no-marg">EMPRESAS COLABORADORAS</h3>
       </div>
-      <div id="infinite" class="highway-slider">
-        <div class="container highway-barrier">
-          <ul class="highway-lane">
-            <li class="highway-car">
+      <div id="infinite" className="highway-slider">
+        <div className="container highway-barrier">
+          <ul className="highway-lane">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -17,7 +17,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -25,7 +25,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -33,7 +33,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -41,7 +41,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -49,7 +49,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -57,7 +57,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -65,7 +65,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -73,7 +73,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -81,7 +81,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -89,7 +89,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -97,7 +97,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -106,7 +106,7 @@ function CompaniesSlider() {
               </span>
             </li>
 
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -114,7 +114,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -122,7 +122,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -130,7 +130,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -138,7 +138,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -146,7 +146,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -154,7 +154,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -162,7 +162,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -170,7 +170,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -178,7 +178,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -186,7 +186,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"
@@ -194,7 +194,7 @@ function CompaniesSlider() {
                 />
               </span>
             </li>
-            <li class="highway-car">
+            <li className="highway-car">
               <span>
                 <img
                   src="./empresas_colaboradoras/razzmatazz.png"

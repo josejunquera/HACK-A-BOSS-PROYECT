@@ -14,8 +14,6 @@ function CreateMusician() {
   const [token, setToken] = useContext(AuthContext);
 
   async function handleSubmit(event) {
-    event.preventDefault();
-
     const newMusicianServer = {
       nombreSolista: musicianName,
       especialidad: speciality,

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8bc4d5fc-9b13-40a4-bf4e-92c266bd5a23",
+		"_postman_id": "c5449959-008e-41a9-8a8d-32bb32c4850c",
 		"name": "PROYECTO-HAB",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -515,6 +515,34 @@
 								"v1",
 								"musicians",
 								"get-media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN OF USER LOGGED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-musician",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-musician"
 							]
 						}
 					},
@@ -1087,6 +1115,34 @@
 					"response": []
 				},
 				{
+					"name": "GET BAND OF USER LOGGED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/get-band",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"get-band"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "UPDATE BAND",
 					"request": {
 						"method": "PUT",
@@ -1432,6 +1488,34 @@
 								"v1",
 								"venues-events",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET VENUE EVENT OF USER LOGGED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/get-venue-event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"get-venue-event"
 							]
 						}
 					},

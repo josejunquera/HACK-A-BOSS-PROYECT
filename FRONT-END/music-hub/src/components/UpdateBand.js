@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 import { AuthContext } from "../App";
+import CreateBand from "./CreateBand";
 
 function UpdateBand() {
   const [bandName, setBandName] = useState("");
@@ -11,6 +13,38 @@ function UpdateBand() {
   const [response, setResponse] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
+  const [bandInfo, setBandInfo] = useState("");
+  const decodedToken = jwt_decode(token);
+  const { id_usuario } = decodedToken;
+  const [formState, setFormState] = useState("");
+
+  useEffect(() => {
+    const loadBandInfo = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/bands/get-band/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        const body = await response.json();
+        setBandInfo(body);
+
+        setBandName(bandInfo.nombre_banda);
+        setLocation(bandInfo.localizacion);
+        setMovility(bandInfo.movilidad);
+        setLookingForMusician(bandInfo.busco_solista);
+        setLookingForGig(bandInfo.busco_actuacion);
+        setDescription(bandInfo.descripcion);
+        setFormState("activo");
+      }
+    };
+    loadBandInfo();
+  }, [formState]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -25,7 +59,7 @@ function UpdateBand() {
     };
 
     const res = await fetch("http://localhost:3000/api/v1/bands/", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -40,7 +74,8 @@ function UpdateBand() {
       setErrorMsg(resMessage.error);
     }
   }
-  return (
+
+  const jsxToReturn = bandInfo ? (
     <div className="create-band">
       <form onSubmit={handleSubmit}>
         <label>
@@ -114,7 +149,10 @@ function UpdateBand() {
         </div>
       </form>
     </div>
+  ) : (
+    <CreateBand />
   );
+  return jsxToReturn;
 }
 
 export default UpdateBand;

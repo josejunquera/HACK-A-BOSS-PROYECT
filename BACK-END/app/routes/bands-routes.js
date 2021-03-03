@@ -20,6 +20,7 @@ const replyContractRequest = require("../controllers/bands/reply-contract-reques
 const getBandsWithGenre = require("../controllers/bands/get-bands-with-genre");
 const uploadBandMedia = require("../controllers/bands/upload-band-media");
 const getBandMedia = require("../controllers/bands/get-band-media");
+const getBandByUserId = require("../controllers/bands/get-band-by-user-id");
 const deleteBandMedia = require("../controllers/bands/delete-band-media");
 const router = express.Router();
 
@@ -91,6 +92,11 @@ router
   .route("/")
   .all(validateAuth)
   .put((req, res) => updateBand(req, res));
+
+router
+  .route("/get-band")
+  .all(validateAuth)
+  .get((req, res) => getBandByUserId(req, res));
 
 router
   .route("/addgenre")
