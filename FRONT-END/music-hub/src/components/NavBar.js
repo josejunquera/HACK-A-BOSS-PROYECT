@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../App";
 import Avatar from "./Avatar";
+import logOut from "./logOut";
 
 function NavBar() {
   const [token, setToken] = useContext(AuthContext);
@@ -18,6 +19,7 @@ function NavBar() {
         <Link to="/musicians">Músicos</Link>
         <Link to="/bands">Bandas</Link>
         <Avatar />
+        <button onClick={logOut}>LOG OUT</button>
       </div>
     </nav>
   ) : (

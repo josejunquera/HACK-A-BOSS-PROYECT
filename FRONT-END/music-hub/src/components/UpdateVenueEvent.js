@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
+import AlertDialog from "./AlertDialog";
 import CreateVenueEvent from "./CreateVenueEvent";
 
 function UpdateVenueEvent() {
@@ -99,6 +100,7 @@ function UpdateVenueEvent() {
           <button type="submit">Guardar cambios</button>
         </div>
       </form>
+      <AlertDialog url="http://localhost:3000/api/v1/venues-events/" />
     </div>
   ) : (
     <CreateVenueEvent />

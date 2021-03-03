@@ -2,6 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../App";
 import jwt_decode from "jwt-decode";
+import AlertDialog from "./AlertDialog";
+import logOut from "./logOut";
+import { Redirect } from "react-router-dom";
 
 function UpdateUser() {
   const [userName, setUserName] = useState("");
@@ -62,7 +65,9 @@ function UpdateUser() {
     }
   }
 
-  return (
+  const jsxToReturn = !token ? (
+    <Redirect to="/" />
+  ) : (
     <div className="login-wrapper">
       <form onSubmit={handleSubmit}>
         <label>
@@ -106,9 +111,15 @@ function UpdateUser() {
           {errorMsg && <div>{errorMsg}</div>}
           <button type="submit">Envíar</button>
         </div>
+        <AlertDialog
+          url="http://localhost:3000/api/v1/users/"
+          logOut={logOut}
+        />
       </form>
     </div>
   );
+
+  return jsxToReturn;
 }
 
 export default UpdateUser;
