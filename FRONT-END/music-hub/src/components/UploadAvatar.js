@@ -3,36 +3,27 @@ import { AuthContext } from "../App";
 
 export const UploadAvatar = () => {
   const [file, setFile] = useState();
+  const [filePicked, setFilePicked] = useState(false);
   const [token, setToken] = useContext(AuthContext);
 
   function uploadFile() {
     let data = new FormData();
     console.log(data);
-    // data.append("userid", 1231);
-    // data.append("profileImage", file);
+    data.append("profileImage", file);
     fetch("http://localhost:3000/api/v1/users/upload-profile-image", {
       method: "POST",
-      body: {
-        profileImage:
-          "/home/13achk/Pictures/Screenshot from 2020-12-19 15-47-56.png",
-      },
+      body: data,
       headers: {
-        // "Content-type": "form-data",
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
-      .then((success) => {
-        // Do something with the successful response
-      })
+      .then((success) => {})
       .catch((error) => console.log(error));
   }
   const onFileChange = (event) => {
-    const f = event.target.files[0];
-    setFile(f);
-    // console.log(f);
-    // console.log(event);
-    console.log(file);
+    setFile(event.target.files[0]);
+    setFilePicked(true);
   };
 
   return (
