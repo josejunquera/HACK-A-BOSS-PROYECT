@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -8,12 +8,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { AuthContext } from "../App";
 import jwt_decode from "jwt-decode";
 
-export default function AlertDialog(props) {
+export default function ProfileDeleteAlert(props) {
   const [token, setToken] = useContext(AuthContext);
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
-  const [deleted, setDeleted] = useState("no");
-  const { url, logOut } = props;
+  const { url } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -29,13 +28,11 @@ export default function AlertDialog(props) {
     await fetch(`${url}${id_usuario}`, {
       method: "DELETE",
       headers: {
-        // "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
 
     handleClose();
-    logOut();
     window.location.reload();
   };
 
@@ -50,9 +47,7 @@ export default function AlertDialog(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{""}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             ¿Estás seguro de que quieres borrar el perfil?

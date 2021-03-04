@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { AuthContext } from "../App";
 import CreateBand from "./CreateBand";
-import AlertDialog from "./AlertDialog";
+
+import ProfileDeleteAlert from "./ProfileDeleteAlert";
 
 function UpdateBand() {
   const [bandName, setBandName] = useState("");
@@ -149,7 +150,7 @@ function UpdateBand() {
           <button type="submit">Guardar cambios</button>
         </div>
       </form>
-      <AlertDialog url="http://localhost:3000/api/v1/bands/" />
+      <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
     </div>
   ) : (
     <CreateBand />

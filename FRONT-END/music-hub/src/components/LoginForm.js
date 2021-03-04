@@ -28,15 +28,10 @@ function LoginForm() {
     if (res.status === 200) {
       const resMessage = await res.json();
       setToken(resMessage.accessToken);
-
-      // setEmail("");
-      // setPassword("");
     } else {
       const resMessage = await res.json();
-      // const nuevaListaUsuarios = [resMessage];
-      // setResponse(resMessage);
+
       setErrorMsg(resMessage.error);
-      console.log(errorMsg);
     }
   }
 

@@ -1,5 +1,4 @@
 import React from "react";
-// import musicianSVG from "../../public/info_svgs/";
 
 function PageInfo() {
   return (
@@ -9,7 +8,6 @@ function PageInfo() {
       </div>
       <div className="sectionContent">
         <div>
-          {/* <img src="../../public/info_svgs/band.svg" alt="band"></img> */}
           <p>Músicos y bandas que buscan actuaciones</p>
         </div>
         <div>

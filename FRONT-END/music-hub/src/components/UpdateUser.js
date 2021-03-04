@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../App";
 import jwt_decode from "jwt-decode";
-import AlertDialog from "./AlertDialog";
 import logOut from "./logOut";
-import { Redirect } from "react-router-dom";
+import UserDeleteAlert from "./UserDeleteAlert";
+import Avatar from "./Avatar";
+import { UploadAvatar } from "./UploadAvatar";
 
 function UpdateUser() {
   const [userName, setUserName] = useState("");
@@ -65,61 +66,63 @@ function UpdateUser() {
     }
   }
 
-  const jsxToReturn = !token ? (
-    <Redirect to="/" />
-  ) : (
-    <div className="login-wrapper">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Usuario</p>
-          <input
-            type="text"
-            name="userName"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Nombre</p>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Apellido</p>
-          <input
-            type="text"
-            name="surname"
-            value={surname}
-            onChange={(e) => setSurname(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Email</p>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+  return (
+    <div>
+      <div>
+        <Avatar />
+        <UploadAvatar />
+      </div>
+      <div className="login-wrapper">
+        <form onSubmit={handleSubmit}>
+          <label>
+            <p>Nombre Usuario</p>
+            <input
+              type="text"
+              name="userName"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </label>
+          <label>
+            <p>Nombre</p>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label>
+            <p>Apellido</p>
+            <input
+              type="text"
+              name="surname"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+            />
+          </label>
+          <label>
+            <p>Email</p>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-        <div>
-          {errorMsg && <div>{errorMsg}</div>}
-          <button type="submit">Envíar</button>
-        </div>
-        <AlertDialog
-          url="http://localhost:3000/api/v1/users/"
-          logOut={logOut}
-        />
-      </form>
+          <div>
+            {errorMsg && <div>{errorMsg}</div>}
+            <button type="submit">Envíar</button>
+          </div>
+          <UserDeleteAlert
+            url="http://localhost:3000/api/v1/users/"
+            logOut={logOut}
+          />
+        </form>
+      </div>
     </div>
   );
-
-  return jsxToReturn;
 }
 
 export default UpdateUser;

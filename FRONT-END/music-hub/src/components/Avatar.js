@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../App";
-// var nJwt = require("njwt");
+
 import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export function Avatar() {
   const [token, setToken] = useContext(AuthContext);
@@ -25,17 +26,26 @@ export function Avatar() {
   const jsxToReturn = userInfo.imagen_perfil ? (
     <div>
       {decodedToken.nombre_usuario}
-      <img
-        height="20px"
-        src={`/users-media/${id_usuario}.${userInfo.imagen_perfil
-          .split(".")
-          .pop()}`}
-      ></img>
+      <Link to={"/profile/user-profile"}>
+        <img
+          height="20px"
+          src={`/users-media/${id_usuario}.${userInfo.imagen_perfil
+            .split(".")
+            .pop()}`}
+          alt="avatar"
+        ></img>
+      </Link>
     </div>
   ) : (
     <div>
       {decodedToken.nombre_usuario}
-      <img height="20px" src={`/users-media/avatarDefault.png`}></img>
+      <Link to={"/profile/user-profile"}>
+        <img
+          height="20px"
+          src={`/users-media/avatarDefault.png`}
+          alt="avatar por defecto"
+        ></img>
+      </Link>
     </div>
   );
 

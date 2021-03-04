@@ -1,8 +1,5 @@
-import { Redirect } from "react-router-dom";
-
 function logOut() {
   localStorage.clear();
-  //   window.location.reload();
-  return <Redirect to="/" />;
+  window.location = "http://localhost:3006/";
 }
 export default logOut;

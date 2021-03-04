@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
-import AlertDialog from "./AlertDialog";
+
 import CreateMusicians from "./CreateMusicians";
+import ProfileDeleteAlert from "./ProfileDeleteAlert";
 
 function UpdateMusician() {
   const [musicianName, setMusicianName] = useState("");
@@ -157,7 +158,7 @@ function UpdateMusician() {
           <button type="submit">Guardar Cambios</button>
         </div>
       </form>
-      <AlertDialog url="http://localhost:3000/api/v1/musicians/" />
+      <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
     </div>
   ) : (
     <CreateMusicians />

@@ -1,6 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+
 import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
 import UpdateUser from "./UpdateUser";
 import UpdateMusician from "./UpdateMusician";
@@ -15,16 +14,16 @@ function Profile() {
     <div>
       <div>
         <button type="submit">
-          <Link to={`${url}/user-profile`}>Información de usuario</Link>
+          <Link to={`${url}/user-profile`}>Perfil de usuario</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/musician-profile`}>Informacion de músico</Link>
+          <Link to={`${url}/musician-profile`}>Perfil de músico</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/band-profile`}>Informacion de banda</Link>
+          <Link to={`${url}/band-profile`}>Perfil de banda</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/venue-event-profile`}>Informacion del local</Link>
+          <Link to={`${url}/venue-event-profile`}>Perfil de local/evento</Link>
         </button>
         <button type="submit">
           <Link to={`${url}/change-password`}>Cambiar contraseña</Link>

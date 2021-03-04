@@ -27,25 +27,17 @@ function RegisterForm() {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        // "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify(nuevoUsuarioServidor),
     });
     if (res.status === 201) {
       const resMessage = await res.json();
-      // const nuevaListaUsuarios = [resMessage];
+
       setResponse(resMessage);
-      // setUserName("");
-      // setName("");
-      // setSurname("");
-      // setEmail("");
-      // setPassword("");
-      // setRepeatPassword("");
-      // setErrorMsg("");
+      window.location = "http://localhost:3006/login";
     } else {
       const resMessage = await res.json();
-      // const nuevaListaUsuarios = [resMessage];
-      // setResponse(resMessage);
+
       setErrorMsg(resMessage.error);
     }
   }
