@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
-
 import CreateMusicians from "./CreateMusicians";
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
+import { UploadMedia } from "./UploadMedia";
 
 function UpdateMusician() {
   const [musicianName, setMusicianName] = useState("");
@@ -159,6 +159,10 @@ function UpdateMusician() {
         </div>
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
+      <UploadMedia
+      // url="http://localhost:3000/api/v1/musicians/upload-media/"
+      // profileMedia="musicianMedia"
+      />
     </div>
   ) : (
     <CreateMusicians />

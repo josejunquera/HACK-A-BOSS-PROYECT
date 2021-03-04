@@ -113,7 +113,7 @@ function UpdateUser() {
 
           <div>
             {errorMsg && <div>{errorMsg}</div>}
-            <button type="submit">Envíar</button>
+            <button type="submit">Guardar cambios</button>
           </div>
           <UserDeleteAlert
             url="http://localhost:3000/api/v1/users/"

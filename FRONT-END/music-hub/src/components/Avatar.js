@@ -28,7 +28,7 @@ export function Avatar() {
       {decodedToken.nombre_usuario}
       <Link to={"/profile/user-profile"}>
         <img
-          height="20px"
+          height="30px"
           src={`/users-media/${id_usuario}.${userInfo.imagen_perfil
             .split(".")
             .pop()}`}
@@ -41,7 +41,7 @@ export function Avatar() {
       {decodedToken.nombre_usuario}
       <Link to={"/profile/user-profile"}>
         <img
-          height="20px"
+          height="30px"
           src={`/users-media/avatarDefault.png`}
           alt="avatar por defecto"
         ></img>
