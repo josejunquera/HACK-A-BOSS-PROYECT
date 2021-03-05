@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c5449959-008e-41a9-8a8d-32bb32c4850c",
+		"_postman_id": "3b7bfaf3-8d67-4c45-b20e-8aa560a30060",
 		"name": "PROYECTO-HAB",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -515,6 +515,46 @@
 								"v1",
 								"musicians",
 								"get-media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN MEDIA BY TYPE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"video\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-media-by-type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-media-by-type"
 							]
 						}
 					},
@@ -1109,6 +1149,46 @@
 								"v1",
 								"bands",
 								"get-media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND MEDIA BY TYPE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"video\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/get-media-by-type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"get-media-by-type"
 							]
 						}
 					},
