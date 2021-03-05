@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
 import CreateMusicians from "./CreateMusicians";
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
+import ProfileMediaImage from "./ProfileMedia";
+import ProfileMedia from "./ProfileMedia";
 import { UploadMedia } from "./UploadMedia";
 
 function UpdateMusician() {
@@ -160,8 +162,16 @@ function UpdateMusician() {
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
       <UploadMedia
-      // url="http://localhost:3000/api/v1/musicians/upload-media/"
-      // profileMedia="musicianMedia"
+        url="http://localhost:3000/api/v1/musicians/upload-media/"
+        profileMedia="musicianMedia"
+      />
+      <ProfileMediaImage
+        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+        type="imagen"
+      />
+      <ProfileMediaImage
+        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+        type="video"
       />
     </div>
   ) : (

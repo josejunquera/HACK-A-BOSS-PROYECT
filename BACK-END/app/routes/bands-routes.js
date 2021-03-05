@@ -22,6 +22,7 @@ const uploadBandMedia = require("../controllers/bands/upload-band-media");
 const getBandMedia = require("../controllers/bands/get-band-media");
 const getBandByUserId = require("../controllers/bands/get-band-by-user-id");
 const deleteBandMedia = require("../controllers/bands/delete-band-media");
+const getBandMediaByType = require("../controllers/bands/get-band-media-by-type");
 const router = express.Router();
 
 router.route("/").get((req, res) => getBands(req, res));
@@ -42,6 +43,11 @@ router
   .route("/get-media")
   .all(validateAuth)
   .get((req, res) => getBandMedia(req, res));
+
+router
+  .route("/get-media-by-type/:tipo")
+  .all(validateAuth)
+  .get((req, res) => getBandMediaByType(req, res));
 
 router
   .route("/upload-media")

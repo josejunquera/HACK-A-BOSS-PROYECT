@@ -1,22 +1,20 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../App";
 
-export const UploadMedia = () => {
+export const UploadMedia = (props) => {
   const [file, setFile] = useState();
   const [filePicked, setFilePicked] = useState(false);
   const [token, setToken] = useContext(AuthContext);
   const [title, setTitle] = useState();
-  // const { profileMedia, url } = props;
+  const { profileMedia, url } = props;
 
   function uploadFile() {
     let data = new FormData();
-    data.append("musicianMedia", file);
+    data.append(profileMedia, file);
     data.append("titulo", title);
     console.log(data);
-    // console.log(url);
-    // console.log(profileMedia);
 
-    fetch("http://localhost:3000/api/v1/musicians/upload-media", {
+    fetch(url, {
       method: "POST",
       body: data,
       headers: {

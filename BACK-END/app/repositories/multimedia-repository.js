@@ -51,6 +51,15 @@ async function findMusicianMedia(musicianId) {
   return media;
 }
 
+async function findMusicianMediaByType(musicianId, type) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT * FROM multimedia_solista WHERE id_solista = ? AND tipo = ? ";
+  const [media] = await pool.query(query, [musicianId, type]);
+
+  return media;
+}
+
 async function findBandMedia(bandId) {
   const pool = await database.getPool();
   const query = "SELECT * FROM multimedia_banda WHERE id_banda = ?";
@@ -59,6 +68,14 @@ async function findBandMedia(bandId) {
   return media;
 }
 
+async function findBandMediaByType(bandId, type) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT * FROM multimedia_banda WHERE id_banda = ? AND tipo = ? ";
+  const [media] = await pool.query(query, [bandId, type]);
+
+  return media;
+}
 async function findMusicianMediaByMusicianIdandMediaId(mediaId, musicianId) {
   const pool = await database.getPool();
   const query =
@@ -96,8 +113,10 @@ async function removeBandMediaById(mediaId) {
 module.exports = {
   findBandMedia,
   findMusicianMedia,
+  findBandMediaByType,
   findBandMediaByBandIdandMediaId,
   findMusicianMediaByMusicianIdandMediaId,
+  findMusicianMediaByType,
   findMultimediaOfBand,
   findMultimediaOfMusician,
   removeBandMediaById,

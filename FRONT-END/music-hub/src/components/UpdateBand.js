@@ -4,6 +4,7 @@ import { AuthContext } from "../App";
 import CreateBand from "./CreateBand";
 
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
+import { UploadMedia } from "./UploadMedia";
 
 function UpdateBand() {
   const [bandName, setBandName] = useState("");
@@ -151,6 +152,10 @@ function UpdateBand() {
         </div>
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
+      <UploadMedia
+        url="http://localhost:3000/api/v1/bands/upload-media/"
+        profileMedia="bandMedia"
+      />
     </div>
   ) : (
     <CreateBand />

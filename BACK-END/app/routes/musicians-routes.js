@@ -23,6 +23,7 @@ const uploadMusicianMedia = require("../controllers/musicians/upload-musicians-m
 const getMusicianMedia = require("../controllers/musicians/get-musician-media");
 const deleteMusicianMedia = require("../controllers/musicians/delete-musician-media");
 const getMusicianByUserId = require("../controllers/musicians/get-musician-bu-user-id");
+const getMusicianMediaByType = require("../controllers/musicians/get-musician-media-by-type");
 
 const router = express.Router();
 
@@ -39,6 +40,11 @@ router
   .route("/get-media")
   .all(validateAuth)
   .get((req, res) => getMusicianMedia(req, res));
+
+router
+  .route("/get-media-by-type/:tipo")
+  .all(validateAuth)
+  .get((req, res) => getMusicianMediaByType(req, res));
 
 router
   .route("/delete-media/:id")
