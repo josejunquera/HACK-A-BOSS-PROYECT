@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { AuthContext } from "../App";
 import CreateBand from "./CreateBand";
-
+import ProfileMedia from "./ProfileMedia";
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
 import { UploadMedia } from "./UploadMedia";
 
@@ -155,6 +155,24 @@ function UpdateBand() {
       <UploadMedia
         url="http://localhost:3000/api/v1/bands/upload-media/"
         profileMedia="bandMedia"
+      />
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/bands/get-media-by-type"
+        type="imagen"
+        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+        multimediaRoute="/band-media/user"
+      />
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/bands/get-media-by-type"
+        type="video"
+        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+        multimediaRoute="/band-media/user"
+      />
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/bands/get-media-by-type"
+        type="audio"
+        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+        multimediaRoute="/band-media/user"
       />
     </div>
   ) : (

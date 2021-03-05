@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../App";
 
 export const UploadMedia = (props) => {
@@ -8,11 +8,11 @@ export const UploadMedia = (props) => {
   const [title, setTitle] = useState();
   const { profileMedia, url } = props;
 
-  function uploadFile() {
+  async function uploadFile(event) {
+    event.preventDefault();
     let data = new FormData();
     data.append(profileMedia, file);
     data.append("titulo", title);
-    console.log(data);
 
     fetch(url, {
       method: "POST",
@@ -25,6 +25,7 @@ export const UploadMedia = (props) => {
       .then((success) => {})
       .catch((error) => console.log(error));
   }
+
   const onFileChange = (event) => {
     setFile(event.target.files[0]);
     setFilePicked(true);

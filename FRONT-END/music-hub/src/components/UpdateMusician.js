@@ -162,16 +162,26 @@ function UpdateMusician() {
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
       <UploadMedia
-        url="http://localhost:3000/api/v1/musicians/upload-media/"
+        url="http://localhost:3000/api/v1/musicians/upload-media"
         profileMedia="musicianMedia"
       />
-      <ProfileMediaImage
+      <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
         type="imagen"
+        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+        multimediaRoute="/musicians-media/user"
       />
-      <ProfileMediaImage
+      <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
         type="video"
+        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+        multimediaRoute="/musicians-media/user"
+      />
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+        type="audio"
+        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+        multimediaRoute="/musicians-media/user"
       />
     </div>
   ) : (
