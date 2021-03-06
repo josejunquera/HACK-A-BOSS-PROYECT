@@ -11,6 +11,7 @@ const validateAuth = require("../middleware/validate-auth");
 const updateUser = require("../controllers/users/update-user");
 const updatePassword = require("../controllers/users/update-user-password");
 const uploadImageProfile = require("../controllers/users/upload-image-profile");
+
 const router = express.Router();
 
 router.route("/register").post((req, res) => registerUser(req, res));

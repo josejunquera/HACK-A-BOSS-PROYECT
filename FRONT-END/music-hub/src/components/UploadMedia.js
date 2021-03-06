@@ -8,7 +8,7 @@ export const UploadMedia = (props) => {
   const [title, setTitle] = useState();
   const { profileMedia, url } = props;
 
-  async function uploadFile(event) {
+  function uploadFile(event) {
     event.preventDefault();
     let data = new FormData();
     data.append(profileMedia, file);

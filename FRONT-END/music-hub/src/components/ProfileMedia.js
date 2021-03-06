@@ -25,7 +25,7 @@ function ProfileMediaImage(props) {
       }
     };
     loadMusician();
-  }, [form, multimedia]);
+  }, [multimedia]);
 
   // async function deleteMedia() {
   //   await fetch(`${deleteUrl}/${id_multimedia}`, {

@@ -2,6 +2,14 @@
 
 const database = require("../infrastructure/database");
 
+async function findAllGenres() {
+  const pool = await database.getPool();
+  const query = "SELECT * FROM genero ";
+  const [genres] = await pool.query(query);
+
+  return genres;
+}
+
 async function findGenreId(genre) {
   const pool = await database.getPool();
   const query = "SELECT id_genero FROM genero WHERE genero = ?";
@@ -120,6 +128,7 @@ async function findGenresOfBand(bandId) {
 }
 
 module.exports = {
+  findAllGenres,
   findBandByGenre,
   findGenreId,
   findGenreIdByBandId,

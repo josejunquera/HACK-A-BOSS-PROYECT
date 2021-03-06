@@ -6,6 +6,7 @@ import logOut from "./logOut";
 import UserDeleteAlert from "./UserDeleteAlert";
 import Avatar from "./Avatar";
 import { UploadAvatar } from "./UploadAvatar";
+import Genres from "./Genres";
 
 function UpdateUser() {
   const [userName, setUserName] = useState("");
@@ -119,6 +120,7 @@ function UpdateUser() {
             url="http://localhost:3000/api/v1/users/"
             logOut={logOut}
           />
+          <Genres />
         </form>
       </div>
     </div>

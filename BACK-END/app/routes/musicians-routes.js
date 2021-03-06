@@ -24,12 +24,15 @@ const getMusicianMedia = require("../controllers/musicians/get-musician-media");
 const deleteMusicianMedia = require("../controllers/musicians/delete-musician-media");
 const getMusicianByUserId = require("../controllers/musicians/get-musician-bu-user-id");
 const getMusicianMediaByType = require("../controllers/musicians/get-musician-media-by-type");
+const getAllGenres = require("../controllers/multimedia/get-all-genres");
 
 const router = express.Router();
 
 router.route("/").get((req, res) => getMusicians(req, res));
 
 router.route("/withgenres").get((req, res) => getMusiciansWithGenre(req, res));
+
+router.route("/get-genres").get((req, res) => getAllGenres(req, res));
 
 router
   .route("/contracts")

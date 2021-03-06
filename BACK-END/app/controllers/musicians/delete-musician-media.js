@@ -45,7 +45,7 @@ async function deleteMusicianMedia(req, res) {
     const { PATH_MUSICIAN_MEDIA } = process.env;
 
     await fs.unlink(
-      `${__dirname}/../../../public/${PATH_MUSICIAN_MEDIA}/${"user"}${id_usuario}/${nameAndExtension}`,
+      `${__dirname}/../../../../FRONT-END/music-hub/public/${PATH_MUSICIAN_MEDIA}/${"user"}${id_usuario}/${nameAndExtension}`,
       () => {
         console.log("El archivo ha sido borrado correctamente");
       }

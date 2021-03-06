@@ -261,6 +261,35 @@
 			"name": "MUSICIANS",
 			"item": [
 				{
+					"name": "GET GENRES",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET ALL MUSICIANS",
 					"request": {
 						"method": "GET",
