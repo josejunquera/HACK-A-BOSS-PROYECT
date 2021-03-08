@@ -1,0 +1,1942 @@
+{
+	"info": {
+		"_postman_id": "ddb136f5-a7c5-4616-90a9-bacb6499e40e",
+		"name": "PROYECTO-HAB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "USER REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \"nombreUsuario\": \"Javier\",\n    \"nombre\": \"Javier\",\n    \"apellido\": \"Martínez\",\n    \"email\": \"javier981@yopmail.com\",\n    \"password\": \"1234\",\n    \"repeatPassword\": \"1234\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USER LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.globals.set(\"accessToken\",response.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"manolo981@yopmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD PROFILE IMAGE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "/home/hack31/Desktop/cara-delevingne-matt-irwin-style-09.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/upload-profile-image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"upload-profile-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND USER BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND USER BY EMAIL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"nombreUsuario\": \"manuel\",\n    \"nombre\": \"manuel\",\n    \"apellido\": \"manuel\",\n    \"email\": \"user6@email.com\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER BY ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PASSWORD",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"currentPassword\": \"1234\",\n    \"newPassword\": \"1234\",\n    \"repeatNewPassword\": \"12345\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/update-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MUSICIANS",
+			"item": [
+				{
+					"name": "GET GENRES",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL MUSICIANS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL MUSICIAN GENRES",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-musician-genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-musician-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL MUSICIANS WITH GENRE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/withgenres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"withgenres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIANS BY LOCATION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/location/Coruña",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"location",
+								"Coruña"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN BY SPECIALITY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/speciality/especialidad3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"speciality",
+								"especialidad3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN BY GENRE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/speciality/especialidad3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"speciality",
+								"especialidad3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN BY MOVILITY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/movility/nacional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"movility",
+								"nacional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN BY NAME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/name/solista3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"name",
+								"solista3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN BY LOOKING FOR BAND",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/lookingforband/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"lookingforband",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN BY LOOKING FOR GIG",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/lookingforgig/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"lookingforgig",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CONTRACTS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN MEDIA",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN MEDIA BY TYPE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"video\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-media-by-type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-media-by-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MUSICIAN OF USER LOGGED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/get-musician",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"get-musician"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE MUSICIAN",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreSolista\": \"Antonio\",\n    \"especialidad\":\"jaiteiro\" ,\n    \"localizacion\":\"Carballo\" ,\n    \"movilidad\": \"internacional\",\n    \"buscoBanda\":\"no\" ,\n    \"buscoActuacion\": \"si\",\n    \"descripcion\":\"el putoa mosddddddddddd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE MUSICIAN MEDIA",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/delete-media/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"delete-media",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE MUSICIAN BY USER ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE GENRE TO MUSICIAN",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"genero\":\"Jazz\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE MUSICIAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreSolista\": \"Jose\",\n    \"especialidad\":\"Guitarra\" ,\n    \"localizacion\":\"Coruña\" ,\n    \"movilidad\": \"internacional\",\n    \"buscoBanda\":\"no\" ,\n    \"buscoActuacion\": \"si\",\n    \"descripcion\":\"Guitarra en Coruña\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD GENRE TO MUSICIAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"genero\":\"sdogbnerolnvaeol\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/addgenre/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"addgenre",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONTACT BAND",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreBanda\": \"avebbete\",\n    \"mensaje\": \"Estoy interesado en tocar vosotros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/contact-band",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"contact-band"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REPLY CONTRACT REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idContrato\": 1,\n    \"mensaje\":\"Hola me encantaria comerte el culo\",\n    \"respuestaSolicitud\":\"Aceptada\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/contract-reply",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"contract-reply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD MUSICIAN MEDIA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "musicianMedia",
+									"contentType": "",
+									"type": "file",
+									"src": "/home/jose/Descargas/image (1).png"
+								},
+								{
+									"key": "titulo",
+									"value": "foto1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/musicians/upload-media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"musicians",
+								"upload-media"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BANDS",
+			"item": [
+				{
+					"name": "GET ALL BANDS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL BANDS WITH GENRE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/withgenres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"withgenres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL BAND GENRES",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/get-band-genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"get-band-genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND BY LOCATION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/location/localizacion1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"location",
+								"localizacion1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND BY GENRE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/genre/Pop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"genre",
+								"Pop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND BY MOVILITY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/movility/nacional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"movility",
+								"nacional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND BY NAME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/name/banda1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"name",
+								"banda1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND BY LOOKING FOR MUSICIAN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/lookingformusician/no",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"lookingformusician",
+								"no"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND BY LOOKING FOR GIG",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/lookingforgig/no",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"lookingforgig",
+								"no"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CONTRACTS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND MEDIA",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/get-media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"get-media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND MEDIA BY TYPE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"video\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/get-media-by-type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"get-media-by-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BAND OF USER LOGGED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/get-band",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"get-band"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE BAND",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreBanda\": \"banda7\",\n    \"localizacion\":\"localizacion112!!\" ,\n    \"movilidad\": \"local\",\n    \"buscoSolista\":\"no\" ,\n    \"buscoActuacion\": \"si\",\n    \"descripcion\":\"descripcion ñ 12312121212456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BAND MEDIA",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/delete-media/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"delete-media",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BAND BY USER ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE GENRE TO BAND",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"genero\":\"Jazz\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE BAND",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreBanda\": \"Los Manolos\",\n    \"localizacion\":\"A Coruña\" ,\n    \"movilidad\": \"local\",\n    \"buscoSolista\":\"si\" ,\n    \"buscoActuacion\": \"si\",\n    \"descripcion\":\"Tocamos en todo tipo de eventos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD GENRE TO BAND",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"genero\":\"Trash\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/addgenre/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"addgenre",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONTACT MUSICIAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreSolista\": \"Manuel\",\n    \"mensaje\": \"manuel quiero que toques con nosotros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/contact-musician",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"contact-musician"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REPLY CONTRACT REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idContrato\": 1,\n    \"mensaje\":\"Hola me encantaria comerte el culo\",\n    \"respuestaSolicitud\":\"Aceptada\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/contract-reply",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"contract-reply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD BAND MEDIA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "bandMedia",
+									"contentType": "",
+									"type": "file",
+									"src": "/home/hack44/Downloads/kimberly-richards-ERSauUNQ3ag-unsplash.jpg"
+								},
+								{
+									"key": "titulo",
+									"value": "foto1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bands/upload-media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bands",
+								"upload-media"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VENUES-EVENTS",
+			"item": [
+				{
+					"name": "GET ALL VENUES EVENTS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET VENUE EVENT OF USER LOGGED",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/get-venue-event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"get-venue-event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET VENUE BY NAME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/name/Garufa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"name",
+								"Garufa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET VENUE EVENTS BY LOCATION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/location/Coruña",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"location",
+								"Coruña"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CONTRACTS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE VENUE EVENT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreLocalEvento\": \"JazzASDADA\",\n    \"localizacion\":\"CoruñaAASA\" ,\n    \"descripcion\":\"descripcion  1234ASDASDASD56\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE VENUE EVENTS BY USER ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE VENUE EVENTS",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreLocalEvento\": \"Manolo's Venue\",\n    \"localizacion\":\"A Coruña\" ,\n    \"descripcion\":\"Buenos cubatas y música en directo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONTRACT BAND",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreBanda\": \"Manuel\",\n    \"contrato\": \"Paco quiero que toques en nuestro local\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/contract-band",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"contract-band"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONTRACT MUSICIAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreSolista\": \"Juanito\",\n    \"contrato\": \"Juanito quiero que toques en nuestro local\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venues-events/contract-musician",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venues-events",
+								"contract-musician"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

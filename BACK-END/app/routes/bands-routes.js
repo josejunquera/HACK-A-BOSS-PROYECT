@@ -23,11 +23,17 @@ const getBandMedia = require("../controllers/bands/get-band-media");
 const getBandByUserId = require("../controllers/bands/get-band-by-user-id");
 const deleteBandMedia = require("../controllers/bands/delete-band-media");
 const getBandMediaByType = require("../controllers/bands/get-band-media-by-type");
+const getBandGenres = require("../controllers/bands/get-all-band-genres");
 const router = express.Router();
 
 router.route("/").get((req, res) => getBands(req, res));
 
 router.route("/withgenres").get((req, res) => getBandsWithGenre(req, res));
+
+router
+  .route("/get-band-genres")
+  .all(validateAuth)
+  .get((req, res) => getBandGenres(req, res));
 
 router
   .route("/contracts")
