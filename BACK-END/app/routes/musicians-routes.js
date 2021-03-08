@@ -26,6 +26,7 @@ const getMusicianByUserId = require("../controllers/musicians/get-musician-bu-us
 const getMusicianMediaByType = require("../controllers/musicians/get-musician-media-by-type");
 const getAllGenres = require("../controllers/multimedia/get-all-genres");
 const getMusicianGenres = require("../controllers/musicians/get-all-musician-genres");
+const getCoverImageOfMusician = require("../controllers/multimedia/get-musician-cover-image");
 
 const router = express.Router();
 
@@ -98,6 +99,10 @@ router
 router.route("/name/:name").get((req, res) => getMusicianByName(req, res));
 
 router.route("/genre/:genre").get((req, res) => getMusicianByGenre(req, res));
+
+router
+  .route("/get-cover-image/:idSolista")
+  .get((req, res) => getCoverImageOfMusician(req, res));
 
 router
   .route("/get-musician")

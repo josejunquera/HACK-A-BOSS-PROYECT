@@ -4,6 +4,7 @@ import CreateMusicians from "./CreateMusicians";
 import Genres from "./Genres";
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
 import ProfileMedia from "./ProfileMedia";
+import { UploadCoverImage } from "./UploadCoverImage";
 import { UploadMedia } from "./UploadMedia";
 
 function UpdateMusician() {
@@ -166,6 +167,10 @@ function UpdateMusician() {
         url="http://localhost:3000/api/v1/musicians/addgenre/"
         urlGetGenres="http://localhost:3000/api/v1/musicians/get-musician-genres"
         urlDeleteGenres="http://localhost:3000/api/v1/musicians/"
+      />
+      <UploadCoverImage
+        url="http://localhost:3000/api/v1/musicians/upload-media"
+        profileMedia="musicianMedia"
       />
       <UploadMedia
         url="http://localhost:3000/api/v1/musicians/upload-media"

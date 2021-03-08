@@ -7,7 +7,6 @@ const createJsonError = require("../errors/create-json-errors");
 async function getAllGenres(req, res) {
   try {
     const genres = await findAllGenres();
-    console.log(genres);
 
     res.send(genres);
   } catch (err) {

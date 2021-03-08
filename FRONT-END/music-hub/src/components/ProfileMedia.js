@@ -20,6 +20,7 @@ function ProfileMediaImage(props) {
       });
       if (response.status === 200) {
         const body = await response.json();
+
         setForm(true);
         setMultimedia(body);
       }

@@ -11,6 +11,24 @@ async function findMultimediaOfBand(bandId, type, title) {
   return url[0];
 }
 
+async function findCoverImageOfMusician(idSolista, titulo) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT url FROM multimedia_solista WHERE id_solista = ? AND titulo = ?";
+  const [url] = await pool.query(query, [idSolista, titulo]);
+
+  return url[0];
+}
+
+async function findCoverImageOfBand(idBanda, titulo) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT url FROM multimedia_banda WHERE id_banda = ? AND titulo = ?";
+  const [url] = await pool.query(query, [idBanda, titulo]);
+
+  return url[0];
+}
+
 async function findMultimediaOfMusician(musicianId, type, title) {
   const pool = await database.getPool();
   const query =
@@ -112,6 +130,8 @@ async function removeBandMediaById(mediaId) {
 
 module.exports = {
   findBandMedia,
+  findCoverImageOfBand,
+  findCoverImageOfMusician,
   findMusicianMedia,
   findBandMediaByType,
   findBandMediaByBandIdandMediaId,

@@ -6,6 +6,7 @@ import ProfileMedia from "./ProfileMedia";
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
 import { UploadMedia } from "./UploadMedia";
 import Genres from "./Genres";
+import { UploadCoverImage } from "./UploadCoverImage";
 
 function UpdateBand() {
   const [bandName, setBandName] = useState("");
@@ -157,6 +158,10 @@ function UpdateBand() {
         url="http://localhost:3000/api/v1/bands/addgenre/"
         urlGetGenres="http://localhost:3000/api/v1/bands/get-band-genres"
         urlDeleteGenres="http://localhost:3000/api/v1/bands/"
+      />
+      <UploadCoverImage
+        url="http://localhost:3000/api/v1/bands/upload-media/"
+        profileMedia="bandMedia"
       />
 
       <UploadMedia
