@@ -162,7 +162,11 @@ function UpdateMusician() {
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
       <h1>--------------------------------------------------</h1>
-      <Genres url="http://localhost:3000/api/v1/musicians/addgenre/" />
+      <Genres
+        url="http://localhost:3000/api/v1/musicians/addgenre/"
+        urlGetGenres="http://localhost:3000/api/v1/musicians/get-musician-genres"
+        urlDeleteGenres="http://localhost:3000/api/v1/musicians/"
+      />
       <UploadMedia
         url="http://localhost:3000/api/v1/musicians/upload-media"
         profileMedia="musicianMedia"

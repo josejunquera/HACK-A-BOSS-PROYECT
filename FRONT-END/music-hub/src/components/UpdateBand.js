@@ -153,7 +153,11 @@ function UpdateBand() {
         </div>
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
-      <Genres url="http://localhost:3000/api/v1/bands/addgenre/" />
+      <Genres
+        url="http://localhost:3000/api/v1/bands/addgenre/"
+        urlGetGenres="http://localhost:3000/api/v1/bands/get-band-genres"
+        urlDeleteGenres="http://localhost:3000/api/v1/bands/"
+      />
 
       <UploadMedia
         url="http://localhost:3000/api/v1/bands/upload-media/"

@@ -3,14 +3,15 @@ import { AuthContext } from "../App";
 
 function Genres(props) {
   const [genres, setGenres] = useState([]);
+  const [genresOfArtist, setGenresOfArtist] = useState([]);
   const [genreToAdd, setGenreToAdd] = useState("Rock");
   const [response, setResponse] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
-  const { url } = props;
+  const { url, urlGetGenres, urlDeleteGenres } = props;
 
   useEffect(() => {
-    const loadMusician = async () => {
+    const loadGenres = async () => {
       const response = await fetch(
         "http://localhost:3000/api/v1/musicians/get-genres"
       );
@@ -19,14 +20,26 @@ function Genres(props) {
         setGenres(body);
       }
     };
-    loadMusician();
+    loadGenres();
   }, [genres]);
 
-  const loadGenresOfMusician = async () => {
-    const response = await fetch("url");
-  };
+  useEffect(() => {
+    const loadGenresOfArtist = async () => {
+      const response = await fetch(urlGetGenres, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.status === 200) {
+        const body = await response.json();
+        setGenresOfArtist(body);
+      }
+    };
+    loadGenresOfArtist();
+  }, [genresOfArtist]);
 
   async function handleSubmit(event) {
+    event.preventDefault();
     const genreSelected = {
       genero: genreToAdd,
     };
@@ -60,9 +73,36 @@ function Genres(props) {
         </select>
         <button type="submit">Añadir género</button>
       </form>
-      <ul>
-        <li></li>
-      </ul>
+
+      {genresOfArtist.map((genre) => {
+        return (
+          <>
+            <ul key={genre.nombre_genero} className="musicians-list">
+              <li className="list">
+                <span className="repo-text">{genre.nombre_genero}</span>
+              </li>
+            </ul>
+            <button
+              type="button"
+              onClick={async function deleteGenre() {
+                await fetch(urlDeleteGenres, {
+                  method: "DELETE",
+                  headers: {
+                    "Content-type": "application/json",
+
+                    Authorization: `Bearer ${token}`,
+                  },
+                  body: JSON.stringify({
+                    genero: genre.nombre_genero,
+                  }),
+                });
+              }}
+            >
+              Borrar género
+            </button>
+          </>
+        );
+      })}
     </div>
   );
 }

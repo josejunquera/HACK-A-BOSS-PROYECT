@@ -7,10 +7,13 @@ function Musicians() {
 
   useEffect(() => {
     const loadMusician = async () => {
-      const response = await fetch("http://localhost:3000/api/v1/musicians");
+      const response = await fetch(
+        "http://localhost:3000/api/v1/musicians/withgenres"
+      );
       if (response.status === 200) {
         const body = await response.json();
         setMusician(body);
+        console.log(musician);
       }
     };
     loadMusician();
@@ -42,6 +45,15 @@ function Musicians() {
               <li className="list">
                 <span className="repo-text">
                   Movilidad: {musiciann.movilidad}{" "}
+                </span>
+              </li>
+              <li className="list">
+                {" "}
+                Géneros:
+                <span className="repo-text">
+                  {musiciann.generos.map((genero) => {
+                    return genero + " ";
+                  })}
                 </span>
               </li>
             </ul>
