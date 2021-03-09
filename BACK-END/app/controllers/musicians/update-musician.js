@@ -60,16 +60,7 @@ async function updateMusician(req, res) {
       descripcion,
     });
 
-    res.send({
-      id_usuario,
-      nombreSolista,
-      especialidad,
-      localizacion,
-      movilidad,
-      buscoBanda,
-      buscoActuacion,
-      descripcion,
-    });
+    res.send({ message: "El músico ha sido actualizado con éxito" });
   } catch (err) {
     createJsonError(err, res);
   }

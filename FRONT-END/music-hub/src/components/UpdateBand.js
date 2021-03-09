@@ -108,6 +108,9 @@ function UpdateBand() {
             name="movility"
             onChange={(e) => setMovility(e.target.value)}
           >
+            <option value={bandInfo.movilidad}>
+              Actual: {bandInfo.movilidad}
+            </option>
             <option value="local">Local</option>
             <option value="provincial">Provincial</option>
             <option value="nacional">Nacional</option>
@@ -121,6 +124,9 @@ function UpdateBand() {
             name="lookingForMusician"
             onChange={(e) => setLookingForMusician(e.target.value)}
           >
+            <option value={bandInfo.busco_solista}>
+              Actual: {bandInfo.busco_solista}
+            </option>
             <option value="si">Si</option>
             <option value="no">No</option>
           </select>
@@ -132,6 +138,9 @@ function UpdateBand() {
             name="lookingForGig"
             onChange={(e) => setLookingForGig(e.target.value)}
           >
+            <option value={bandInfo.busco_actuacion}>
+              Actual: {bandInfo.busco_actuacion}
+            </option>
             <option value="si">Si</option>
             <option value="no">No</option>
           </select>

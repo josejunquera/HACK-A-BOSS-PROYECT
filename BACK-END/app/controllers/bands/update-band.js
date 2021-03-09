@@ -55,15 +55,7 @@ async function updateBand(req, res) {
       descripcion,
     });
 
-    res.send({
-      id_usuario,
-      nombreBanda,
-      localizacion,
-      movilidad,
-      buscoSolista,
-      buscoActuacion,
-      descripcion,
-    });
+    res.send({ message: "La banda ha sido actualizado con éxito" });
   } catch (err) {
     createJsonError(err, res);
   }

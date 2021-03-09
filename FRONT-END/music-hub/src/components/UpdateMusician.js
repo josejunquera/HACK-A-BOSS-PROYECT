@@ -11,9 +11,9 @@ function UpdateMusician() {
   const [musicianName, setMusicianName] = useState("");
   const [speciality, setSpeciality] = useState("");
   const [location, setLocation] = useState("");
-  const [movility, setMovility] = useState("local");
-  const [lookingForBand, setLookingForBand] = useState("si");
-  const [lookingForGig, setLookingForGig] = useState("si");
+  const [movility, setMovility] = useState("");
+  const [lookingForBand, setLookingForBand] = useState("");
+  const [lookingForGig, setLookingForGig] = useState("");
   const [description, setDescription] = useState("");
   const [musicianInfo, setMusicianInfo] = useState("");
   const [response, setResponse] = useState("");
@@ -70,7 +70,7 @@ function UpdateMusician() {
       },
       body: JSON.stringify(newMusicianServer),
     });
-    if (res.status === 201) {
+    if (res.status === 200) {
       const resMessage = await res.json();
       setResponse(resMessage);
     } else {
@@ -78,6 +78,8 @@ function UpdateMusician() {
       setErrorMsg(resMessage.error);
     }
   }
+  console.log(response);
+  // console.log(err);
 
   const jsxToReturn = musicianInfo ? (
     <div className="create-musician">
@@ -116,6 +118,10 @@ function UpdateMusician() {
             name="movility"
             onChange={(e) => setMovility(e.target.value)}
           >
+            <option value={musicianInfo.movilidad}>
+              Actual: {musicianInfo.movilidad}
+            </option>
+
             <option value="local">Local</option>
             <option value="provincial">Provincial</option>
             <option value="nacional">Nacional</option>
@@ -129,6 +135,9 @@ function UpdateMusician() {
             name="lookingForBand"
             onChange={(e) => setLookingForBand(e.target.value)}
           >
+            <option value={musicianInfo.busco_banda}>
+              Actual: {musicianInfo.busco_banda}
+            </option>
             <option value="si">Si</option>
             <option value="no">No</option>
           </select>
@@ -140,6 +149,9 @@ function UpdateMusician() {
             name="lookingForGig"
             onChange={(e) => setLookingForGig(e.target.value)}
           >
+            <option value={musicianInfo.busco_actuacion}>
+              Actual:{musicianInfo.busco_actuacion}
+            </option>
             <option value="si">Si</option>
             <option value="no">No</option>
           </select>
@@ -159,6 +171,7 @@ function UpdateMusician() {
         </div>
         <div>
           <button type="submit">Guardar Cambios</button>
+          <p>{response.message}</p>
         </div>
       </form>
       <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />

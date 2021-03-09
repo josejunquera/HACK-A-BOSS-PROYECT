@@ -147,6 +147,7 @@ async function updateMusicianByUserId(data) {
     nombreSolista,
     especialidad,
     localizacion,
+    movilidad,
     buscoBanda,
     buscoActuacion,
     descripcion,
@@ -154,11 +155,12 @@ async function updateMusicianByUserId(data) {
 
   const pool = await database.getPool();
   const updateQuery =
-    "UPDATE solista SET nombre_solista = ?, especialidad = ?, localizacion = ?, busco_banda = ?, busco_actuacion = ?, descripcion = ? WHERE id_usuario = ?";
+    "UPDATE solista SET nombre_solista = ?, especialidad = ?, localizacion = ?,movilidad = ?, busco_banda = ?, busco_actuacion = ?, descripcion = ? WHERE id_usuario = ?";
   await pool.query(updateQuery, [
     nombreSolista,
     especialidad,
     localizacion,
+    movilidad,
     buscoBanda,
     buscoActuacion,
     descripcion,
