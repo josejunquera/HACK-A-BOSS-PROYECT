@@ -22,6 +22,8 @@ function UpdateBand() {
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
   const [formState, setFormState] = useState("");
+  const [mediaReloader, setMediaReloader] = useState(1);
+  const refreshMultimedia = () => setMediaReloader(Math.random());
 
   useEffect(() => {
     const loadBandInfo = async () => {
@@ -39,17 +41,17 @@ function UpdateBand() {
         const body = await response.json();
         setBandInfo(body);
 
-        setBandName(bandInfo.nombre_banda);
-        setLocation(bandInfo.localizacion);
-        setMovility(bandInfo.movilidad);
-        setLookingForMusician(bandInfo.busco_solista);
-        setLookingForGig(bandInfo.busco_actuacion);
-        setDescription(bandInfo.descripcion);
+        setBandName(body.nombre_banda);
+        setLocation(body.localizacion);
+        setMovility(body.movilidad);
+        setLookingForMusician(body.busco_solista);
+        setLookingForGig(body.busco_actuacion);
+        setDescription(body.descripcion);
         setFormState("activo");
       }
     };
     loadBandInfo();
-  }, [formState]);
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -176,24 +178,31 @@ function UpdateBand() {
       <UploadMedia
         url="http://localhost:3000/api/v1/bands/upload-media/"
         profileMedia="bandMedia"
+        refreshMultimedia={refreshMultimedia}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/bands/get-media-by-type"
         type="imagen"
         deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
         multimediaRoute="/band-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/bands/get-media-by-type"
         type="video"
         deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
         multimediaRoute="/band-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/bands/get-media-by-type"
         type="audio"
         deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
         multimediaRoute="/band-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
       />
     </div>
   ) : (

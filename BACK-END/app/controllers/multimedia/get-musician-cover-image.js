@@ -12,7 +12,11 @@ async function getCoverImageOfMusician(req, res) {
 
     const coverImage = await findCoverImageOfMusician(idSolista, "CoverImage");
 
-    res.send(coverImage);
+    if (coverImage) {
+      res.send(coverImage);
+    } else {
+      res.send([]);
+    }
   } catch (err) {
     createJsonError(err, res);
   }

@@ -8,7 +8,14 @@ function ProfileMediaImage(props) {
   const [token, setToken] = useContext(AuthContext);
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
-  const { url, deleteUrl, type, multimediaRoute, mediaReloader } = props;
+  const {
+    url,
+    deleteUrl,
+    type,
+    multimediaRoute,
+    mediaReloader,
+    refreshMultimedia,
+  } = props;
 
   useEffect(() => {
     const loadMusician = async () => {
@@ -74,6 +81,7 @@ function ProfileMediaImage(props) {
                       Authorization: `Bearer ${token}`,
                     },
                   });
+                  refreshMultimedia();
                 }}
               >
                 Borrar archivo
@@ -123,6 +131,7 @@ function ProfileMediaImage(props) {
                       Authorization: `Bearer ${token}`,
                     },
                   });
+                  refreshMultimedia();
                 }}
               >
                 Borrar archivo
@@ -132,7 +141,8 @@ function ProfileMediaImage(props) {
         })}
       </>
     );
-  } else {
+  }
+  if (type === "audio") {
     return (
       <>
         {multimedia.map((media) => {
@@ -170,6 +180,7 @@ function ProfileMediaImage(props) {
                       Authorization: `Bearer ${token}`,
                     },
                   });
+                  refreshMultimedia();
                 }}
               >
                 Borrar archivo

@@ -10,6 +10,7 @@ import { useLocalStorage } from "./components/useLocalStorage";
 import Bands from "./components/Bands";
 import ProfilePage from "./pages/ProfilePage";
 import MusicianProfile from "./pages/MusicianProfile";
+import BandProfile from "./pages/BandProfile";
 
 export const AuthContext = React.createContext();
 
@@ -35,11 +36,14 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/musicians/:musicianId">
+            <Route path="/musicians/:userId">
               <MusicianProfile />
             </Route>
             <Route path="/musicians">
               <Musicians />
+            </Route>
+            <Route path="/bands/:userId">
+              <BandProfile />
             </Route>
             <Route path="/bands">
               <Bands />

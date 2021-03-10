@@ -12,7 +12,11 @@ async function getCoverImageOfBand(req, res) {
 
     const coverImage = await findCoverImageOfBand(idBanda, "CoverImage");
 
-    res.send(coverImage);
+    if (coverImage) {
+      res.send(coverImage);
+    } else {
+      res.send([]);
+    }
   } catch (err) {
     createJsonError(err, res);
   }

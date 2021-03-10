@@ -23,18 +23,6 @@ function UpdateMusician() {
   const [mediaReloader, setMediaReloader] = useState(1);
   const refreshMultimedia = () => setMediaReloader(Math.random());
 
-  console.log({
-    musicianName,
-    speciality,
-    location,
-    movility,
-    lookingForBand,
-    lookingForGig,
-    description,
-    musicianInfo,
-    response,
-    errorMsg,
-  });
   useEffect(() => {
     const loadMusicianInfo = async () => {
       const response = await fetch(
@@ -208,6 +196,7 @@ function UpdateMusician() {
         deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
         multimediaRoute="/musicians-media/user"
         mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
@@ -215,6 +204,7 @@ function UpdateMusician() {
         deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
         multimediaRoute="/musicians-media/user"
         mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
@@ -222,6 +212,7 @@ function UpdateMusician() {
         deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
         multimediaRoute="/musicians-media/user"
         mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
       />
     </div>
   ) : (

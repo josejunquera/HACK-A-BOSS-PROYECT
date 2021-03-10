@@ -9,6 +9,8 @@ function Genres(props) {
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
   const { url, urlGetGenres, urlDeleteGenres } = props;
+  const [genreReloader, setGenreReloader] = useState(1);
+  const refreshGenres = () => setGenreReloader(Math.random());
 
   useEffect(() => {
     const loadGenres = async () => {
@@ -36,7 +38,7 @@ function Genres(props) {
       }
     };
     loadGenresOfArtist();
-  }, [token, urlGetGenres]);
+  }, [token, urlGetGenres, genreReloader]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -55,6 +57,7 @@ function Genres(props) {
     if (res.status === 201) {
       const resMessage = await res.json();
       setResponse(resMessage);
+      refreshGenres();
     } else {
       const resMessage = await res.json();
       setErrorMsg(resMessage.error);
@@ -96,6 +99,7 @@ function Genres(props) {
                     genero: genre.nombre_genero,
                   }),
                 });
+                refreshGenres();
               }}
             >
               Borrar género
