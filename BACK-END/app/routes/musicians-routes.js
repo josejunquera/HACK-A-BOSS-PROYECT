@@ -27,6 +27,9 @@ const getMusicianMediaByType = require("../controllers/musicians/get-musician-me
 const getAllGenres = require("../controllers/multimedia/get-all-genres");
 const getMusicianGenres = require("../controllers/musicians/get-all-musician-genres");
 const getCoverImageOfMusician = require("../controllers/multimedia/get-musician-cover-image");
+const getMusicianGenresParams = require("../controllers/musicians/get-all-musician-genres-params");
+const getMusicianByUserIdParams = require("../controllers/musicians/get-musician-by-user-id-params");
+const getMusicianMediaParams = require("../controllers/musicians/get-musician-media-params");
 
 const router = express.Router();
 
@@ -42,6 +45,10 @@ router
   .get((req, res) => getMusicianGenres(req, res));
 
 router
+  .route("/get-musician-genres/:id_usuario")
+  .get((req, res) => getMusicianGenresParams(req, res));
+
+router
   .route("/contracts")
   .all(validateAuth)
   .get((req, res) => getAllContractRequests(req, res));
@@ -50,6 +57,10 @@ router
   .route("/get-media")
   .all(validateAuth)
   .get((req, res) => getMusicianMedia(req, res));
+
+router
+  .route("/get-media/:id_usuario")
+  .get((req, res) => getMusicianMediaParams(req, res));
 
 router
   .route("/get-media-by-type/:tipo")
@@ -108,6 +119,10 @@ router
   .route("/get-musician")
   .all(validateAuth)
   .get((req, res) => getMusicianByUserId(req, res));
+
+router
+  .route("/get-musician/:id_usuario")
+  .get((req, res) => getMusicianByUserIdParams(req, res));
 
 router
   .route("/add")

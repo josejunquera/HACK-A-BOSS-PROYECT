@@ -36,13 +36,13 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/musicians/:userId">
+            <Route path="/musicians/:id_usuario">
               <MusicianProfile />
             </Route>
             <Route path="/musicians">
               <Musicians />
             </Route>
-            <Route path="/bands/:userId">
+            <Route path="/bands/:id_usuario">
               <BandProfile />
             </Route>
             <Route path="/bands">
