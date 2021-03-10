@@ -20,7 +20,21 @@ function UpdateMusician() {
   const [errorMsg, setErrorMsg] = useState("");
   const [token, setToken] = useContext(AuthContext);
   const [formState, setFormState] = useState("");
+  const [mediaReloader, setMediaReloader] = useState(1);
+  const refreshMultimedia = () => setMediaReloader(Math.random());
 
+  console.log({
+    musicianName,
+    speciality,
+    location,
+    movility,
+    lookingForBand,
+    lookingForGig,
+    description,
+    musicianInfo,
+    response,
+    errorMsg,
+  });
   useEffect(() => {
     const loadMusicianInfo = async () => {
       const response = await fetch(
@@ -36,18 +50,18 @@ function UpdateMusician() {
       if (response.status === 200) {
         const body = await response.json();
         setMusicianInfo(body);
-        setMusicianName(musicianInfo.nombre_solista);
-        setLocation(musicianInfo.localizacion);
-        setSpeciality(musicianInfo.especialidad);
-        setMovility(musicianInfo.movilidad);
-        setLookingForBand(musicianInfo.busco_banda);
-        setLookingForGig(musicianInfo.busco_actuacion);
-        setDescription(musicianInfo.descripcion);
+        setMusicianName(body.nombre_solista);
+        setLocation(body.localizacion);
+        setSpeciality(body.especialidad);
+        setMovility(body.movilidad);
+        setLookingForBand(body.busco_banda);
+        setLookingForGig(body.busco_actuacion);
+        setDescription(body.descripcion);
         setFormState("activo");
       }
     };
     loadMusicianInfo();
-  }, [formState]);
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -78,8 +92,6 @@ function UpdateMusician() {
       setErrorMsg(resMessage.error);
     }
   }
-  console.log(response);
-  // console.log(err);
 
   const jsxToReturn = musicianInfo ? (
     <div className="create-musician">
@@ -188,24 +200,28 @@ function UpdateMusician() {
       <UploadMedia
         url="http://localhost:3000/api/v1/musicians/upload-media"
         profileMedia="musicianMedia"
+        refreshMultimedia={refreshMultimedia}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
         type="imagen"
         deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
         multimediaRoute="/musicians-media/user"
+        mediaReloader={mediaReloader}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
         type="video"
         deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
         multimediaRoute="/musicians-media/user"
+        mediaReloader={mediaReloader}
       />
       <ProfileMedia
         url="http://localhost:3000/api/v1/musicians/get-media-by-type"
         type="audio"
         deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
         multimediaRoute="/musicians-media/user"
+        mediaReloader={mediaReloader}
       />
     </div>
   ) : (

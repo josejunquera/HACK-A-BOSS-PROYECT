@@ -6,7 +6,7 @@ export const UploadMedia = (props) => {
   const [filePicked, setFilePicked] = useState(false);
   const [token, setToken] = useContext(AuthContext);
   const [title, setTitle] = useState();
-  const { profileMedia, url } = props;
+  const { profileMedia, url, refreshMultimedia } = props;
 
   function uploadFile(event) {
     event.preventDefault();
@@ -22,7 +22,9 @@ export const UploadMedia = (props) => {
       },
     })
       .then((response) => response.json())
-      .then((success) => {})
+      .then((success) => {
+        refreshMultimedia();
+      })
       .catch((error) => console.log(error));
   }
 

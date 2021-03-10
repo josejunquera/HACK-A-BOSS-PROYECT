@@ -6,10 +6,9 @@ import jwt_decode from "jwt-decode";
 function ProfileMediaImage(props) {
   const [multimedia, setMultimedia] = useState([]);
   const [token, setToken] = useContext(AuthContext);
-  const [form, setForm] = useState(false);
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
-  const { url, deleteUrl, type, multimediaRoute } = props;
+  const { url, deleteUrl, type, multimediaRoute, mediaReloader } = props;
 
   useEffect(() => {
     const loadMusician = async () => {
@@ -21,12 +20,11 @@ function ProfileMediaImage(props) {
       if (response.status === 200) {
         const body = await response.json();
 
-        setForm(true);
         setMultimedia(body);
       }
     };
     loadMusician();
-  }, [multimedia]);
+  }, [token, type, url, mediaReloader]);
 
   // async function deleteMedia() {
   //   await fetch(`${deleteUrl}/${id_multimedia}`, {

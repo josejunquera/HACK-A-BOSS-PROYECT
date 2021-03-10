@@ -21,7 +21,7 @@ function Genres(props) {
       }
     };
     loadGenres();
-  }, [genres]);
+  }, []);
 
   useEffect(() => {
     const loadGenresOfArtist = async () => {
@@ -36,7 +36,7 @@ function Genres(props) {
       }
     };
     loadGenresOfArtist();
-  }, [genresOfArtist]);
+  }, [token, urlGetGenres]);
 
   async function handleSubmit(event) {
     event.preventDefault();
