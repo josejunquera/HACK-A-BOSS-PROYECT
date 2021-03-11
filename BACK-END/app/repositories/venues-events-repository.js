@@ -45,6 +45,15 @@ async function findVenueEventById(id) {
   return venueEvent[0];
 }
 
+async function findVenueEventNameById(id) {
+  const pool = await database.getPool();
+  const query =
+    "SELECT nombre_local_evento FROM local_evento WHERE id_local_evento = ?";
+  const [venueEvent] = await pool.query(query, id);
+
+  return venueEvent[0];
+}
+
 async function findVenueEventByUserId(id) {
   const pool = await database.getPool();
   const query = "SELECT * FROM local_evento WHERE id_usuario = ?";
@@ -201,4 +210,5 @@ module.exports = {
   insertVenueAndMusicianIntoContractTable,
   removeVenueEventByUserId,
   updateVenueEventByUserId,
+  findVenueEventNameById,
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import ContactBand from "../components/ContactBand";
 
 function BandProfile() {
   const { id_usuario } = useParams();
@@ -22,7 +23,7 @@ function BandProfile() {
     };
     loadBandInfo();
   }, []);
-  console.log(bandInfo);
+
   useEffect(() => {
     const loadBandMedia = async () => {
       const response = await fetch(
@@ -35,7 +36,6 @@ function BandProfile() {
     };
     loadBandMedia();
   }, []);
-  console.log(bandMedia);
 
   useEffect(() => {
     const loadBandGenres = async () => {
@@ -49,7 +49,6 @@ function BandProfile() {
     };
     loadBandGenres();
   }, []);
-  console.log(bandGenres);
 
   const audiosNames = bandMedia
     .filter((element) => {
@@ -126,6 +125,8 @@ function BandProfile() {
           </li>
         </ul>
       </div>
+      <ContactBand nombreBanda={bandInfo.nombre_banda} />
+
       <div>
         {audiosNames.map((audio) => {
           return (

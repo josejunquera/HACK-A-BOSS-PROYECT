@@ -182,7 +182,7 @@ async function insertBandResponseIntoContractTable(response, contractID) {
 async function findAllContractRequests(bandId) {
   const pool = await database.getPool();
   const query =
-    "SELECT es_contratado_banda.contrato, es_contratado_banda.id_contrato, es_contratado_banda.fecha FROM es_contratado_banda WHERE id_banda = ?";
+    "SELECT es_contratado_banda.contrato, es_contratado_banda.id_contrato, es_contratado_banda.fecha, es_contratado_banda.id_local_evento, es_contratado_banda.respuesta FROM es_contratado_banda WHERE id_banda = ?";
   const [contracts] = await pool.query(query, bandId);
 
   return contracts;

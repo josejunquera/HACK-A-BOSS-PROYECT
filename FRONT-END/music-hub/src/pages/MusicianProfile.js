@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import ContactMusician from "../components/ContactMusician";
 
 function MusicanProfile() {
   const { id_usuario } = useParams();
@@ -127,6 +128,7 @@ function MusicanProfile() {
           </li>
         </ul>
       </div>
+      <ContactMusician nombreSolista={musicianInfo.nombre_solista} />
       <div>
         {audiosNames.map((audio) => {
           return (

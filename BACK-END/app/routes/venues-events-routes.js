@@ -13,6 +13,7 @@ const contractBand = require("../controllers/venues-events/contract-band");
 const contractMusician = require("../controllers/venues-events/contract-musician");
 const getAllContractRequest = require("../controllers/venues-events/get-all-contract-requests");
 const getVenueEventByUserId = require("../controllers/venues-events/get-venue-event-by-user-id");
+const getVenueEventNameById = require("../controllers/venues-events/get-venue-event-name");
 
 const router = express.Router();
 
@@ -38,6 +39,10 @@ router
   .get((req, res) => getVenueEventByLocation(req, res));
 
 router.route("/name/:name").get((req, res) => getVenueEventByName(req, res));
+
+router
+  .route("/get-venue-event-name/:idVenueEvent")
+  .get((req, res) => getVenueEventNameById(req, res));
 
 router
   .route("/")
