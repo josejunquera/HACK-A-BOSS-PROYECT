@@ -12,15 +12,28 @@ const createJsonError = require("../errors/create-json-errors");
 const schema = Joi.object().keys({
   nombreUsuario: Joi.string()
     .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
-    .required(),
+    .required()
+    .messages({
+      "string.empty": `Nombre de usuario no puede estar vacio`,
+    }),
   nombre: Joi.string()
     .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
-    .required(),
+    .required()
+    .messages({
+      "string.empty": `Nombre no puede estar vacio`,
+    }),
   apellido: Joi.string()
     .regex(/^[a-zA-Z0-9ñÑ!@#$%&*" "áéíóú]{3,25}$/)
-    .required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(4).max(100).required(),
+    .required()
+    .messages({
+      "string.empty": `Apellido no puede estar vacio`,
+    }),
+  email: Joi.string().email().required().messages({
+    "string.empty": `Email no puede estar vacio`,
+  }),
+  password: Joi.string().min(4).max(100).required().messages({
+    "string.empty": `Password no puede estar vacio`,
+  }),
   repeatPassword: Joi.ref("password"),
 });
 

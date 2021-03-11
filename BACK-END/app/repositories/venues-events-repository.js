@@ -114,16 +114,20 @@ async function insertVenueAndBandIntoContractTable(
   bandId,
   venueEventId,
   date,
-  contract
+  contract,
+  venueEventName,
+  bandName
 ) {
   const pool = await database.getPool();
   const insertQuery =
-    "INSERT INTO es_contratado_banda (id_banda, id_local_evento, fecha, contrato) VALUES(?,?,?,?)";
+    "INSERT INTO es_contratado_banda (id_banda, id_local_evento, fecha, contrato,nombre_local_evento,nombre_banda) VALUES(?,?,?,?,?,?)";
   const [created] = await pool.query(insertQuery, [
     bandId,
     venueEventId,
     date,
     contract,
+    venueEventName,
+    bandName,
   ]);
 
   return created;
@@ -133,16 +137,20 @@ async function insertVenueAndMusicianIntoContractTable(
   musicianId,
   venueEventId,
   date,
-  contract
+  contract,
+  venueEventName,
+  musicianName
 ) {
   const pool = await database.getPool();
   const insertQuery =
-    "INSERT INTO es_contratado_solista (id_solista, id_local_evento, fecha, contrato) VALUES(?,?,?,?)";
+    "INSERT INTO es_contratado_solista (id_solista, id_local_evento, fecha, contrato,nombre_local_evento,nombre_solista) VALUES(?,?,?,?,?,?)";
   const [created] = await pool.query(insertQuery, [
     musicianId,
     venueEventId,
     date,
     contract,
+    venueEventName,
+    musicianName,
   ]);
 
   return created;
@@ -176,8 +184,7 @@ async function findVenueEventUserIdByVenueEventId(venueEventId) {
 
 async function findAllMusicianContractRequests(venueId) {
   const pool = await database.getPool();
-  const query =
-    "SELECT es_contratado_solista.contrato, es_contratado_solista.id_contrato, es_contratado_solista.fecha FROM es_contratado_solista WHERE id_local_evento = ?";
+  const query = "SELECT * FROM es_contratado_solista WHERE id_local_evento = ?";
   const [contracts] = await pool.query(query, venueId);
 
   return contracts;
@@ -185,8 +192,7 @@ async function findAllMusicianContractRequests(venueId) {
 
 async function findAllBandContractRequests(venueId) {
   const pool = await database.getPool();
-  const query =
-    "SELECT es_contratado_banda.contrato, es_contratado_banda.id_contrato, es_contratado_banda.fecha FROM es_contratado_banda WHERE id_local_evento = ?";
+  const query = "SELECT * FROM es_contratado_banda WHERE id_local_evento = ?";
   const [contracts] = await pool.query(query, venueId);
 
   return contracts;

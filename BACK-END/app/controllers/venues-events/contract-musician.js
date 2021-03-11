@@ -13,6 +13,7 @@ const {
 
 const {
   findVenueEventIdOfUser,
+  findVenueEventNameById,
 } = require("../../repositories/venues-events-repository");
 const createJsonError = require("../errors/create-json-errors");
 const { sendEmailVenueEventToBand } = require("../../helpers/mail-smtp");
@@ -48,19 +49,26 @@ async function contractMusician(req, res) {
 
     const venueEventId = await findVenueEventIdOfUser(id_usuario);
 
+    const venueEventName = await findVenueEventNameById(
+      venueEventId.id_local_evento
+    );
+
     const fecha = new Date().toISOString().slice(0, 10);
 
     await insertVenueAndMusicianIntoContractTable(
       musicianId.id_solista,
       venueEventId.id_local_evento,
       fecha,
-      contrato
+      contrato,
+      venueEventName.nombre_local_evento,
+      nombreSolista
     );
 
     await sendEmailVenueEventToBand(
       musicianEmail[0].email,
       venueEventEmail[0].email,
-      contrato
+      contrato,
+      venueEventName.nombre_local_evento
     );
 
     res.send({ message: "Tu mensaje ha sido enviado" });

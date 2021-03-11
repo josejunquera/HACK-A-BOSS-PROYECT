@@ -56,12 +56,17 @@ async function sendEmailMusicianToBand(bandEmail, musicianEmail, message) {
   return data;
 }
 
-async function sendEmailVenueEventToBand(bandEmail, venueEventEmail, contract) {
+async function sendEmailVenueEventToBand(
+  bandEmail,
+  venueEventEmail,
+  contract,
+  venueEventName
+) {
   const mailData = {
     from: "musicapphab@gmail.com",
     to: bandEmail,
     subject: "Solicitud para tocar en nuestro local evento banda",
-    text: `${contract};puedes contestar a esta solicitud escribiéndome a mi mail ${venueEventEmail}`,
+    text: `Soy ${venueEventName}. ${contract};puedes contestar a esta solicitud escribiéndome a mi mail ${venueEventEmail}`,
     // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
   };
 
@@ -79,7 +84,7 @@ async function sendEmailVenueEventToMusician(
     from: "musicapphab@gmail.com",
     to: musicianEmail,
     subject: "Solicitud para tocar en nuestro local evento banda",
-    text: `${contract};puedes contestar a esta solicitud escribiéndome a mi mail ${venueEventEmail}`,
+    text: `Soy ${venueEventname}, ${contract};puedes contestar a esta solicitud escribiéndome a mi mail ${venueEventEmail}`,
     // html: `<a>Hi ${name}, you registered correctly to [nombre app]</a>`,
   };
 
@@ -111,5 +116,6 @@ module.exports = {
   sendEmailBandToMusician,
   sendEmailMusicianToBand,
   sendEmailVenueEventToBand,
+  sendEmailVenueEventToMusician,
   sendEmailReplyContractRequest,
 };
