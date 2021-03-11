@@ -7,9 +7,8 @@ function MusicanProfile() {
   const { id_usuario } = useParams();
   const [musicianInfo, setMusicianInfo] = useState([]);
   const [musicianMedia, setMusicianMedia] = useState([]);
-  const [musicianVideo, setMusicianVideo] = useState([]);
-  const [musicianAudio, setMusicianAudio] = useState([]);
   const [musicianGenres, setMusicianGenres] = useState([]);
+  const [urlCoverImage, setUrlCoverImage] = useState("");
 
   useEffect(() => {
     const loadMusicianInfo = async () => {
@@ -66,18 +65,23 @@ function MusicanProfile() {
       return element.url.split("/").pop();
     });
 
-  const coverImageName = musicianMedia
-    .filter((element) => {
-      return element.titulo === "CoverImage";
-    })
-    .map((element) => {
-      return element.url.split("/").pop();
-    });
+  const url = `http://localhost:3006/musicians-media/user${musicianInfo.id_usuario}/CoverImage.`;
 
-  console.log(coverImageName);
+  useEffect(() => {
+    const loadCoverImage = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/musicians/get-cover-image/${musicianInfo.id_solista}`
+      );
+      if (response.status === 200) {
+        const body = await response.json();
+        setUrlCoverImage(body.url);
+      }
+    };
+    loadCoverImage();
+  }, [musicianInfo]);
 
-  const urlCoverImage = coverImageName
-    ? `url(http://localhost:3006/musicians-media/user${id_usuario}/${coverImageName})`
+  const urlToShow = urlCoverImage
+    ? `url(${url}${urlCoverImage.split(".").pop()})`
     : `url(http://localhost:3006/users-media/CoverImage.jpg)`;
 
   return (
@@ -86,7 +90,7 @@ function MusicanProfile() {
 
       <div
         style={{
-          backgroundImage: urlCoverImage,
+          backgroundImage: urlToShow,
           backgroundRepeat: "no-repeat",
           width: "250px",
         }}

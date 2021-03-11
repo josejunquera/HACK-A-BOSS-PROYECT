@@ -25,6 +25,10 @@ const deleteBandMedia = require("../controllers/bands/delete-band-media");
 const getBandMediaByType = require("../controllers/bands/get-band-media-by-type");
 const getBandGenres = require("../controllers/bands/get-all-band-genres");
 const getCoverImageOfBand = require("../controllers/multimedia/get-band-cover-image");
+const getBandGenresParams = require("../controllers/bands/get-all-band-genres-params");
+const getBandByUserIdParams = require("../controllers/bands/get-band-by-user-id-params");
+const getBandMediaParams = require("../controllers/bands/get-band-media-params");
+
 const router = express.Router();
 
 router.route("/").get((req, res) => getBands(req, res));
@@ -37,8 +41,20 @@ router
   .get((req, res) => getBandGenres(req, res));
 
 router
+  .route("/get-band-genres/:id_usuario")
+  .get((req, res) => getBandGenresParams(req, res));
+
+router
   .route("/get-cover-image/:idBanda")
   .get((req, res) => getCoverImageOfBand(req, res));
+
+router
+  .route("/get-band/:id_usuario")
+  .get((req, res) => getBandByUserIdParams(req, res));
+
+router
+  .route("/get-media/:id_usuario")
+  .get((req, res) => getBandMediaParams(req, res));
 
 router
   .route("/contracts")
