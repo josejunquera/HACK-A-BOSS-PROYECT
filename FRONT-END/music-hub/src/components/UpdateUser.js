@@ -19,6 +19,8 @@ function UpdateUser() {
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
   const [formState, setFormState] = useState("");
+  const [userInfoReloader, setUserInfoReloader] = useState(1);
+  const refreshUserInfo = () => setUserInfoReloader(Math.random());
 
   useEffect(() => {
     const loadUserInfo = async () => {
@@ -64,12 +66,13 @@ function UpdateUser() {
 
       setErrorMsg(resMessage.error);
     }
+    refreshUserInfo();
   }
 
   return (
     <div>
       <div>
-        <Avatar />
+        <Avatar userInfoReloader={userInfoReloader} />
         <UploadAvatar />
       </div>
       <div className="login-wrapper">

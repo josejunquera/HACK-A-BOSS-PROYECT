@@ -5,39 +5,6 @@
   font-family: "Oswald", sans-serif;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(223, 17, 17);
-  height: 70px;
-  align-items: center;
-  padding: 0px 80px;
-  /* position: fixed; */
-  top: 0;
-  width: 100%;
-}
-
-.sign {
-  display: flex;
-  width: 250px;
-}
-.nav .logo {
-  font-size: 30px;
-}
-nav > div > a {
-  align-items: center;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-}
-
-.links a {
-  padding: 10px;
-}
-
-.sign a {
-  padding: 10px;
-}
-
 .cover {
   height: 800px;
   padding: 150px 80px;

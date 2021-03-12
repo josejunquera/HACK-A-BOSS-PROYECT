@@ -1,0 +1,68 @@
+.active img {
+  padding: 0px;
+  margin: 0px;
+  height: 4rem;
+}
+
+/* Style the navigation menu */
+.topnav {
+  overflow: hidden;
+  background-color: rgba(51, 51, 51, 0);
+  position: relative;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+  display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: rgb(10, 10, 10);
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  /* background: black; */
+  color: rgb(191, 27, 40);
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 2rem;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+  background-color: #e0e0e000;
+  color: rgb(255, 0, 0);
+}
+#myLinks {
+  padding-left: 2rem;
+}
+#myLinks > button {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  border: none; /* Remove borders */
+  color: white; /* Add a text color */
+  padding: 8px 20px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+  border-radius: 0.5rem;
+}
+
+.logout {
+  background-color: rgb(191, 27, 40);
+  transition: transform 0.1s;
+} /* Red */
+.logout:hover {
+  /* background: #d62a1e; */
+  transform: scale(1.05);
+}

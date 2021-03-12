@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../App";
-
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
+import "./Avatar.css";
 
-export function Avatar() {
+export function Avatar(props) {
   const [token, setToken] = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState("");
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
+  const { userInfoReloader } = props;
 
   useEffect(() => {
     const loadUserInfo = async () => {
@@ -21,32 +22,28 @@ export function Avatar() {
       }
     };
     loadUserInfo();
-  }, []);
+  }, [userInfoReloader]);
 
   const jsxToReturn = userInfo.imagen_perfil ? (
-    <div>
-      {decodedToken.nombre_usuario}
-      <Link to={"/profile/user-profile"}>
-        <img
-          height="30px"
-          src={`/users-media/${id_usuario}.${userInfo.imagen_perfil
-            .split(".")
-            .pop()}`}
-          alt="avatar"
-        ></img>
-      </Link>
-    </div>
+    <Link id="avatar" to={"/profile/user-profile"}>
+      <div>{userInfo.nombre_usuario}</div>
+      <img
+        height="30px"
+        src={`/users-media/${id_usuario}.${userInfo.imagen_perfil
+          .split(".")
+          .pop()}`}
+        alt="avatar"
+      ></img>
+    </Link>
   ) : (
-    <div>
-      {decodedToken.nombre_usuario}
-      <Link to={"/profile/user-profile"}>
-        <img
-          height="30px"
-          src={`/users-media/avatarDefault.png`}
-          alt="avatar por defecto"
-        ></img>
-      </Link>
-    </div>
+    <Link id="avatar" to={"/profile/user-profile"}>
+      <div>{userInfo.nombre_usuario}</div>{" "}
+      <img
+        height="30px"
+        src={`/users-media/avatarDefault.png`}
+        alt="avatar por defecto"
+      ></img>
+    </Link>
   );
 
   return jsxToReturn;
