@@ -1,0 +1,39 @@
+.cover {
+  height: 60vh;
+  padding: 5rem 2rem;
+  background-image: url("../cover_image/concert.jpeg");
+  background-repeat: no-repeat;
+  /* baackground-attachment: fixed; */
+  background-position: center;
+  padding-top: 8rem;
+}
+
+.cover > * {
+  padding: 10px 0;
+}
+.cover > p,
+h1 {
+  font-size: 18px;
+  /* width: 800px; */
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 170%;
+  /* coloar: rgba(255, 255, 255, 0); */
+}
+
+.musicians-alist {
+  margin-top: 60px;
+  padding: 10px;
+  border-style: dotted;
+  list-style: none;
+}
+.bands-list {
+  margin-top: 60px;
+  padding: 10px;
+  border-style: dotted;
+  list-style: none;
+}
+
+.login {
+  padding: 100px;
+}

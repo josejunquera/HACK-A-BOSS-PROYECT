@@ -1,0 +1,50 @@
+.coverButtons {
+  display: flex;
+  margin: 1rem;
+  justify-content: space-between;
+}
+
+.button {
+  position: relative;
+  background-color: rgb(148 136 137 / 85%);
+  border: none;
+  font-size: 1.2rem;
+  color: #ffffff;
+  padding: 0.5rem;
+  width: 6rem;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  height: 3rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.568),
+    0 6px 20px 0 rgba(0, 0, 0, 0.548);
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* .button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+} */
+
+.button:after {
+  content: "";
+  background: rgba(191, 27, 41, 0.397);
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}

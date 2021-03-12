@@ -1,9 +1,9 @@
 import "../styles.css";
+import "./LandingPage.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
 import ArtistSample from "../components/ArtistSample";
-import VenueEventSample from "../components/VenueEventsSample";
 import CoverBrowser from "../components/CoverBrowser";
 import CompaniesSlider from "../components/CompaniesSlider";
 import PageInfo from "../components/PageInfo";
@@ -18,9 +18,6 @@ function LandingPage() {
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
           non veniam quod alias, repellat itaque, fugiat illo nostrum cumque quo
           consequuntur provident deserunt neque asperiores! Lorem ipsum dolor,
-          sit amet consectetur adipisicing elit. Cupiditate non veniam quod
-          alias, repellat itaque, fugiat illo nostrum cumque quo consequuntur
-          provident deserunt neque asperiores!
         </p>
 
         <CoverBrowser />
@@ -29,8 +26,6 @@ function LandingPage() {
       <PageInfo />
 
       <ArtistSample />
-
-      <VenueEventSample />
 
       <CompaniesSlider />
 

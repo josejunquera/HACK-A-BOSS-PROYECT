@@ -1,20 +1,30 @@
 import React from "react";
+import "./PageInfo.css";
 
 function PageInfo() {
   return (
     <section className="info">
-      <div className="sectionTitle">
-        <h1>¿Qué puedes hacer en musicHub?</h1>
-      </div>
       <div className="sectionContent">
         <div>
-          <p>Músicos y bandas que buscan actuaciones</p>
+          <h1>Encuentra actuaciones</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            elit lorem, iaculis a fermentum eget, fermentum et massa.
+          </p>
         </div>
         <div>
-          <p>Bandas que buscan músicos</p>
+          <h1>Encuentra bandas con las que tocar</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            elit lorem, iaculis a fermentum eget, fermentum et massa.
+          </p>
         </div>
         <div>
-          <p>Músicos que buscan banda</p>
+          <h1>Encuentra músicos para tu banda</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            elit lorem, iaculis a fermentum eget, fermentum et massa.
+          </p>
         </div>
       </div>
     </section>

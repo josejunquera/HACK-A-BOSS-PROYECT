@@ -1,0 +1,9 @@
+.sectionContent {
+  padding: 1rem 5rem;
+}
+.sectionContent div {
+  padding: 1rem 0;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 170%;
+}
