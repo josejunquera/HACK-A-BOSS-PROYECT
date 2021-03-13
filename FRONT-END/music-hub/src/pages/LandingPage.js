@@ -2,7 +2,6 @@ import "../styles.css";
 import "./LandingPage.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Contact from "../components/Contact";
 import ArtistSample from "../components/ArtistSample";
 import CoverBrowser from "../components/CoverBrowser";
 import CompaniesSlider from "../components/CompaniesSlider";
@@ -28,8 +27,6 @@ function LandingPage() {
       <ArtistSample />
 
       <CompaniesSlider />
-
-      <Contact />
 
       <Footer />
     </div>

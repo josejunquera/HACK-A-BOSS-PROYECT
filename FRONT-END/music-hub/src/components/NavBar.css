@@ -46,6 +46,11 @@
 #myLinks {
   padding-left: 2rem;
 }
+
+#myLinks *:hover {
+  color: rgb(191, 27, 40);
+}
+
 #myLinks > button {
   margin-left: 1rem;
   margin-top: 1rem;

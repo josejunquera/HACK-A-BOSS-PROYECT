@@ -1,12 +1,11 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import LoginForm from "../components/LoginForm";
-import "./login.css";
 
 function Login() {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <LoginForm />
     </div>
   );

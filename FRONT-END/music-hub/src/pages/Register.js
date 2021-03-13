@@ -5,7 +5,6 @@ import RegisterForm from "../components/RegisterForm";
 function Register() {
   return (
     <>
-      <NavBar />
       <RegisterForm />
     </>
   );

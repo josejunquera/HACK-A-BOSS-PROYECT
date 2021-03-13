@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { AuthContext } from "../App";
+import "./LoginForm.css";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -38,31 +39,48 @@ function LoginForm() {
   const jsxToReturn = token ? (
     <Redirect to="/" />
   ) : (
-    <div className="login">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Email</p>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <div>
-          <button type="submit">Envíar</button>
-        </div>
-        {errorMsg && <div>{errorMsg}</div>}
-      </form>
+    <div className="login-wrapper">
+      <div className="login">
+        <Link to="/">
+          <img src="./assets/logo_pequeño.png" alt="logo" />
+        </Link>
+
+        <p>Mi Cuenta</p>
+
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input
+              className="form-input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+          </label>
+          <label>
+            <input
+              className="form-input"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="*******"
+            />
+          </label>
+
+          <div className="not-registered">
+            <Link to="/register">
+              <p>¿Aún no estás registrado?</p>
+            </Link>
+          </div>
+
+          <div className="form-button">
+            <button type="submit">Enviar</button>
+          </div>
+          {errorMsg && <div>{errorMsg}</div>}
+        </form>
+      </div>
     </div>
   );
 

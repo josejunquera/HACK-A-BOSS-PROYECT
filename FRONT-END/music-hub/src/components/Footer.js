@@ -1,24 +1,22 @@
 import React from "react";
+import "./Footer.css";
 
 function Footer() {
   return (
     <footer className="footer">
-      <img src="" alt="logo" />
+      <img src="./assets/logo_pequeño.png" alt="logo" />
 
-      <ul>
-        <li>COMPANY</li>
-        <li>Sobre nosotros</li>
-        <li>Artistas</li>
-        <li>Locales/Eventos</li>
-      </ul>
-
-      <ul>
-        <li>LINKS DE INTERÉS</li>
-        <li>FAQ</li>
-        <li>Legal</li>
-        <li>Contacto</li>
-        <li>Política de privacidad</li>
-      </ul>
+      <div className="linkedin">
+        <a href="https://www.linkedin.com/in/alberto-bujan-bb1bb0146/">
+          Alberto Buján<img src="./assets/linkedin.png" alt="linkedin"></img>
+        </a>
+        <a href="https://www.linkedin.com/in/pablo-diaz-garcia-a25166200/">
+          Pablo Díaz<img src="./assets/linkedin.png" alt="linkedin"></img>
+        </a>
+        <a href="https://www.linkedin.com/in/jos%C3%A9-junquera-fdez-arg%C3%BCelles-b96280ba/">
+          José Junquera<img src="./assets/linkedin.png" alt="linkedin"></img>
+        </a>
+      </div>
     </footer>
   );
 }

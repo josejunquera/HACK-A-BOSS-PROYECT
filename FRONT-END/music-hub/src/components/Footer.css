@@ -1,0 +1,36 @@
+.footer {
+  border-top: 1px solid #f1f4f8;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.footer > img {
+  height: 50px;
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.linkedin img {
+  height: 1.8rem;
+  padding-left: 0.5rem;
+  -webkit-filter: opacity(0.7);
+  filter: opacity(0.7);
+}
+
+.linkedin a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(95, 93, 93);
+  padding: 0.3rem 0;
+}
+
+#root > div > div > footer > div > a:nth-child(2) > img {
+  margin-left: 19px;
+}
+#root > div > div > footer > div > a:nth-child(3) > img {
+  margin-right: 1px;
+}

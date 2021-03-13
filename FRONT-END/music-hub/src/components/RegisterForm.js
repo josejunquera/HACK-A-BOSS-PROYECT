@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import { useState } from "react";
+import "./RegisterForm.css";
 
 function RegisterForm() {
   const [userName, setUserName] = useState("");
@@ -43,66 +45,82 @@ function RegisterForm() {
   }
   return (
     <div className="login-wrapper">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Usuario</p>
-          <input
-            type="text"
-            name="userName"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Nombre</p>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Apellido</p>
-          <input
-            type="text"
-            name="surname"
-            value={surname}
-            onChange={(e) => setSurname(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Email</p>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Repeat Password</p>
-          <input
-            type="password"
-            name="password"
-            value={repeatPassword}
-            onChange={(e) => setRepeatPassword(e.target.value)}
-          />
-        </label>
-        <div>
+      <div className="login">
+        <Link to="/">
+          <img src="./assets/logo_pequeño.png" alt="logo" />
+        </Link>
+
+        <p>Registro</p>
+
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input
+              className="form-input"
+              type="text"
+              name="userName"
+              placeholder="Nombre Usuario"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              className="form-input"
+              type="text"
+              name="name"
+              placeholder="Nombre"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              className="form-input"
+              type="text"
+              name="surname"
+              placeholder="Apellido"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              className="form-input"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              className="form-input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              className="form-input"
+              type="password"
+              name="password"
+              placeholder="Repetir Password"
+              value={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+            />
+          </label>
+
+          <div className="form-button">
+            <button type="submit">Enviar</button>
+          </div>
+
           {errorMsg && <div>{errorMsg}</div>}
-          <button type="submit">Envíar</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

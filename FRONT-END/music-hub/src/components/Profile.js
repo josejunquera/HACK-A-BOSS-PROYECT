@@ -7,12 +7,13 @@ import UpdateBand from "./UpdateBand";
 import UpdateVenueEvent from "./UpdateVenueEvent";
 import UpdatePassword from "./UpdatePassword";
 import Messages from "./Messages";
+import "./Profile.css";
 
 function Profile() {
   let { path, url } = useRouteMatch();
 
   return (
-    <div>
+    <div className="profile-buttons">
       <div>
         <button type="submit">
           <Link to={`${url}/user-profile`}>Perfil de usuario</Link>

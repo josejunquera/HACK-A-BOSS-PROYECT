@@ -6,6 +6,7 @@ import logOut from "./logOut";
 import UserDeleteAlert from "./UserDeleteAlert";
 import Avatar from "./Avatar";
 import { UploadAvatar } from "./UploadAvatar";
+import "./UpdateUser.css";
 
 function UpdateUser() {
   const [userName, setUserName] = useState("");
@@ -70,7 +71,7 @@ function UpdateUser() {
   }
 
   return (
-    <div>
+    <div className="updateuser-container">
       <div>
         <Avatar userInfoReloader={userInfoReloader} />
         <UploadAvatar />

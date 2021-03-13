@@ -6,7 +6,7 @@
 
 .button {
   position: relative;
-  background-color: rgb(148 136 137 / 85%);
+  background-color: rgb(17, 12, 12);
   border: none;
   font-size: 1.2rem;
   color: #ffffff;
@@ -18,8 +18,8 @@
   overflow: hidden;
   cursor: pointer;
   height: 3rem;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.568),
-    0 6px 20px 0 rgba(0, 0, 0, 0.548);
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.568),
+    0 6px 20px 0 rgba(0, 0, 0, 0.548); */
   margin: 1rem;
   border-radius: 0.5rem;
 }
