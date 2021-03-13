@@ -51,7 +51,7 @@ export default function UserDeleteAlert(props) {
         <DialogTitle id="alert-dialog-title">{""}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            ¿Estás seguro de que quieres borrar tu usuario?
+            ¿Estás seguro de que quieres borrar tu usuario? Este cambio será permanente e irreversible.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

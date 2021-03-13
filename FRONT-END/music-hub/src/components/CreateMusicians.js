@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../App";
+import "./CreateMusicians.css";
 
 function CreateMusician() {
   const [musicianName, setMusicianName] = useState("");
@@ -41,87 +42,100 @@ function CreateMusician() {
     }
   }
   return (
-    <div className="create-musician">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Solista</p>
-          <input
-            type="text"
-            name="musicianName"
-            value={musicianName}
-            onChange={(e) => setMusicianName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Especialidad</p>
-          <input
-            type="text"
-            name="speciality"
-            value={speciality}
-            onChange={(e) => setSpeciality(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>localizacion</p>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Movilidad</p>
-          <select
-            id="movility"
-            name="movility"
-            onChange={(e) => setMovility(e.target.value)}
-          >
-            <option value="local">Local</option>
-            <option value="provincial">Provincial</option>
-            <option value="nacional">Nacional</option>
-            <option value="internacional">Internacional</option>
-          </select>
-        </label>
-        <label>
-          <p>Busco Banda</p>
-          <select
-            id="lookingForBand"
-            name="lookingForBand"
-            onChange={(e) => setLookingForBand(e.target.value)}
-          >
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-        <label>
-          <p>Busco Actuación</p>
-          <select
-            id="lookingForGig"
-            name="lookingForGig"
-            onChange={(e) => setLookingForGig(e.target.value)}
-          >
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-        </label>
+    <div className="create-musician-container">
 
-        <div>
-          <label>
-            <p>Descripción</p>
-            <textarea
-              placeholder="Introduce tu descripción de músico aquí"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
-          {errorMsg && <div>{errorMsg}</div>}
+      <div className="create-musician-wrapper">
+              <p className="create-musician-wrapper-p">EDITAR PERFIL DE MÚSICO</p>
+        <div className="create-musician">
+          <form onSubmit={handleSubmit}>
+            <label>
+              <input
+                className="create-musician-form-input margin-input"
+                type="text"
+                name="musicianName"
+                value={musicianName}
+                onChange={(e) => setMusicianName(e.target.value)}
+                placeholder="Nombre del músico"
+              />
+            </label>
+            <label>
+              <input
+                className="create-musician-form-input margin-input"
+                type="text"
+                name="speciality"
+                value={speciality}
+                onChange={(e) => setSpeciality(e.target.value)}
+                placeholder="Especialidad"
+              />
+            </label>
+            <label>
+              <input
+                className="create-musician-form-input margin-input"
+                type="text"
+                name="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="Localizacion"
+              />
+            </label>
+            <label>
+              <p>Movilidad</p>
+              <select
+                className="create-musician-form-input"
+                id="movility"
+                name="movility"
+                onChange={(e) => setMovility(e.target.value)}
+              >
+                <option value="local">Local</option>
+                <option value="provincial">Provincial</option>
+                <option value="nacional">Nacional</option>
+                <option value="internacional">Internacional</option>
+              </select>
+            </label>
+            <label>
+              <p>Busco Banda</p>
+              <select
+                className="create-musician-form-input"
+                id="lookingForBand"
+                name="lookingForBand"
+                onChange={(e) => setLookingForBand(e.target.value)}
+              >
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>
+            </label>
+            <label>
+              <p>Busco Actuación</p>
+              <select
+                className="create-musician-form-input"
+                id="lookingForGig"
+                name="lookingForGig"
+                onChange={(e) => setLookingForGig(e.target.value)}
+              >
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>
+            </label>
+
+            <div>
+              <label>
+                <p>Descripción</p>
+                <textarea
+                  className="create-musician-form-input"
+                  placeholder="Introduce tu descripción de músico aquí"
+                  name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </label>
+              {errorMsg && <div>{errorMsg}</div>}
+            </div>
+            <div className="create-musician-button">
+              <button type="submit">Crear Músico</button>
+            </div>
+          </form>
         </div>
-        <div>
-          <button type="submit">Crear Músico</button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

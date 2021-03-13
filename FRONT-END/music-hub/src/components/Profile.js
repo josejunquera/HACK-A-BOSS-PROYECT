@@ -14,24 +14,24 @@ function Profile() {
 
   return (
     <div className="profile-buttons">
-      <div>
+      <div className="buttons-wrapper">
         <button type="submit">
-          <Link to={`${url}/user-profile`}>Perfil de usuario</Link>
+          <Link to={`${url}/user-profile`}>USUARIO</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/musician-profile`}>Perfil de músico</Link>
+          <Link to={`${url}/musician-profile`}>MÚSICO</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/band-profile`}>Perfil de banda</Link>
+          <Link to={`${url}/band-profile`}>BANDA</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/venue-event-profile`}>Perfil de local/evento</Link>
+          <Link to={`${url}/venue-event-profile`}>LOCAL-EVENTO</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/messages`}>Mensajes</Link>
+          <Link to={`${url}/messages`}>MENSAJES</Link>
         </button>
         <button type="submit">
-          <Link to={`${url}/change-password`}>Cambiar contraseña</Link>
+          <Link to={`${url}/change-password`}>CAMBIAR CONTRASEÑA</Link>
         </button>
       </div>
 

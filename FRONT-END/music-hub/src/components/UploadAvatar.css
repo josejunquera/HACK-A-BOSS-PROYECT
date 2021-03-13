@@ -1,0 +1,31 @@
+.upload-avatar-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.7rem 0;
+}
+
+.upload-avatar-label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+
+}
+
+.upload-avatar-label label{
+padding-bottom: 1rem;
+}
+
+.upload-avatar-container button{
+  width: 80%;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(191, 27, 40)}
+
+  

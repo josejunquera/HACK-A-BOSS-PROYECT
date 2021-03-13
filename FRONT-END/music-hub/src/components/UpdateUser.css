@@ -1,3 +1,122 @@
-/* .updateuser-container {
-  margin-top: 50px;
-} */
+.updateuser-container {
+  margin-top: 80px;
+}
+
+.update-user-wrapper {
+  height: 100vh;
+  background-color: rgb(238, 236, 236);
+  padding-top: 2rem;
+}
+
+.update-user-wrapper-p {
+  text-align: center !important;
+  padding: 25px;
+  font-size: 20px;
+}
+
+.update-user img {
+  width: 120px;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.update-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin: 0 2rem;
+  height: 70vh;
+  border-radius: 10px;
+}
+
+.update-user-input {
+  width: 80%;
+  margin-left: 21px;
+  background-color: rgb(238, 236, 236);
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.update-user-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.update-user-button button {
+  width: 80%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(191, 27, 40);
+}
+
+.update-user p {
+  margin-left: 37px;
+}
+
+.update-user p {
+  padding-top: 20px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+.upload-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin: 0 2rem;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.upload-avatar-wrapper {
+  background-color: rgb(238, 236, 236);
+  padding: 2rem 0;
+}
+
+.delete-user {
+  background-color: rgb(238, 236, 236);
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+#root
+  > div
+  > div
+  > div
+  > div.updateuser-container
+  > div.delete-user
+  > div
+  > button {
+  color: black;
+  border: solid black;
+}
+
+body
+  > div.MuiDialog-root
+  > div.MuiDialog-container.MuiDialog-scrollPaper
+  > div
+  > div.MuiDialogActions-root.MuiDialogActions-spacing
+  > button:nth-child(1)
+  > span.MuiButton-label {
+  color:rgb(191, 27, 40);
+}
+
+body
+  > div.MuiDialog-root
+  > div.MuiDialog-container.MuiDialog-scrollPaper
+  > div
+  > div.MuiDialogActions-root.MuiDialogActions-spacing
+  > button:nth-child(2)
+  > span.MuiButton-label {
+  color:rgb(191, 27, 40);
+}

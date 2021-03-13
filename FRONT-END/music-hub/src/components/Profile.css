@@ -1,3 +1,30 @@
 .profile-buttons {
-  padding-top: 100px;
+  padding-top: 95px;
+}
+
+.buttons-wrapper{
+  display:flex;
+  flex-wrap:wrap;
+  position: fixed;
+  background-color:white;
+  z-index:5
+}
+
+.buttons-wrapper button{
+  flex-grow:1;
+  width: 30vw;
+  border-radius: 5px;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(191, 27, 40);
+  text-decoration: none;
+  border: none;
+  margin:2px 2px;
+  padding: 7px;
+}
+
+.buttons-wrapper button > *{
+  color: white;
+  text-decoration: none;
+
 }

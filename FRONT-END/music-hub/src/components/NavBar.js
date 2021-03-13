@@ -28,7 +28,7 @@ function NavBar() {
       <div id="myLinks">
         <Link to="/musicians">Músicos</Link>
         <Link to="/bands">Bandas</Link>
-        <Avatar />
+        <Avatar id="avatar-nav" />
         <button className="btn logout" onClick={logOut}>
           LOGOUT
         </button>

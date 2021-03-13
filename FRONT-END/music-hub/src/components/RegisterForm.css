@@ -1,34 +1,34 @@
-.login-wrapper {
-  height: 100vh;
+.register-wrapper {
   background-color: rgb(238, 236, 236);
+  height: 100vh;
   padding-top: 2rem;
 }
-.login img {
-  width: 120px;
+.register img {
   justify-content: center;
-  padding-top: 2rem;
   padding-bottom: 1.5rem;
+  padding-top: 2rem;
+  width: 120px;
 }
 
-.login {
-  display: flex;
-  flex-direction: column;
+.register {
   align-items: center;
   background-color: white;
-  margin: 0 2rem;
-  height: 94vh;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 94vh;
+  margin: 0 2rem;
 }
 
-.form-input {
-  width: 80%;
+.register-form-input {
+  background-color: rgb(238, 236, 236);
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
   margin-left: 30px;
   margin-top: 2rem;
-  background-color: rgb(238, 236, 236);
-  border: none;
   padding: 0.8rem 1rem;
-  border-radius: 5px;
-  font-size: 15px;
+  width: 80%;
 }
 
 .not-registered p {
@@ -38,13 +38,13 @@
   color: black;
 }
 
-.form-button {
+.register-form-button {
   display: flex;
   justify-content: center;
   margin-top: 40px;
 }
 
-.form-button button {
+.register-form-button button {
   width: 80%;
   padding: 0.5rem 1rem;
   border: none;

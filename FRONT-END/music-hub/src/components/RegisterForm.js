@@ -44,8 +44,8 @@ function RegisterForm() {
     }
   }
   return (
-    <div className="login-wrapper">
-      <div className="login">
+    <div className="register-wrapper">
+      <div className="register">
         <Link to="/">
           <img src="./assets/logo_pequeño.png" alt="logo" />
         </Link>
@@ -55,7 +55,7 @@ function RegisterForm() {
         <form onSubmit={handleSubmit}>
           <label>
             <input
-              className="form-input"
+              className="register-form-input"
               type="text"
               name="userName"
               placeholder="Nombre Usuario"
@@ -65,7 +65,7 @@ function RegisterForm() {
           </label>
           <label>
             <input
-              className="form-input"
+              className="register-form-input"
               type="text"
               name="name"
               placeholder="Nombre"
@@ -75,7 +75,7 @@ function RegisterForm() {
           </label>
           <label>
             <input
-              className="form-input"
+              className="register-form-input"
               type="text"
               name="surname"
               placeholder="Apellido"
@@ -85,7 +85,7 @@ function RegisterForm() {
           </label>
           <label>
             <input
-              className="form-input"
+              className="register-form-input"
               type="email"
               name="email"
               placeholder="Email"
@@ -95,7 +95,7 @@ function RegisterForm() {
           </label>
           <label>
             <input
-              className="form-input"
+              className="register-form-input"
               type="password"
               name="password"
               placeholder="Password"
@@ -105,7 +105,7 @@ function RegisterForm() {
           </label>
           <label>
             <input
-              className="form-input"
+              className="register-form-input"
               type="password"
               name="password"
               placeholder="Repetir Password"
@@ -114,7 +114,7 @@ function RegisterForm() {
             />
           </label>
 
-          <div className="form-button">
+          <div className="register-form-button">
             <button type="submit">Enviar</button>
           </div>
 

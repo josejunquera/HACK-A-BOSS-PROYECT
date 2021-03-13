@@ -9,7 +9,7 @@ export function Avatar(props) {
   const [userInfo, setUserInfo] = useState("");
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
-  const { userInfoReloader } = props;
+  const { userInfoReloader,id } = props;
 
   useEffect(() => {
     const loadUserInfo = async () => {
@@ -25,10 +25,9 @@ export function Avatar(props) {
   }, [userInfoReloader]);
 
   const jsxToReturn = userInfo.imagen_perfil ? (
-    <Link id="avatar" to={"/profile/user-profile"}>
+    <Link id={id} to={"/profile/user-profile"}>
       <div>{userInfo.nombre_usuario}</div>
       <img
-        height="30px"
         src={`/users-media/${id_usuario}.${userInfo.imagen_perfil
           .split(".")
           .pop()}`}
@@ -36,10 +35,9 @@ export function Avatar(props) {
       ></img>
     </Link>
   ) : (
-    <Link id="avatar" to={"/profile/user-profile"}>
+    <Link id={id} to={"/profile/user-profile"}>
       <div>{userInfo.nombre_usuario}</div>{" "}
       <img
-        height="30px"
         src={`/users-media/avatarDefault.png`}
         alt="avatar por defecto"
       ></img>

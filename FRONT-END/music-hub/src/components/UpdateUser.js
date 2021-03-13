@@ -72,58 +72,71 @@ function UpdateUser() {
 
   return (
     <div className="updateuser-container">
-      <div>
-        <Avatar userInfoReloader={userInfoReloader} />
-        <UploadAvatar />
-      </div>
-      <div className="login-wrapper">
-        <form onSubmit={handleSubmit}>
-          <label>
-            <p>Nombre Usuario</p>
-            <input
-              type="text"
-              name="userName"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-          </label>
-          <label>
-            <p>Nombre</p>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label>
-            <p>Apellido</p>
-            <input
-              type="text"
-              name="surname"
-              value={surname}
-              onChange={(e) => setSurname(e.target.value)}
-            />
-          </label>
-          <label>
-            <p>Email</p>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
+      <div className="update-user-wrapper">
+        <Avatar id="avatar-profile" userInfoReloader={userInfoReloader} />
+        <p className="update-user-wrapper-p">EDITAR USUARIO</p>
 
-          <div>
-            {errorMsg && <div>{errorMsg}</div>}
-            <button type="submit">Guardar cambios</button>
-          </div>
-          <UserDeleteAlert
-            url="http://localhost:3000/api/v1/users/"
-            logOut={logOut}
-          />
-        </form>
+        <div className="update-user">
+          <form onSubmit={handleSubmit}>
+            <label>
+              <p>Nombre Usuario</p>
+              <input
+                className="update-user-input"
+                type="text"
+                name="userName"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </label>
+            <label>
+              <p>Nombre</p>
+              <input
+                className="update-user-input"
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label>
+              <p>Apellido</p>
+              <input
+                className="update-user-input"
+                type="text"
+                name="surname"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            </label>
+            <label>
+              <p>Email</p>
+              <input
+                className="update-user-input"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+
+            <div className="update-user-button">
+              {errorMsg && <div>{errorMsg}</div>}
+              <button type="submit">Guardar cambios</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div className="upload-avatar-wrapper">
+        <div className="upload-avatar">
+          <UploadAvatar  />
+        </div>
+      </div>
+      <div className="delete-user">
+            <UserDeleteAlert
+              url="http://localhost:3000/api/v1/users/"
+              logOut={logOut}
+            />
       </div>
     </div>
   );

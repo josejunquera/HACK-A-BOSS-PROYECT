@@ -1,5 +1,5 @@
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 import Profile from "../components/Profile";
 
 function ProfilePage() {
@@ -7,7 +7,7 @@ function ProfilePage() {
     <div>
       <NavBar />
       <Profile />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
