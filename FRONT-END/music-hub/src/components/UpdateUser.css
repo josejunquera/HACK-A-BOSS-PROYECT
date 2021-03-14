@@ -1,5 +1,5 @@
 .updateuser-container {
-  margin-top: 80px;
+  margin-top: 70px;
 }
 
 .update-user-wrapper {
@@ -108,7 +108,7 @@ body
   > div.MuiDialogActions-root.MuiDialogActions-spacing
   > button:nth-child(1)
   > span.MuiButton-label {
-  color:rgb(191, 27, 40);
+  color: rgb(191, 27, 40);
 }
 
 body
@@ -118,5 +118,5 @@ body
   > div.MuiDialogActions-root.MuiDialogActions-spacing
   > button:nth-child(2)
   > span.MuiButton-label {
-  color:rgb(191, 27, 40);
+  color: rgb(191, 27, 40);
 }

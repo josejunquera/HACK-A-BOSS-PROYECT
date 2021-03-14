@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../App";
+import "./CreateVenueEvent.css";
 
 function CreateVenueEvent() {
   const [venueEventName, setVenueEventName] = useState("");
@@ -33,42 +34,49 @@ function CreateVenueEvent() {
     }
   }
   return (
-    <div className="create-venue-event">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Local/Evento</p>
-          <input
-            type="text"
-            name="venueEventName"
-            value={venueEventName}
-            onChange={(e) => setVenueEventName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Localizacion</p>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-        <div>
+    <div className="create-venue-event-wrapper">
+            <p className="create-band-wrapper-p">CREAR PERFIL DE LOCAL/EVENTO</p>
+
+      <div className="create-venue-event">
+        <form onSubmit={handleSubmit}>
           <label>
-            <p>Descripción</p>
-            <textarea
-              placeholder="Introduce tu descripción de músico aquí"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+            <input
+              type="text"
+              name="venueEventName"
+              value={venueEventName}
+              onChange={(e) => setVenueEventName(e.target.value)}
+              placeholder="Nombre del Local/Evento"
+              className="create-venue-event-form-input margin-input"
             />
           </label>
-          {errorMsg && <div>{errorMsg}</div>}
-        </div>
-        <div>
-          <button type="submit">Crear Local/Evento</button>
-        </div>
-      </form>
+          <label>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Localización"
+              className="create-venue-event-form-input margin-input"
+            />
+          </label>
+          <div>
+            <label>
+              <p>Descripción</p>
+              <textarea
+                placeholder="Introduce tu descripción de local/evento aquí"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="create-venue-event-form-input"
+              />
+            </label>
+            {errorMsg && <div>{errorMsg}</div>}
+          </div>
+          <div className="create-venue-event-button">
+            <button type="submit">Crear Local/Evento</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

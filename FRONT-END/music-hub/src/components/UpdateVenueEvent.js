@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
 import CreateVenueEvent from "./CreateVenueEvent";
 import ProfileDeleteAlert from "./ProfileDeleteAlert";
+import "./UpdateVenueEvent.css";
 
 function UpdateVenueEvent() {
   const [venueEventName, setVenueEventName] = useState("");
@@ -64,43 +65,56 @@ function UpdateVenueEvent() {
   }
 
   const jsxToReturn = venueEventInfo ? (
-    <div className="create-venue-event">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Local/Evento</p>
-          <input
-            type="text"
-            name="venueEventName"
-            value={venueEventName}
-            onChange={(e) => setVenueEventName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Localizacion</p>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-        <div>
+    <div className="update-venue-event-wrapper">
+      <p className="update-venue-event-wrapper-p">EDITAR PERFIL DE LOCAL/EVENTO</p>
+
+      <div className="update-venue-event">
+        <form onSubmit={handleSubmit}>
           <label>
-            <p>Descripción</p>
-            <textarea
-              placeholder="Introduce tu descripción de local o evento aquí"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+            <p>Nombre Local/Evento</p>
+            <input
+              type="text"
+              name="venueEventName"
+              value={venueEventName}
+              onChange={(e) => setVenueEventName(e.target.value)}
+              className="update-venue-event-form-input "
             />
           </label>
-          {errorMsg && <div>{errorMsg}</div>}
-        </div>
-        <div>
-          <button type="submit">Guardar cambios</button>
-        </div>
-      </form>
-      <ProfileDeleteAlert url="http://localhost:3000/api/v1/venues-events/" />
+          <label>
+            <p>Localizacion</p>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="update-venue-event-form-input "
+            />
+          </label>
+          <div>
+            <label>
+              <p>Descripción</p>
+              <textarea
+                placeholder="Introduce tu descripción de local o evento aquí"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="update-venue-event-form-input"
+              />
+            </label>
+            {errorMsg && <div>{errorMsg}</div>}
+          </div>
+          <div className="update-venue-event-button">
+            <button  type="submit">
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+<div className="delete-venue">
+<ProfileDeleteAlert url="http://localhost:3000/api/v1/venues-events/" />
+</div>
+        
+
     </div>
   ) : (
     <CreateVenueEvent />

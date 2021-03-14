@@ -42,10 +42,10 @@ function CreateMusician() {
     }
   }
   return (
-    <div className="create-musician-container">
+    // <div className="create-musician-container">
 
       <div className="create-musician-wrapper">
-              <p className="create-musician-wrapper-p">EDITAR PERFIL DE MÚSICO</p>
+              <p className="create-musician-wrapper-p">CREAR PERFIL DE MÚSICO</p>
         <div className="create-musician">
           <form onSubmit={handleSubmit}>
             <label>
@@ -65,7 +65,7 @@ function CreateMusician() {
                 name="speciality"
                 value={speciality}
                 onChange={(e) => setSpeciality(e.target.value)}
-                placeholder="Especialidad"
+                placeholder="Instrumento"
               />
             </label>
             <label>
@@ -75,7 +75,7 @@ function CreateMusician() {
                 name="location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="Localizacion"
+                placeholder="Localización"
               />
             </label>
             <label>
@@ -136,7 +136,7 @@ function CreateMusician() {
           </form>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

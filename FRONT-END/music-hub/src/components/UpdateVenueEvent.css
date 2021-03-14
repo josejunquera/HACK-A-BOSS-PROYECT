@@ -1,0 +1,84 @@
+.update-venue-event-wrapper {
+  background-color: rgb(238, 236, 236) !important;
+  padding-bottom: 2rem  !important;
+  margin-top: 60px  !important;
+  height: 80.9vh  !important;
+  /* position: fixed  !important; */
+}
+
+.update-venue-event-wrapper-p {
+  text-align: center !important;
+  padding: 25px;
+  font-size: 20px;
+}
+
+.update-venue-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin: 0 2rem;
+  height: 53vh;
+  border-radius: 10px;
+    /* position: fixed  !important; */
+
+}
+
+.update-venue-event-form-input {
+  width: 80%;
+  margin-left: 20px;
+  background-color: rgb(238, 236, 236);
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.update-venue-event-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.update-venue-event-button button {
+  width: 80%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(191, 27, 40);
+}
+
+.margin-input {
+  margin-top: 2rem;
+}
+.update-venue-event p {
+  margin-left: 47px;
+}
+
+.update-venue-event p {
+  padding-top: 20px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+.update-venue-event-wrapper-p {
+  text-align: center !important;
+  padding: 25px;
+  font-size: 20px;
+}
+
+.update-venue-event p{
+   margin-left: 36px;
+}
+
+.delete-venue {
+  background-color: rgb(238, 236, 236);
+  display: flex;
+  justify-content: center;
+  padding-top:2.5rem !important
+}
+
+#root > div > div > div > div.update-venue-event-wrapper > div.delete-venue > div > button{ color: black;
+  border: solid black;}

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../App";
+import "./UpdatePassword.css";
 
 function UpdatePassword() {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -38,41 +39,48 @@ function UpdatePassword() {
     }
   }
   return (
-    <div className="login-wrapper">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Contraseña actual</p>
-          <input
-            type="password"
-            name="currentPassword"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Nueva contraseña</p>
-          <input
-            type="password"
-            name="currentPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Confirmar contraseña</p>
-          <input
-            type="password"
-            name="currentPassword"
-            value={repeatNewPassword}
-            onChange={(e) => setRepeatNewPassword(e.target.value)}
-          />
-        </label>
+    <div className="update-password-wrapper">
+      <p className="update-password-wrapper-p">CAMBIAR CONTRASEÑA</p>
 
-        <div>
+      <div className="update-password">
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input
+              className="update-password-input"
+              type="password"
+              name="currentPassword"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              placeholder="Contraseña actual"
+            />
+          </label>
+          <label>
+            <input
+              className="update-password-input"
+              type="password"
+              name="currentPassword"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="Nueva contraseña"
+            />
+          </label>
+          <label>
+            <input
+              className="update-password-input"
+              type="password"
+              name="currentPassword"
+              value={repeatNewPassword}
+              onChange={(e) => setRepeatNewPassword(e.target.value)}
+              placeholder="Confirmar contraseña"
+            />
+          </label>
+
+          <div className="update-password-button">
+            <button type="submit">Cambiar contraseña</button>
+          </div>
           {errorMsg && <div>{errorMsg}</div>}
-          <button type="submit">Cambiar contraseña</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

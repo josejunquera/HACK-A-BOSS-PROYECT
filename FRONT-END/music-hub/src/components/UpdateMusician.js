@@ -6,6 +6,7 @@ import ProfileDeleteAlert from "./ProfileDeleteAlert";
 import ProfileMedia from "./ProfileMedia";
 import { UploadCoverImage } from "./UploadCoverImage";
 import { UploadMedia } from "./UploadMedia";
+import "./UpdateMusician.css";
 
 function UpdateMusician() {
   const [musicianName, setMusicianName] = useState("");
@@ -82,138 +83,153 @@ function UpdateMusician() {
   }
 
   const jsxToReturn = musicianInfo ? (
-    <div className="create-musician">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Solista</p>
-          <input
-            type="text"
-            name="musicianName"
-            value={musicianName}
-            onChange={(e) => setMusicianName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Especialidad</p>
-          <input
-            type="text"
-            name="speciality"
-            value={speciality}
-            onChange={(e) => setSpeciality(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>localizacion</p>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Movilidad</p>
-          <select
-            id="movility"
-            name="movility"
-            onChange={(e) => setMovility(e.target.value)}
-          >
-            <option value={musicianInfo.movilidad}>
-              Actual: {musicianInfo.movilidad}
-            </option>
+    <div className="update-musician-wrapper">
+      <p className="update-musician-wrapper-p">EDITAR PERFIL DE MÚSICO</p>
 
-            <option value="local">Local</option>
-            <option value="provincial">Provincial</option>
-            <option value="nacional">Nacional</option>
-            <option value="internacional">Internacional</option>
-          </select>
-        </label>
-        <label>
-          <p>Busco Banda</p>
-          <select
-            id="lookingForBand"
-            name="lookingForBand"
-            onChange={(e) => setLookingForBand(e.target.value)}
-          >
-            <option value={musicianInfo.busco_banda}>
-              Actual: {musicianInfo.busco_banda}
-            </option>
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-        <label>
-          <p>Busco Actuación</p>
-          <select
-            id="lookingForGig"
-            name="lookingForGig"
-            onChange={(e) => setLookingForGig(e.target.value)}
-          >
-            <option value={musicianInfo.busco_actuacion}>
-              Actual:{musicianInfo.busco_actuacion}
-            </option>
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-
-        <div>
+      <div className="update-musician">
+        <form onSubmit={handleSubmit}>
           <label>
-            <p>Descripción</p>
-            <textarea
-              placeholder="Introduce tu descripción de músico aquí"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+            <p>Nombre Solista</p>
+            <input
+              type="text"
+              name="musicianName"
+              value={musicianName}
+              onChange={(e) => setMusicianName(e.target.value)}
+              className="update-musician-form-input"
             />
           </label>
-          {errorMsg && <div>{errorMsg}</div>}
-        </div>
-        <div>
-          <button type="submit">Guardar Cambios</button>
-          <p>{response.message}</p>
-        </div>
-      </form>
-      <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
-      <h1>--------------------------------------------------</h1>
-      <Genres
-        url="http://localhost:3000/api/v1/musicians/addgenre/"
-        urlGetGenres="http://localhost:3000/api/v1/musicians/get-musician-genres"
-        urlDeleteGenres="http://localhost:3000/api/v1/musicians/"
-      />
-      <UploadCoverImage
-        url="http://localhost:3000/api/v1/musicians/upload-media"
-        profileMedia="musicianMedia"
-      />
-      <UploadMedia
-        url="http://localhost:3000/api/v1/musicians/upload-media"
-        profileMedia="musicianMedia"
-        refreshMultimedia={refreshMultimedia}
-      />
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
-        type="imagen"
-        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
-        multimediaRoute="/musicians-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
-        type="video"
-        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
-        multimediaRoute="/musicians-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
-        type="audio"
-        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
-        multimediaRoute="/musicians-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
+          <label>
+            <p>Especialidad</p>
+            <input
+              type="text"
+              name="speciality"
+              value={speciality}
+              onChange={(e) => setSpeciality(e.target.value)}
+              className="update-musician-form-input"
+            />
+          </label>
+          <label>
+            <p>Localizacion</p>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="update-musician-form-input"
+            />
+          </label>
+          <label>
+            <p>Movilidad</p>
+            <select
+              id="movility"
+              name="movility"
+              onChange={(e) => setMovility(e.target.value)}
+              className="update-musician-form-input"
+            >
+              <option value={musicianInfo.movilidad}>
+                Actual: {musicianInfo.movilidad}
+              </option>
+
+              <option value="local">Local</option>
+              <option value="provincial">Provincial</option>
+              <option value="nacional">Nacional</option>
+              <option value="internacional">Internacional</option>
+            </select>
+          </label>
+          <label>
+            <p>Busco Banda</p>
+            <select
+              id="lookingForBand"
+              name="lookingForBand"
+              onChange={(e) => setLookingForBand(e.target.value)}
+              className="update-musician-form-input"
+            >
+              <option value={musicianInfo.busco_banda}>
+                Actual: {musicianInfo.busco_banda}
+              </option>
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+          <label>
+            <p>Busco Actuación</p>
+            <select
+              id="lookingForGig"
+              name="lookingForGig"
+              onChange={(e) => setLookingForGig(e.target.value)}
+              className="update-musician-form-input"
+            >
+              <option value={musicianInfo.busco_actuacion}>
+                Actual: {musicianInfo.busco_actuacion}
+              </option>
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <div>
+            <label>
+              <p>Descripción</p>
+              <textarea
+                placeholder="Introduce tu descripción de músico aquí"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="update-musician-form-input"
+              />
+            </label>
+            {errorMsg && <div>{errorMsg}</div>}
+          </div>
+          <div>
+            <div className="update-musician-button">
+              <button type="submit">Guardar Cambios</button>
+            </div>
+            <p>{response.message}</p>
+          </div>
+        </form>
+      </div>
+    
+        <Genres
+          url="http://localhost:3000/api/v1/musicians/addgenre/"
+          urlGetGenres="http://localhost:3000/api/v1/musicians/get-musician-genres"
+          urlDeleteGenres="http://localhost:3000/api/v1/musicians/"
+        />
+
+        <UploadCoverImage
+          url="http://localhost:3000/api/v1/musicians/upload-media"
+          profileMedia="musicianMedia"
+        />
+        <UploadMedia
+          url="http://localhost:3000/api/v1/musicians/upload-media"
+          profileMedia="musicianMedia"
+          refreshMultimedia={refreshMultimedia}
+        />
+        <ProfileMedia
+          url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+          type="imagen"
+          deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+          multimediaRoute="/musicians-media/user"
+          mediaReloader={mediaReloader}
+          refreshMultimedia={refreshMultimedia}
+        />
+        <ProfileMedia
+          url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+          type="video"
+          deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+          multimediaRoute="/musicians-media/user"
+          mediaReloader={mediaReloader}
+          refreshMultimedia={refreshMultimedia}
+        />
+        <ProfileMedia
+          url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+          type="audio"
+          deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+          multimediaRoute="/musicians-media/user"
+          mediaReloader={mediaReloader}
+          refreshMultimedia={refreshMultimedia}
+        />
+                <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
+
     </div>
   ) : (
     <CreateMusicians />

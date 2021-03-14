@@ -1,30 +1,29 @@
-
-.create-musician-wrapper {
+.update-musician-wrapper {
   background-color: rgb(238, 236, 236);
   padding-bottom: 2rem;
   margin-top: 60px;
 
 }
 
-.create-musician-wrapper-p {
+.update-musician-wrapper-p {
   text-align: center !important;
   padding: 25px;
   font-size: 20px;
 }
 
-.create-musician {
+.update-musician {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
   margin: 0 2rem;
-  height: 94vh;
+  height: 104vh;
   border-radius: 10px;
 }
 
-.create-musician-form-input {
-  width: 80%;
-  margin-left: 32px;
+.update-musician-form-input {
+  width: 232px;
+  /* margin-left: 23px; */
   background-color: rgb(238, 236, 236);
   border: none;
   padding: 0.8rem 1rem;
@@ -35,14 +34,14 @@
 .margin-input{
 margin-top:2rem}
 
-.create-musician-button {
+.update-musician-button {
   display: flex;
   justify-content: center;
   margin-top: 15px;
 }
 
-.create-musician-button button {
-  width: 80%;
+.update-musician-button button {
+  width: 232px;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
@@ -51,17 +50,17 @@ margin-top:2rem}
   background-color: rgb(191, 27, 40);
 }
 
-.create-musician p {
-  margin-left: 47px;
+.update-musician p {
+  margin-left: 16px;
 }
 
-.create-musician p {
+.update-musician p {
   padding-top: 20px;
   margin-top: 3px;
   margin-bottom: 10px;
 }
 
-.create-musician-wrapper-p {
+.update-musician-wrapper-p {
   text-align: center !important;
   padding: 25px;
   font-size: 20px;

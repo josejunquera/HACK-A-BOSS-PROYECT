@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../App";
+import "./Genres.css";
 
 function Genres(props) {
   const [genres, setGenres] = useState([]);
@@ -65,18 +66,22 @@ function Genres(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <select onChange={(e) => setGenreToAdd(e.target.value)}>
-          {genres.map((genre) => (
-            <option key={genre.id_genero} value={genre.genero}>
-              {genre.genero}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Añadir género</button>
-      </form>
+    <div className="genres">
 
+      <div className="add-genres">
+        <form onSubmit={handleSubmit}>
+          <select onChange={(e) => setGenreToAdd(e.target.value)}>
+            {genres.map((genre) => (
+              <option key={genre.id_genero} value={genre.genero}>
+                {genre.genero}
+              </option>
+            ))}
+          </select>
+          <button type="submit">Añadir género</button>
+        </form>
+      </div>
+
+      <div className="show-genres">
       {genresOfArtist.map((genre) => {
         return (
           <>
@@ -102,11 +107,11 @@ function Genres(props) {
                 refreshGenres();
               }}
             >
-              Borrar género
-            </button>
+X            </button>
           </>
         );
       })}
+      </div>
     </div>
   );
 }
