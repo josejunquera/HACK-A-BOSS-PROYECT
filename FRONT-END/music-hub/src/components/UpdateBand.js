@@ -7,6 +7,7 @@ import ProfileDeleteAlert from "./ProfileDeleteAlert";
 import { UploadMedia } from "./UploadMedia";
 import Genres from "./Genres";
 import { UploadCoverImage } from "./UploadCoverImage";
+import "./UpdateBand.css"
 
 function UpdateBand() {
   const [bandName, setBandName] = useState("");
@@ -83,142 +84,155 @@ function UpdateBand() {
   }
 
   const jsxToReturn = bandInfo ? (
-    <div className="create-band">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Nombre Banda</p>
-          <input
-            type="text"
-            name="bandName"
-            value={bandName}
-            onChange={(e) => setBandName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>localizacion</p>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Movilidad</p>
-          <select
-            id="movility"
-            name="movility"
-            onChange={(e) => setMovility(e.target.value)}
-          >
-            <option value={bandInfo.movilidad}>
-              Actual: {bandInfo.movilidad}
-            </option>
-            <option value="local">Local</option>
-            <option value="provincial">Provincial</option>
-            <option value="nacional">Nacional</option>
-            <option value="internacional">Internacional</option>
-          </select>
-        </label>
-        <label>
-          <p>Busco Músico</p>
-          <select
-            id="lookingForMusician"
-            name="lookingForMusician"
-            onChange={(e) => setLookingForMusician(e.target.value)}
-          >
-            <option value={bandInfo.busco_solista}>
-              Actual: {bandInfo.busco_solista}
-            </option>
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-        <label>
-          <p>Busco Actuación</p>
-          <select
-            id="lookingForGig"
-            name="lookingForGig"
-            onChange={(e) => setLookingForGig(e.target.value)}
-          >
-            <option value={bandInfo.busco_actuacion}>
-              Actual: {bandInfo.busco_actuacion}
-            </option>
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-        </label>
+    <div className="update-band-wrapper">
+      <p className="update-band-wrapper-p">EDITAR PERFIL DE BANDA</p>
 
-        <div>
+      <div className="update-band">
+        <form onSubmit={handleSubmit}>
           <label>
-            <p>Descripción</p>
-            <textarea
-              placeholder="Introduce tu descripción de músico aquí"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+            <p>Nombre Banda</p>
+            <input
+              type="text"
+              name="bandName"
+              value={bandName}
+              onChange={(e) => setBandName(e.target.value)}
+              className="update-band-form-input"
             />
           </label>
-          {errorMsg && <div>{errorMsg}</div>}
+          <label>
+            <p>localizacion</p>
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="update-band-form-input"
+            />
+          </label>
+          <label>
+            <p>Movilidad</p>
+            <select
+              id="movility"
+              name="movility"
+              onChange={(e) => setMovility(e.target.value)}
+              className="update-band-form-input"
+            >
+              <option value={bandInfo.movilidad}>
+                Actual: {bandInfo.movilidad}
+              </option>
+              <option value="local">Local</option>
+              <option value="provincial">Provincial</option>
+              <option value="nacional">Nacional</option>
+              <option value="internacional">Internacional</option>
+            </select>
+          </label>
+          <label>
+            <p>Busco Músico</p>
+            <select
+              id="lookingForMusician"
+              name="lookingForMusician"
+              onChange={(e) => setLookingForMusician(e.target.value)}
+              className="update-band-form-input"
+            >
+              <option value={bandInfo.busco_solista}>
+                Actual: {bandInfo.busco_solista}
+              </option>
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+          <label>
+            <p>Busco Actuación</p>
+            <select
+              id="lookingForGig"
+              name="lookingForGig"
+              onChange={(e) => setLookingForGig(e.target.value)}
+              className="update-band-form-input"
+            >
+              <option value={bandInfo.busco_actuacion}>
+                Actual: {bandInfo.busco_actuacion}
+              </option>
+              <option value="si">Si</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <div>
+            <label>
+              <p>Descripción</p>
+              <textarea
+                placeholder="Introduce tu descripción de músico aquí"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="update-band-form-input"
+              />
+            </label>
+            {errorMsg && <div>{errorMsg}</div>}
+          </div>
+          <div>
+
+          <div className="update-band-button">
+            <button type="submit">Guardar cambios</button>
         </div>
-        <div>
-          <button type="submit">Guardar cambios</button>
         </div>
-      </form>
-            <p className="update-musician-wrapper-p">EDITAR GÉNEROS</p>
 
-      <Genres
-        url="http://localhost:3000/api/v1/bands/addgenre/"
-        urlGetGenres="http://localhost:3000/api/v1/bands/get-band-genres"
-        urlDeleteGenres="http://localhost:3000/api/v1/bands/"
-      />
-      <p className="update-musician-wrapper-p">AÑADIR MULTIMEDIA</p>
+          </form>
+      </div>
 
-      <UploadMedia
-        url="http://localhost:3000/api/v1/bands/upload-media/"
-        profileMedia="bandMedia"
-        refreshMultimedia={refreshMultimedia}
-      />
-            <p className="update-musician-wrapper-p">MIS VÍDEOS</p>
+        <p className="update-musician-wrapper-p">EDITAR GÉNEROS</p>
 
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/bands/get-media-by-type"
-        type="video"
-        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
-        multimediaRoute="/band-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
-            <p className="update-musician-wrapper-p">MIS AUDIOS</p>
+        <Genres
+          url="http://localhost:3000/api/v1/bands/addgenre/"
+          urlGetGenres="http://localhost:3000/api/v1/bands/get-band-genres"
+          urlDeleteGenres="http://localhost:3000/api/v1/bands/"
+        />
+        <p className="update-musician-wrapper-p">AÑADIR MULTIMEDIA</p>
 
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/bands/get-media-by-type"
-        type="audio"
-        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
-        multimediaRoute="/band-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
-            <p className="update-musician-wrapper-p">MIS IMAGENES</p>
+        <UploadMedia
+          url="http://localhost:3000/api/v1/bands/upload-media/"
+          profileMedia="bandMedia"
+          refreshMultimedia={refreshMultimedia}
+        />
+        <p className="update-musician-wrapper-p">MIS VÍDEOS</p>
 
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/bands/get-media-by-type"
-        type="imagen"
-        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
-        multimediaRoute="/band-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
-            <p className="update-musician-wrapper-p">CAMBIAR IMAGEN DE PORTADA</p>
+        <ProfileMedia
+          url="http://localhost:3000/api/v1/bands/get-media-by-type"
+          type="video"
+          deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+          multimediaRoute="/band-media/user"
+          mediaReloader={mediaReloader}
+          refreshMultimedia={refreshMultimedia}
+        />
+        <p className="update-musician-wrapper-p">MIS AUDIOS</p>
 
-      <UploadCoverImage
-        url="http://localhost:3000/api/v1/bands/upload-media/"
-        profileMedia="bandMedia"
-      />
-            <div className="delete-band">
+        <ProfileMedia
+          url="http://localhost:3000/api/v1/bands/get-media-by-type"
+          type="audio"
+          deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+          multimediaRoute="/band-media/user"
+          mediaReloader={mediaReloader}
+          refreshMultimedia={refreshMultimedia}
+        />
+        <p className="update-musician-wrapper-p">MIS IMAGENES</p>
 
-      <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
-             </div>
+        <ProfileMedia
+          url="http://localhost:3000/api/v1/bands/get-media-by-type"
+          type="imagen"
+          deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+          multimediaRoute="/band-media/user"
+          mediaReloader={mediaReloader}
+          refreshMultimedia={refreshMultimedia}
+        />
+        <p className="update-musician-wrapper-p">CAMBIAR IMAGEN DE PORTADA</p>
 
+        <UploadCoverImage
+          url="http://localhost:3000/api/v1/bands/upload-media/"
+          profileMedia="bandMedia"
+        />
+        <div className="delete-band">
+          <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
+        </div>
     </div>
   ) : (
     <CreateBand />
