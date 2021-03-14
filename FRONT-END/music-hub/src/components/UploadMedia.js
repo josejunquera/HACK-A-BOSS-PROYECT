@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../App";
+import "./UploadMedia.css";
 
 export const UploadMedia = (props) => {
   const [file, setFile] = useState();
@@ -34,22 +35,22 @@ export const UploadMedia = (props) => {
   };
 
   return (
-    <div className="App">
+    <div className="add-multimedia">
       <form onSubmit={uploadFile}>
-        <div>
-          <label>Nombre del archivo</label>
+        <div className="add-multimedia-form">
+          <p>Nombre del archivo</p>
           <input
             type="text"
             name="location"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="update-musician-form-input"
           />
         </div>
-        <div>
-          <label>Select file to upload</label>
+        <div className="select-multimedia-form">
           <input type="file" onChange={onFileChange} />
+          <button type="submit">Subir archivo</button>
         </div>
-        <button type="submit">Subir archivo</button>
       </form>
     </div>
   );

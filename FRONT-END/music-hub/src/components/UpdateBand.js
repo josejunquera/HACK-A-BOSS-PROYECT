@@ -164,30 +164,22 @@ function UpdateBand() {
           <button type="submit">Guardar cambios</button>
         </div>
       </form>
-      <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
+            <p className="update-musician-wrapper-p">EDITAR GÉNEROS</p>
+
       <Genres
         url="http://localhost:3000/api/v1/bands/addgenre/"
         urlGetGenres="http://localhost:3000/api/v1/bands/get-band-genres"
         urlDeleteGenres="http://localhost:3000/api/v1/bands/"
       />
-      <UploadCoverImage
-        url="http://localhost:3000/api/v1/bands/upload-media/"
-        profileMedia="bandMedia"
-      />
+      <p className="update-musician-wrapper-p">AÑADIR MULTIMEDIA</p>
 
       <UploadMedia
         url="http://localhost:3000/api/v1/bands/upload-media/"
         profileMedia="bandMedia"
         refreshMultimedia={refreshMultimedia}
       />
-      <ProfileMedia
-        url="http://localhost:3000/api/v1/bands/get-media-by-type"
-        type="imagen"
-        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
-        multimediaRoute="/band-media/user"
-        mediaReloader={mediaReloader}
-        refreshMultimedia={refreshMultimedia}
-      />
+            <p className="update-musician-wrapper-p">MIS VÍDEOS</p>
+
       <ProfileMedia
         url="http://localhost:3000/api/v1/bands/get-media-by-type"
         type="video"
@@ -196,6 +188,8 @@ function UpdateBand() {
         mediaReloader={mediaReloader}
         refreshMultimedia={refreshMultimedia}
       />
+            <p className="update-musician-wrapper-p">MIS AUDIOS</p>
+
       <ProfileMedia
         url="http://localhost:3000/api/v1/bands/get-media-by-type"
         type="audio"
@@ -204,6 +198,27 @@ function UpdateBand() {
         mediaReloader={mediaReloader}
         refreshMultimedia={refreshMultimedia}
       />
+            <p className="update-musician-wrapper-p">MIS IMAGENES</p>
+
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/bands/get-media-by-type"
+        type="imagen"
+        deleteUrl="http://localhost:3000/api/v1/bands/delete-media"
+        multimediaRoute="/band-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
+      />
+            <p className="update-musician-wrapper-p">CAMBIAR IMAGEN DE PORTADA</p>
+
+      <UploadCoverImage
+        url="http://localhost:3000/api/v1/bands/upload-media/"
+        profileMedia="bandMedia"
+      />
+            <div className="delete-band">
+
+      <ProfileDeleteAlert url="http://localhost:3000/api/v1/bands/" />
+             </div>
+
     </div>
   ) : (
     <CreateBand />

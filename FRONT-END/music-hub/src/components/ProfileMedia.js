@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { AuthContext } from "../App";
 import jwt_decode from "jwt-decode";
+import "./ProfileMedia.css"
 
 function ProfileMediaImage(props) {
   const [multimedia, setMultimedia] = useState([]);
@@ -45,18 +46,13 @@ function ProfileMediaImage(props) {
 
   if (type === "imagen") {
     return (
-      <>
+      <div className="multimedia-wrapper">
         {multimedia.map((media) => {
           return (
             <>
-              <ul key={media.id_multimedia} className="musicians-list">
-                <li className="list">
-                  <span className="repo-text">
-                    Id multimedia: {media.id_multimedia}{" "}
-                  </span>
-                </li>
-                <li className="list">
-                  <span className="repo-text">Tipo: {media.tipo} </span>
+              <ul key={media.id_multimedia} >
+                <li >
+                  <span >{media.titulo} </span>
                 </li>
                 <li className="list">
                   <img
@@ -67,9 +63,6 @@ function ProfileMediaImage(props) {
                     alt="avatar"
                   ></img>
                 </li>
-                <li className="list">
-                  <span className="repo-text">Titulo: {media.titulo} </span>
-                </li>
               </ul>
               <button
                 type="button"
@@ -84,30 +77,25 @@ function ProfileMediaImage(props) {
                   refreshMultimedia();
                 }}
               >
-                Borrar archivo
+                Borrar
               </button>
             </>
           );
         })}
-      </>
+      </div>
     );
   }
   if (type === "video") {
     return (
-      <>
+      <div className="multimedia-wrapper">
         {multimedia.map((media) => {
           return (
             <>
-              <ul key={media.id_multimedia} className="musicians-list">
-                <li className="list">
-                  <span className="repo-text">
-                    Id multimedia: {media.id_multimedia}{" "}
-                  </span>
+              <ul key={media.id_multimedia}>
+                <li >
+                  <span >{media.titulo} </span>
                 </li>
-                <li className="list">
-                  <span className="repo-text">Tipo: {media.tipo} </span>
-                </li>
-                <li className="list">
+                <li >
                   <video
                     controls
                     height="100px"
@@ -117,9 +105,6 @@ function ProfileMediaImage(props) {
                     alt="avatar"
                   ></video>
                 </li>
-                <li className="list">
-                  <span className="repo-text">Titulo: {media.titulo} </span>
-                </li>
               </ul>
               <button
                 type="button"
@@ -134,30 +119,25 @@ function ProfileMediaImage(props) {
                   refreshMultimedia();
                 }}
               >
-                Borrar archivo
+                Borrar
               </button>
             </>
           );
         })}
-      </>
+      </div>
     );
   }
   if (type === "audio") {
     return (
-      <>
+      <div className="multimedia-wrapper">
         {multimedia.map((media) => {
           return (
             <>
-              <ul key={media.id_multimedia} className="musicians-list">
-                <li className="list">
-                  <span className="repo-text">
-                    Id multimedia: {media.id_multimedia}{" "}
-                  </span>
+              <ul key={media.id_multimedia} >
+                <li >
+                  <span >{media.titulo} </span>
                 </li>
-                <li className="list">
-                  <span className="repo-text">Tipo: {media.tipo} </span>
-                </li>
-                <li className="list">
+                <li >
                   <audio
                     controls
                     src={`${multimediaRoute}${id_usuario}/${
@@ -166,9 +146,6 @@ function ProfileMediaImage(props) {
                     alt="avatar"
                   ></audio>
                 </li>
-                <li className="list">
-                  <span className="repo-text">Titulo: {media.titulo} </span>
-                </li>
               </ul>
               <button
                 type="button"
@@ -183,12 +160,12 @@ function ProfileMediaImage(props) {
                   refreshMultimedia();
                 }}
               >
-                Borrar archivo
+                Borrar
               </button>
             </>
           );
         })}
-      </>
+      </div>
     );
   }
 }

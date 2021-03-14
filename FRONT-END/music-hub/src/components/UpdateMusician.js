@@ -188,47 +188,66 @@ function UpdateMusician() {
           </div>
         </form>
       </div>
-    
-        <Genres
-          url="http://localhost:3000/api/v1/musicians/addgenre/"
-          urlGetGenres="http://localhost:3000/api/v1/musicians/get-musician-genres"
-          urlDeleteGenres="http://localhost:3000/api/v1/musicians/"
-        />
 
-        <UploadCoverImage
-          url="http://localhost:3000/api/v1/musicians/upload-media"
-          profileMedia="musicianMedia"
-        />
-        <UploadMedia
-          url="http://localhost:3000/api/v1/musicians/upload-media"
-          profileMedia="musicianMedia"
-          refreshMultimedia={refreshMultimedia}
-        />
-        <ProfileMedia
-          url="http://localhost:3000/api/v1/musicians/get-media-by-type"
-          type="imagen"
-          deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
-          multimediaRoute="/musicians-media/user"
-          mediaReloader={mediaReloader}
-          refreshMultimedia={refreshMultimedia}
-        />
-        <ProfileMedia
-          url="http://localhost:3000/api/v1/musicians/get-media-by-type"
-          type="video"
-          deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
-          multimediaRoute="/musicians-media/user"
-          mediaReloader={mediaReloader}
-          refreshMultimedia={refreshMultimedia}
-        />
-        <ProfileMedia
-          url="http://localhost:3000/api/v1/musicians/get-media-by-type"
-          type="audio"
-          deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
-          multimediaRoute="/musicians-media/user"
-          mediaReloader={mediaReloader}
-          refreshMultimedia={refreshMultimedia}
-        />
-                <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
+      <p className="update-musician-wrapper-p">EDITAR GÉNEROS</p>
+
+      <Genres
+        url="http://localhost:3000/api/v1/musicians/addgenre/"
+        urlGetGenres="http://localhost:3000/api/v1/musicians/get-musician-genres"
+        urlDeleteGenres="http://localhost:3000/api/v1/musicians/"
+      />
+
+      <p className="update-musician-wrapper-p">AÑADIR MULTIMEDIA</p>
+
+      <UploadMedia
+        url="http://localhost:3000/api/v1/musicians/upload-media"
+        profileMedia="musicianMedia"
+        refreshMultimedia={refreshMultimedia}
+      />
+
+      <p className="update-musician-wrapper-p">MIS VÍDEOS</p>
+
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+        type="video"
+        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+        multimediaRoute="/musicians-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
+      />
+
+      <p className="update-musician-wrapper-p">MIS AUDIOS</p>
+
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+        type="audio"
+        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+        multimediaRoute="/musicians-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
+      />
+
+      <p className="update-musician-wrapper-p">MIS IMAGENES</p>
+
+      <ProfileMedia
+        url="http://localhost:3000/api/v1/musicians/get-media-by-type"
+        type="imagen"
+        deleteUrl="http://localhost:3000/api/v1/musicians/delete-media"
+        multimediaRoute="/musicians-media/user"
+        mediaReloader={mediaReloader}
+        refreshMultimedia={refreshMultimedia}
+      />
+
+      <p className="update-musician-wrapper-p">CAMBIAR IMAGEN DE PORTADA</p>
+
+      <UploadCoverImage
+        url="http://localhost:3000/api/v1/musicians/upload-media"
+        profileMedia="musicianMedia"
+      />
+
+      <div className="delete-musician">
+      <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
+       </div>
 
     </div>
   ) : (

@@ -67,50 +67,55 @@ function Genres(props) {
 
   return (
     <div className="genres">
-
       <div className="add-genres">
         <form onSubmit={handleSubmit}>
-          <select onChange={(e) => setGenreToAdd(e.target.value)}>
+          <select
+            onChange={(e) => setGenreToAdd(e.target.value)}
+            className="genre-form-input"
+          >
             {genres.map((genre) => (
               <option key={genre.id_genero} value={genre.genero}>
                 {genre.genero}
               </option>
             ))}
           </select>
-          <button type="submit">Añadir género</button>
+          <button className="add-genres-button" type="submit">
+            Añadir género
+          </button>
         </form>
       </div>
 
       <div className="show-genres">
-      {genresOfArtist.map((genre) => {
-        return (
-          <>
-            <ul key={genre.nombre_genero} className="musicians-list">
-              <li className="list">
-                <span className="repo-text">{genre.nombre_genero}</span>
-              </li>
-            </ul>
-            <button
-              type="button"
-              onClick={async function deleteGenre() {
-                await fetch(urlDeleteGenres, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-type": "application/json",
+        {genresOfArtist.map((genre) => {
+          return (
+            <div className="genres-container">
+              <ul key={genre.nombre_genero} className="genres-list">
+                <li className="list">
+                  <span className="repo-text">{genre.nombre_genero}</span>
+                </li>
+              </ul>
+              <button
+                type="button"
+                onClick={async function deleteGenre() {
+                  await fetch(urlDeleteGenres, {
+                    method: "DELETE",
+                    headers: {
+                      "Content-type": "application/json",
 
-                    Authorization: `Bearer ${token}`,
-                  },
-                  body: JSON.stringify({
-                    genero: genre.nombre_genero,
-                  }),
-                });
-                refreshGenres();
-              }}
-            >
-X            </button>
-          </>
-        );
-      })}
+                      Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                      genero: genre.nombre_genero,
+                    }),
+                  });
+                  refreshGenres();
+                }}
+              >
+                <img src="/assets/x-button.png" alt="logo-borrado" />
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

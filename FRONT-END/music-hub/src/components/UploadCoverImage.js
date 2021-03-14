@@ -34,11 +34,10 @@ export const UploadCoverImage = (props) => {
   return (
     <div className="App">
       <form onSubmit={uploadFile}>
-        <div>
-          <label>Cover Image</label>
+        <div className="select-multimedia-form">
           <input type="file" onChange={onFileChange} />
-        </div>
         <button type="submit">Subir archivo</button>
+        </div>
       </form>
     </div>
   );
