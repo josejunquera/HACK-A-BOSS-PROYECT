@@ -6,7 +6,9 @@
 
 .button {
   position: relative;
-  background-color: rgb(17, 12, 12);
+  /* background-color: rgb(17, 12, 12); */
+  background-color: rgb(191, 27, 40);
+
   border: none;
   font-size: 1.2rem;
   color: #ffffff;

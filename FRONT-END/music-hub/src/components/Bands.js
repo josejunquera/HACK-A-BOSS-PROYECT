@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
+import "./Musicians.css";
 
 function Bands() {
   const [band, setBand] = useState([]);
@@ -32,183 +33,216 @@ function Bands() {
   return (
     <>
       <NavBar />
+      <div className="buscador-wrapper">
+        <form className="buscador-form">
+          <div>
+            <img
+              className="search-input-icon"
+              src="/assets/search.png"
+              style={{
+                position: "absolute",
+                right: 20,
+                top: 107,
+                width: 18,
+                height: 18,
+              }}
+              alt="search-icon"
+            />
+            <input
+              type="text"
+              name="location"
+              value={search}
+              onChange={onChange}
+              placeholder="Término de búsqueda..."
+              className="search-input-browser"
+            />
+          </div>
 
-      <form>
-        <div>
-          <label>Busqueda</label>
-          <input
-            type="text"
-            name="location"
-            value={search}
-            onChange={onChange}
-          />
-        </div>
-        <label>
-          <p>Movilidad</p>
-          <select
-            id="movility"
-            name="movility"
-            onChange={(e) => setMovility(e.target.value)}
-          >
-            <option value="local">Local</option>
-            <option value="provincial">Provincial</option>
-            <option value="nacional">Nacional</option>
-            <option value="internacional">Internacional</option>
-          </select>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              return setMovility("");
-            }}
-          >
-            X
-          </button>
-        </label>
+          <div className="secondary-browser-container">
+            <div className="secondary-browser-container-1">
+              <label>
+                <input
+                  type="text"
+                  name="location"
+                  value={localizacion}
+                  onChange={(e) => setLocalizacion(e.target.value)}
+                  className="search-inputs"
+                  placeholder="Localización"
+                />
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return setLocalizacion("");
+                  }}
+                >
+                  <img src="/assets/x-button.png" alt="logo-borrado" />
+                </button>
+              </label>
+              <label>
+                {/* <p>Movilidad</p> */}
+                <select
+                  id="movility"
+                  name="movility"
+                  onChange={(e) => setMovility(e.target.value)}
+                  className="search-inputs"
+                >
+                  <option id="color-input" disabled selected>
+                    Movilidad
+                  </option>
+                  <option value="local">Local</option>
+                  <option value="provincial">Provincial</option>
+                  <option value="nacional">Nacional</option>
+                  <option value="internacional">Internacional</option>
+                </select>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return setMovility("");
+                  }}
+                >
+                  <img src="/assets/x-button.png" alt="logo-borrado" />
+                </button>
+              </label>
+            </div>
+            <div className="secondary-browser-container-2">
+              <label>
+                <select
+                  id="busco-musico"
+                  name="busco-musico"
+                  onChange={(e) => setLookingForMusician(e.target.value)}
+                  className="search-inputs"
+                >
+                  <option id="color-input" disabled selected>
+                    Busca Músico
+                  </option>
+                  <option value="si">Si</option>
+                  <option value="no">No</option>
+                </select>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return setLookingForMusician("");
+                  }}
+                >
+                  <img src="/assets/x-button.png" alt="logo-borrado" />
+                </button>
+              </label>
 
-        <label>
-          <p>Localizacion</p>
-          <input
-            type="text"
-            name="location"
-            value={localizacion}
-            onChange={(e) => setLocalizacion(e.target.value)}
-          />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              return setLocalizacion("");
-            }}
-          >
-            X
-          </button>
-        </label>
-        <label>
-          <p>Busca Músico</p>
-          <select
-            id="busco-musico"
-            name="busco-musico"
-            onChange={(e) => setLookingForMusician(e.target.value)}
-          >
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              return setLookingForMusician("");
-            }}
-          >
-            X
-          </button>
-        </label>
-        <label>
-          <p>Busca Actuacion</p>
-          <select
-            id="busco-actuacion"
-            name="busco-actuacion"
-            onChange={(e) => setLookingForGig(e.target.value)}
-          >
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              return setLookingForGig("");
-            }}
-          >
-            X
-          </button>
-        </label>
-        <label>
-          <p>Genero</p>
-          <select
-            id="genero"
-            name="genero"
-            onChange={(e) => setGenre(e.target.value)}
-          >
-            <option value="Rock">Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Trash">Trash</option>
-            <option value="Metal">Metal</option>
-          </select>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              return setGenre("");
-            }}
-          >
-            X
-          </button>
-        </label>
-      </form>
-
-      {band
-        .filter((val) => {
-          if (search === "") {
-            return true;
-          } else if (
-            val.nombre_banda.toLowerCase().includes(search.toLowerCase()) ||
-            val.localizacion.toLowerCase().includes(search.toLowerCase()) ||
-            val.movilidad.toLowerCase().includes(search.toLowerCase()) ||
-            val.generos.join().toLowerCase().includes(search.toLowerCase())
-          ) {
-            return true;
-          }
-          return false;
-        })
-        .filter((val) => {
-          if (genre === "") {
-            return true;
-          } else if (
-            val.generos.join().toLowerCase().includes(genre.toLowerCase())
-          ) {
-            return true;
-          }
-          return false;
-        })
-        .filter((val) => {
-          if (movility === "") {
-            return true;
-          } else if (val.movilidad.toLowerCase() == movility.toLowerCase()) {
-            return true;
-          }
-          return false;
-        })
-        .filter((val) => {
-          if (localizacion === "") {
-            return true;
-          } else if (
-            val.localizacion.toLowerCase().includes(localizacion.toLowerCase())
-          ) {
-            return true;
-          }
-          return false;
-        })
-        .filter((val) => {
-          if (lookingForMusician === "") {
-            return true;
-          } else if (
-            val.busco_solista.toLowerCase() == lookingForMusician.toLowerCase()
-          ) {
-            return true;
-          }
-          return false;
-        })
-        .filter((val) => {
-          if (lookingForGig === "") {
-            return true;
-          } else if (
-            val.busco_actuacion.toLowerCase() == lookingForGig.toLowerCase()
-          ) {
-            return true;
-          }
-          return false;
-        })
-        .map((bandn) => (
-          <BandaIndividual key={bandn.id_usuario} bandn={bandn} />
-        ))}
+              <label>
+                <select
+                  id="busco-actuacion"
+                  name="busco-actuacion"
+                  onChange={(e) => setLookingForGig(e.target.value)}
+                  className="search-inputs"
+                >
+                  <option value="si">Si</option>
+                  <option value="no">No</option>
+                </select>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return setLookingForGig("");
+                  }}
+                >
+                  <img src="/assets/x-button.png" alt="logo-borrado" />
+                </button>
+              </label>
+              <label>
+                <select
+                  id="genero"
+                  name="genero"
+                  onChange={(e) => setGenre(e.target.value)}
+                  className="search-inputs"
+                >
+                  <option value="Rock">Rock</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Jazz">Jazz</option>
+                  <option value="Trash">Trash</option>
+                  <option value="Metal">Metal</option>
+                </select>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return setGenre("");
+                  }}
+                >
+                  <img src="/assets/x-button.png" alt="logo-borrado" />
+                </button>
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div className="musicians-browser-wrapper">
+        {band
+          .filter((val) => {
+            if (search === "") {
+              return true;
+            } else if (
+              val.nombre_banda.toLowerCase().includes(search.toLowerCase()) ||
+              val.localizacion.toLowerCase().includes(search.toLowerCase()) ||
+              val.movilidad.toLowerCase().includes(search.toLowerCase()) ||
+              val.generos.join().toLowerCase().includes(search.toLowerCase())
+            ) {
+              return true;
+            }
+            return false;
+          })
+          .filter((val) => {
+            if (genre === "") {
+              return true;
+            } else if (
+              val.generos.join().toLowerCase().includes(genre.toLowerCase())
+            ) {
+              return true;
+            }
+            return false;
+          })
+          .filter((val) => {
+            if (movility === "") {
+              return true;
+            } else if (val.movilidad.toLowerCase() == movility.toLowerCase()) {
+              return true;
+            }
+            return false;
+          })
+          .filter((val) => {
+            if (localizacion === "") {
+              return true;
+            } else if (
+              val.localizacion
+                .toLowerCase()
+                .includes(localizacion.toLowerCase())
+            ) {
+              return true;
+            }
+            return false;
+          })
+          .filter((val) => {
+            if (lookingForMusician === "") {
+              return true;
+            } else if (
+              val.busco_solista.toLowerCase() ==
+              lookingForMusician.toLowerCase()
+            ) {
+              return true;
+            }
+            return false;
+          })
+          .filter((val) => {
+            if (lookingForGig === "") {
+              return true;
+            } else if (
+              val.busco_actuacion.toLowerCase() == lookingForGig.toLowerCase()
+            ) {
+              return true;
+            }
+            return false;
+          })
+          .map((bandn) => (
+            <BandaIndividual key={bandn.id_usuario} bandn={bandn} />
+          ))}
+      </div>
     </>
   );
 }
@@ -238,22 +272,24 @@ const BandaIndividual = (props) => {
     : `url(http://localhost:3006/users-media/CoverImage.jpg)`;
 
   return (
-    <Link to={`/bands/${bandn.id_usuario}`}>
+    <Link className="link-musician" to={`/bands/${bandn.id_usuario}`}>
       <div
+        className="individual-band"
         style={{
           backgroundImage: urlToShow,
           backgroundRepeat: "no-repeat",
-          width: "250px",
+          width: "350px",
+          height: "200px",
         }}
       >
-        <ul className="bands-list">
+        <ul className="musicians-list">
           <li className="list">
             <span className="repo-text">{bandn.nombre_banda}</span>
           </li>
           <li className="list">
             <span className="repo-text">{bandn.localizacion}</span>
           </li>
-          <li className="list">
+          {/* <li className="list">
             <span className="repo-text">{bandn.movilidad} </span>
           </li>
           <li className="list">
@@ -265,7 +301,7 @@ const BandaIndividual = (props) => {
             <span className="repo-text">
               Busco actuación: {bandn.busco_actuacion}{" "}
             </span>
-          </li>
+          </li> */}
           <li className="list">
             {" "}
             <span className="repo-text">

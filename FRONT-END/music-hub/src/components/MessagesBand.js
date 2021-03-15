@@ -89,7 +89,7 @@ function MessagesBand() {
       </button>
     </div>
   ) : (
-    <p>No tienes solicitudes de contratacion como solista</p>
+    <p className="div-musician-messages-small" >No tienes solicitudes de contratacion como banda</p>
   );
 
   return (

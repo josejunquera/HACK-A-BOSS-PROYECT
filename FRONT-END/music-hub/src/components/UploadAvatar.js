@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../App";
-import "./UploadAvatar.css"
+import "./UploadAvatar.css";
 
 export const UploadAvatar = () => {
   const [file, setFile] = useState();
@@ -32,9 +32,14 @@ export const UploadAvatar = () => {
       <form className="upload-avatar-container" onSubmit={uploadFile}>
         <div className="upload-avatar-label">
           <label>Editar foto de avatar</label>
-          <input type="file" onChange={onFileChange} />
+          <div className="input-personalizado">
+            <label className="texto">Seleccionar archivo</label>
+            <input className="file" type="file" onChange={onFileChange} />
+          </div>
         </div>
-        <button type="submit">Cambiar imagen</button>
+        <button id="boton" type="submit">
+          Actualizar Avatar
+        </button>
       </form>
     </div>
   );

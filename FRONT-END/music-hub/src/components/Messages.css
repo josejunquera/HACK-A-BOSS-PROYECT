@@ -1,6 +1,8 @@
 .all-messages-container {
   margin-top: 70px;
   background-color: rgb(238, 236, 236);
+  height:100%;
+  /* position:fixed */
 }
 
 .all-messages-wrapper {

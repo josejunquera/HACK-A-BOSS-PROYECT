@@ -63,21 +63,21 @@ function MessagesVenueEvent() {
       </ul>
     </div>
   ) : (
-    <p>No tienes soliticudes de contratacion a bandas</p>
+    <p className="div-musician-messages-small">No tienes soliticudes de contratacion a bandas</p>
   );
 
   return (
     <div>
-      <p className="div-musician-messages-center">
+      <p id="solicitudes-contratacion">
         ESTADO DE LAS SOLICITUDES DE CONTRATACIÓN
       </p>
-      <p className="div-musician-messages-small">
-        Solicitudes de contratacion a solistas
+      <p className="div-musician-messages-center">
+        SOLICITUDES DE CONTRATACIÓN A SOLISTAS
       </p>
       {jsxToReturnMusicians}
 
-      <p className="div-musician-messages-small">
-        Solicitudes de contratacion a bandas
+      <p className="div-musician-messages-center">
+        SOLICITUDES DE CONTRATACIÓN A BANDAS
       </p>
       {jsxToReturnBands}
     </div>

@@ -1,0 +1,119 @@
+.buscador-form {
+  padding-top: 100px;
+  position: fixed;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding-bottom: 15px;
+}
+
+.musicians-browser-wrapper {
+  padding-top: 203px;
+}
+
+.secondary-browser-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary-browser-container img {
+  all: unset;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  top: 15px;
+}
+
+.secondary-browser-container button {
+  all: unset;
+}
+
+.secondary-browser-container-1 {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.secondary-browser-container-1 input {
+  width: 200px;
+}
+
+.secondary-browser-container-2 {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.search-input-browser {
+  width: 350px;
+  background-color: rgb(238, 236, 236);
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-inputs {
+  background-color: rgb(238, 236, 236);
+  border: none;
+  padding: 0.4rem 0.5rem;
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(128, 120, 120);
+  font-size: 10px;
+}
+
+.search-input-icon {
+  opacity: 40%;
+}
+#color-input {
+  color: black;
+}
+
+.individual-musician {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 1rem;
+  padding:20px 10px 65px 20px;
+  background-size: 100%;
+  background-position: center;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.individual-musician ul {
+  list-style: none;
+  text-decoration: none;
+ 
+}
+
+.individual-band {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 1rem;
+  padding:0px 10px 65px 20px;
+  background-size: 100%;
+  background-position: center;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.individual-band ul {
+  list-style: none;
+  text-decoration: none;
+ 
+}
+.link-musician {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.4px rgb(0, 0, 0); 
+  font-size:24px
+}

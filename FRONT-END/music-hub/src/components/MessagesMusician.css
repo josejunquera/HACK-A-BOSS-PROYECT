@@ -69,10 +69,15 @@
 
 .div-musician-messages-center {
   text-align: center;
-  font-size: 17px;
+  font-size: 15px ;
 }
 
 .div-musician-messages-small {
   text-align: center;
-  font-size: 17px;
+  font-size: 15px !important;
+}
+
+#solicitudes-contratacion{
+    text-align: center !important;
+  font-size: 17px !important;
 }
