@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../App";
+import "./UploadCoverImage.css";
 
 export const UploadCoverImage = (props) => {
   const [file, setFile] = useState();
@@ -33,11 +34,17 @@ export const UploadCoverImage = (props) => {
 
   return (
     <div className="App">
-      <form onSubmit={uploadFile}>
-        <div className="select-multimedia-form">
-          <input type="file" onChange={onFileChange} />
-        <button type="submit">Subir archivo</button>
+      <form className="upload-avatar-container" onSubmit={uploadFile}>
+        <div className="upload-avatar-label">
+          <label></label>
+          <div className="input-personalizado">
+            <label className="texto">Seleccionar archivo</label>
+            <input type="file" onChange={onFileChange} />
+          </div>
         </div>
+        <button id="boton" type="submit">
+          Subir archivo
+        </button>
       </form>
     </div>
   );

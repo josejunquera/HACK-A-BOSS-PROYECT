@@ -1,0 +1,88 @@
+.upload-avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.7rem 0;
+}
+
+.upload-avatar-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+#titulo-avatar {
+  padding-bottom: 1rem;
+}
+
+.upload-avatar-container button {
+  width: 80%;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(191, 27, 40);
+}
+
+#root
+  > div
+  > div
+  > div
+  > div.update-musician-wrapper
+  > div.upload-avatar
+  > div
+  > form
+  > div
+  > div
+  > input[type="file"] {
+  opacity: 0;
+  position: absolute;
+}
+
+#root
+  > div
+  > div
+  > div
+  > div.update-band-wrapper
+  > div.upload-avatar
+  > div
+  > form
+  > div
+  > div
+  > input[type="file"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.input-personalizado {
+  display: flex;
+  justify-content: center;
+  width: 216px;
+  height: 38px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(238, 236, 236);
+  position: relative;
+}
+
+#boton {
+  width: 216px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(191, 27, 40);
+}
+
+.texto {
+  color: black;
+  text-align: center;
+}

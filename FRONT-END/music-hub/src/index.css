@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47y2k6kz80uux3h1l72wuwikv8o39jrh81q9jj0qsl&rid=giphy.gif") 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}

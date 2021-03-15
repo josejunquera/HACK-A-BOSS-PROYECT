@@ -239,16 +239,16 @@ function UpdateMusician() {
       />
 
       <p className="update-musician-wrapper-p">CAMBIAR IMAGEN DE PORTADA</p>
-
-      <UploadCoverImage
-        url="http://localhost:3000/api/v1/musicians/upload-media"
-        profileMedia="musicianMedia"
-      />
+      <div className="upload-avatar">
+        <UploadCoverImage
+          url="http://localhost:3000/api/v1/musicians/upload-media"
+          profileMedia="musicianMedia"
+        />
+      </div>
 
       <div className="delete-musician">
-      <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
-       </div>
-
+        <ProfileDeleteAlert url="http://localhost:3000/api/v1/musicians/" />
+      </div>
     </div>
   ) : (
     <CreateMusicians />

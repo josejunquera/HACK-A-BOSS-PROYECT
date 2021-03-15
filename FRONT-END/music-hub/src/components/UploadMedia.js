@@ -36,7 +36,7 @@ export const UploadMedia = (props) => {
 
   return (
     <div className="add-multimedia">
-      <form onSubmit={uploadFile}>
+      <form className="upload-avatar-container" onSubmit={uploadFile}>
         <div className="add-multimedia-form">
           <p>Nombre del archivo</p>
           <input
@@ -47,10 +47,15 @@ export const UploadMedia = (props) => {
             className="update-musician-form-input"
           />
         </div>
-        <div className="select-multimedia-form">
-          <input type="file" onChange={onFileChange} />
-          <button type="submit">Subir archivo</button>
+        <div className="upload-avatar-label">
+          <div className="input-personalizado">
+            <label className="texto">Seleccionar archivo</label>
+            <input type="file" onChange={onFileChange} />
+          </div>
         </div>
+        <button id="boton" type="submit">
+          Subir archivo
+        </button>
       </form>
     </div>
   );

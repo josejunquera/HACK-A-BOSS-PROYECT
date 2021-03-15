@@ -31,7 +31,7 @@ export const UploadAvatar = () => {
     <div className="App">
       <form className="upload-avatar-container" onSubmit={uploadFile}>
         <div className="upload-avatar-label">
-          <label>Editar foto de avatar</label>
+          <label id="titulo-avatar">Editar foto de avatar</label>
           <div className="input-personalizado">
             <label className="texto">Seleccionar archivo</label>
             <input className="file" type="file" onChange={onFileChange} />
