@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../App";
+import "./MessagesMusician.css";
 
 function MessagesVenueEvent() {
   const [token, setToken] = useContext(AuthContext);
@@ -26,8 +27,6 @@ function MessagesVenueEvent() {
     };
     loadVenueEventContracts();
   }, [token]);
-  console.log(musicianContracts);
-  console.log(bandContracts);
 
   //   console.log(contracts);
   //   console.log(contracts.musicianContracts);
@@ -37,14 +36,11 @@ function MessagesVenueEvent() {
     <div>
       <ul>
         {musicianContracts.map((contract) => (
-          <div>
-            <li>
-              {contract.contrato}
-              {contract.fecha}
-              {contract.id_local_evento}
-              {contract.respuesta}
-              {contract.nombre_solista}
-            </li>
+          <div className="message">
+            <li>{contract.nombre_solista}</li>
+            <li>{contract.fecha.split("T").shift()}</li>
+            <li>{contract.respuesta}</li>
+            <li>{contract.contrato}</li>
           </div>
         ))}
       </ul>
@@ -57,14 +53,11 @@ function MessagesVenueEvent() {
     <div>
       <ul>
         {bandContracts.map((contract) => (
-          <div>
-            <li>
-              {contract.contrato}
-              {contract.fecha}
-              {contract.id_local_evento}
-              {contract.respuesta}
-              {contract.nombre_banda}
-            </li>
+          <div className="message">
+            <li>{contract.nombre_solista}</li>
+            <li>{contract.fecha.split("T").shift()}</li>
+            <li>{contract.respuesta}</li>
+            <li>{contract.contrato}</li>
           </div>
         ))}
       </ul>
@@ -75,11 +68,17 @@ function MessagesVenueEvent() {
 
   return (
     <div>
-      <h1>Estado de solicitudes de contratación</h1>
-      <h2>Solicitudes de contratacion a solistas</h2>
+      <p className="div-musician-messages-center">
+        ESTADO DE LAS SOLICITUDES DE CONTRATACIÓN
+      </p>
+      <p className="div-musician-messages-small">
+        Solicitudes de contratacion a solistas
+      </p>
       {jsxToReturnMusicians}
 
-      <h2>Solicitudes de contratacion a bandas</h2>
+      <p className="div-musician-messages-small">
+        Solicitudes de contratacion a bandas
+      </p>
       {jsxToReturnBands}
     </div>
   );

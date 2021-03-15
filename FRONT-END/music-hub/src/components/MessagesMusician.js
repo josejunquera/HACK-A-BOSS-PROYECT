@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../App";
-
+import "./MessagesMusician.css";
 function MessagesMusician() {
   const [token, setToken] = useContext(AuthContext);
   const [musicianContracts, setMusicianContracts] = useState([]);
@@ -52,41 +52,47 @@ function MessagesMusician() {
       refreshMessages();
     }
   };
+
   const jsxToReturn = musicianContracts[0] ? (
     <div>
       <ul>
         {musicianContracts.map((contract) => (
-          <div>
-            <li>
-              {contract.contrato}
-              {contract.fecha}
-              {contract.id_local_evento}
-              {contract.respuesta}
-              {contract.nombre_local_evento}
-            </li>
-            <button onClick={(e) => setSelectedContract(contract.id_contrato)}>
-              X
+          <div className="message">
+            <li>{contract.nombre_local_evento}</li>
+            <li>{contract.fecha.split("T").shift()}</li>
+            <li>{contract.contrato}</li>
+            <li>Estado: {contract.respuesta}</li>
+            <button
+              className="select-button"
+              onClick={(e) => setSelectedContract(contract.id_contrato)}
+            >
+              Seleccionar mensaje
             </button>
           </div>
         ))}
       </ul>
-      <form>
-        <textarea onChange={(e) => setMessage(e.target.value)}></textarea>
+      <form className="musician-reply-form">
+        <textarea
+          placeholder="Introduce tu mensaje aquí"
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
         <select onChange={(e) => setContractResponse(e.target.value)}>
           <option value="Pendiente">Pendiente</option>
           <option value="Aceptada">Aceptada</option>
           <option value="Rechazada">Rechazada</option>
         </select>
       </form>
-      <button onClick={replyContract}>Reply Contract</button>
+      <button className="musician-reply-button" onClick={replyContract}>
+        Responder solicitud
+      </button>
     </div>
   ) : (
     <p>No tienes solicitudes de contratacion como solista</p>
   );
 
   return (
-    <div>
-      <h1>Solicitudes de contratación de solista</h1>
+    <div className="div-musician-messages">
+      <p>SOLICITUDES DE CONTRATACIÓN COMO SOLISTA</p>
       {jsxToReturn}
     </div>
   );

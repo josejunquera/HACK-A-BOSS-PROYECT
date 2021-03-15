@@ -3,6 +3,7 @@ import { AuthContext } from "../App";
 import MessagesBand from "./MessagesBand";
 import MessagesMusician from "./MessagesMusician";
 import MessagesVenueEvent from "./MessagesVenueEvent";
+import "./Messages.css";
 
 function Messages() {
   const [token, setToken] = useContext(AuthContext);
@@ -73,17 +74,13 @@ function Messages() {
   const jsxToReturnMusician = musicianInfo.nombre_solista ? (
     <MessagesMusician />
   ) : (
-    <div></div>
+    <></>
   );
-  const jsxToReturnBand = bandInfo.nombre_banda ? (
-    <MessagesBand />
-  ) : (
-    <div></div>
-  );
+  const jsxToReturnBand = bandInfo.nombre_banda ? <MessagesBand /> : <></>;
   const jsxToReturnVenueEvent = venueEventInfo.nombre_local_evento ? (
     <MessagesVenueEvent />
   ) : (
-    <div></div>
+    <></>
   );
 
   const jsxToReturnNotProfiles =
@@ -92,15 +89,17 @@ function Messages() {
     !venueEventInfo.nombre_local_evento ? (
       <p>No tienes ningún perfil configurado</p>
     ) : (
-      <div></div>
+      <></>
     );
 
   return (
-    <div>
-      {jsxToReturnMusician}
-      {jsxToReturnBand}
-      {jsxToReturnVenueEvent}
-      {jsxToReturnNotProfiles}
+    <div className="all-messages-container">
+      <div className="all-messages-wrapper">
+        {jsxToReturnMusician}
+        {jsxToReturnBand}
+        {jsxToReturnVenueEvent}
+        {jsxToReturnNotProfiles}
+      </div>
     </div>
   );
 }

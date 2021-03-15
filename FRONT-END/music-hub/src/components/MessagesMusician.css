@@ -1,0 +1,78 @@
+.message {
+  border: solid 1px rgb(184, 177, 177);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 0;
+  background-color: rgb(238, 236, 236);
+}
+
+.select-button {
+  width: 100%;
+  padding: 0.1rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(184, 177, 177);
+}
+
+.select-button:focus {
+  width: 100%;
+  padding: 0.1rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(191, 27, 40);
+}
+.musician-reply-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.musician-reply-form > * {
+  margin: 0.3rem 0;
+  padding: 0.3rem;
+}
+
+.musician-reply-form > select {
+  background-color: rgb(238, 236, 236);
+  border: none;
+  /* padding: 0.8rem 1rem; */
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.musician-reply-form > textarea {
+  background-color: rgb(238, 236, 236);
+  border: none;
+  /* padding: 0.8rem 1rem; */
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.musician-reply-button {
+  width: 100%;
+  margin: 0.3rem 0;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(191, 27, 40);
+}
+
+.div-musician-messages > p {
+  text-align: center;
+  font-size: 17px;
+}
+
+.div-musician-messages-center {
+  text-align: center;
+  font-size: 17px;
+}
+
+.div-musician-messages-small {
+  text-align: center;
+  font-size: 17px;
+}

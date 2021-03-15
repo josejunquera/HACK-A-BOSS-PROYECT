@@ -172,8 +172,7 @@ async function updateMusicianByUserId(data) {
 
 async function findAllContractRequests(musicianId) {
   const pool = await database.getPool();
-  const query =
-    "SELECT es_contratado_solista.contrato, es_contratado_solista.id_contrato, es_contratado_solista.fecha, es_contratado_solista.id_local_evento, es_contratado_solista.respuesta FROM es_contratado_solista WHERE id_solista = ?";
+  const query = "SELECT * FROM es_contratado_solista WHERE id_solista = ?";
   const [contracts] = await pool.query(query, musicianId);
 
   return contracts;
