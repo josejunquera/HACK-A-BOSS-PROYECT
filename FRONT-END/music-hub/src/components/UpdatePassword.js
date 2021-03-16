@@ -30,14 +30,15 @@ function UpdatePassword() {
         body: JSON.stringify(newPasswordServer),
       }
     );
-    if (res.status === 201) {
+    if (res.status === 200 || res.status === 204) {
       const resMessage = await res.json();
-      setResponse(resMessage);
+      setResponse(resMessage.message);
     } else {
       const resMessage = await res.json();
       setErrorMsg(resMessage.error);
     }
   }
+  console.log(response);
   return (
     <div className="update-password-wrapper">
       <p className="update-password-wrapper-p">CAMBIAR CONTRASEÑA</p>
@@ -78,7 +79,14 @@ function UpdatePassword() {
           <div className="update-password-button">
             <button type="submit">Cambiar contraseña</button>
           </div>
-          {errorMsg && <div>{errorMsg}</div>}
+          <div className="response-message-ok">
+            {response && <div>{response}</div>}
+          </div>
+                    <div className="response-message-not-ok">
+
+            {errorMsg && <div>{errorMsg}</div>}
+                      </div>
+
         </form>
       </div>
     </div>

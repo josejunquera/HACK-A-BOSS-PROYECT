@@ -4,3 +4,18 @@
   box-sizing: border-box;
   font-family: "Oswald", sans-serif;
 }
+
+.response-message-ok{
+margin:3rem 0;  
+color:rgb(0, 0, 0);
+  text-align: center;
+  font-size: 14px;
+}
+
+
+.response-message-not-ok{
+margin:3rem 0;  
+color:rgb(255, 0, 0);
+  text-align: center;
+  font-size: 14px;
+}
