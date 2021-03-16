@@ -78,7 +78,7 @@ function UpdateMusician() {
       setResponse(resMessage);
     } else {
       const resMessage = await res.json();
-      setErrorMsg(resMessage.error);
+      setResponse(resMessage.error);
     }
   }
 
@@ -178,15 +178,14 @@ function UpdateMusician() {
                 className="update-musician-form-input"
               />
             </label>
-            {errorMsg && <div>{errorMsg}</div>}
           </div>
           <div>
             <div className="update-musician-button">
               <button type="submit">Guardar Cambios</button>
             </div>
-            <p>{response.message}</p>
           </div>
         </form>
+        <div className="response-message-musician">{response.message}</div>
       </div>
 
       <p className="update-musician-wrapper-p">EDITAR GÉNEROS</p>

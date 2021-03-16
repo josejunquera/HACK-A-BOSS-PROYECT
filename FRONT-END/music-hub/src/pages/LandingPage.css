@@ -1,23 +1,51 @@
 .cover {
   height: 60vh;
   padding: 5rem 2rem;
-  background-image: url("../cover_image/concert.jpeg");
+  background-image: url("../cover_image/concert.jpg");
   background-repeat: no-repeat;
   /* baackground-attachment: fixed; */
   background-position: center;
+  background-size: 160%;
   padding-top: 8rem;
 }
 
 .cover > * {
   padding: 10px 0;
 }
-.cover > p,
-h1 {
+.cover-title {
   font-size: 18px;
   /* width: 800px; */
   text-align: justify;
   text-justify: inter-word;
   line-height: 170%;
+  color: white;
+  /* coloar: rgba(255, 255, 255, 0); */
+}
+
+.cover-text {
+  font-size: 17px;
+  /* width: 260px; */
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 180%;
+  color: white;
+  /* coloar: rgba(255, 255, 255, 0); */
+  font-weight: bold;
+
+  -webkit-text-stroke: 0.4px rgb(0, 0, 0);
+}
+
+.cover-text-2 {
+  font-size: 16px;
+  /* width: 260px; */
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 180%;
+  color: white;
+  font-style: italic;
+  -webkit-text-stroke: 0.4px rgb(0, 0, 0);
+  font-weight: bold;
+
   /* coloar: rgba(255, 255, 255, 0); */
 }
 

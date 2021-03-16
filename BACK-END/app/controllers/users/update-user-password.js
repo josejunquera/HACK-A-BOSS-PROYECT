@@ -21,7 +21,7 @@ async function updatePassword(req, res) {
     const { currentPassword, newPassword, repeatNewPassword } = req.body;
     if (currentPassword === newPassword) {
       const error = new Error(
-        "La contraseña actual y la nueva contraseña no pueden coincidir"
+        "La contraseña actual y la nueva no pueden coincidir"
       );
       error.status = 403;
       throw error;
@@ -48,7 +48,7 @@ async function updatePassword(req, res) {
 
     await updateUserPasswordById({ contrasena: updatePassword, id_usuario });
 
-    res.send({ message: "Contraseña cambiada" });
+    res.send({ message: "Contraseña cambiada con éxito" });
   } catch (err) {
     createJsonError(err, res);
   }

@@ -13,13 +13,12 @@ function LandingPage() {
       <NavBar />
 
       <section className="cover">
-        <h1>DISCOVER ARTISTS</h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
-          non veniam quod alias, repellat itaque, fugiat illo nostrum cumque quo
-          consequuntur provident deserunt neque asperiores! Lorem ipsum dolor,
+        <h1 className="cover-title">ENCUENTRA TU LUGAR</h1>
+        <p className="cover-text">
+          “Después del silencio, lo que más se acerca a expresar lo inexpresable
+          es la música.”
         </p>
-
+        <p className="cover-text-2">Aldous Huxley</p>
         <CoverBrowser />
       </section>
 

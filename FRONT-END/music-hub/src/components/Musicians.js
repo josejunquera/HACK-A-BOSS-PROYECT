@@ -63,7 +63,7 @@ function Musicians() {
 
           <div className="secondary-browser-container">
             <div className="secondary-browser-container-1">
-              <label>
+              <label className="label-button-align">
                 <input
                   type="text"
                   name="location"
@@ -82,7 +82,7 @@ function Musicians() {
                   <img src="/assets/x-button.png" alt="logo-borrado" />
                 </button>
               </label>
-              <label>
+              <label className="label-button-align">
                 {/* <p>Movilidad</p> */}
                 <select
                   id="movility"
@@ -109,7 +109,7 @@ function Musicians() {
               </label>
             </div>
             <div className="secondary-browser-container-2">
-              <label>
+              <label className="label-button-align">
                 {/* <p>Busca Banda</p> */}
                 <select
                   id="busco-banda"
@@ -132,7 +132,7 @@ function Musicians() {
                   <img src="/assets/x-button.png" alt="logo-borrado" />
                 </button>
               </label>
-              <label>
+              <label className="label-button-align">
                 {/* <p>Busca Actuacion</p> */}
                 <select
                   id="busco-actuacion"
@@ -156,7 +156,7 @@ function Musicians() {
                   <img src="/assets/x-button.png" alt="logo-borrado" />
                 </button>
               </label>
-              <label>
+              <label className="label-button-align">
                 {/* <p>Genero</p> */}
                 <select
                   id="genero"

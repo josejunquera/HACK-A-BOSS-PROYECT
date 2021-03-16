@@ -35,7 +35,7 @@ function UpdatePassword() {
       setResponse(resMessage.message);
     } else {
       const resMessage = await res.json();
-      setErrorMsg(resMessage.error);
+      setResponse(resMessage.error);
     }
   }
   console.log(response);
@@ -79,15 +79,10 @@ function UpdatePassword() {
           <div className="update-password-button">
             <button type="submit">Cambiar contraseña</button>
           </div>
-          <div className="response-message-ok">
-            {response && <div>{response}</div>}
-          </div>
-                    <div className="response-message-not-ok">
-
-            {errorMsg && <div>{errorMsg}</div>}
-                      </div>
-
         </form>
+        <div className="response-message-musiciana">
+          {response && <div>{response}</div>}
+        </div>
       </div>
     </div>
   );

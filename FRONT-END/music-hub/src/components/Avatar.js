@@ -9,7 +9,8 @@ export function Avatar(props) {
   const [userInfo, setUserInfo] = useState("");
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
-  const { userInfoReloader,id } = props;
+
+  const { userInfoReloader, id } = props;
 
   useEffect(() => {
     const loadUserInfo = async () => {

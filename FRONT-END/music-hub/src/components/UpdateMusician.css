@@ -2,7 +2,6 @@
   background-color: rgb(238, 236, 236);
   padding-bottom: 2rem;
   margin-top: 60px;
-
 }
 
 .update-musician-wrapper-p {
@@ -22,17 +21,18 @@
 }
 
 .update-musician-form-input {
-  width: 232px;
+  width: 216px;
   /* margin-left: 23px; */
   background-color: rgb(238, 236, 236);
   border: none;
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 15px;
 }
 
-.margin-input{
-margin-top:2rem}
+.margin-input {
+  margin-top: 2rem;
+}
 
 .update-musician-button {
   display: flex;
@@ -41,7 +41,7 @@ margin-top:2rem}
 }
 
 .update-musician-button button {
-  width: 232px;
+  width: 216px;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
@@ -73,7 +73,14 @@ margin-top:2rem}
   padding-top: 2rem;
 }
 
-#root > div > div > div > div.update-musician-wrapper > div.delete-musician > div > button{
-    color: black;
+#root
+  > div
+  > div
+  > div
+  > div.update-musician-wrapper
+  > div.delete-musician
+  > div
+  > button {
+  color: black;
   border: solid black;
 }

@@ -20,7 +20,7 @@ function UpdateUser() {
   const decodedToken = jwt_decode(token);
   const { id_usuario } = decodedToken;
   const [formState, setFormState] = useState("");
-  const [respuestaOk, setRespuestaOk] = useState("");
+
   const [userInfoReloader, setUserInfoReloader] = useState(1);
   const refreshUserInfo = () => setUserInfoReloader(Math.random());
 
@@ -62,16 +62,14 @@ function UpdateUser() {
     });
     if (res.status === 200) {
       const resMessage = await res.json();
-      setResponse(resMessage);
-      setRespuestaOk("Usuario Actualizado");
+      setResponse("Usuario actualizado");
     } else {
       const resMessage = await res.json();
 
-      setErrorMsg(resMessage.error);
+      setResponse(resMessage.error);
     }
     refreshUserInfo();
   }
-  console.log(respuestaOk);
   return (
     <div className="updateuser-container">
       <div className="update-user-wrapper">
@@ -122,12 +120,12 @@ function UpdateUser() {
             </label>
 
             <div className="update-user-button">
-              {errorMsg && <div>{errorMsg}</div>}
-              {respuestaOk && <div>{respuestaOk}</div>}
-
               <button type="submit">Guardar cambios</button>
             </div>
           </form>
+          <div className="response-message-musician">
+            {response && <div>{response}</div>}
+          </div>
         </div>
       </div>
       <div className="upload-avatar-wrapper">

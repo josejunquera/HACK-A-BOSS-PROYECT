@@ -7,7 +7,7 @@ import ProfileDeleteAlert from "./ProfileDeleteAlert";
 import { UploadMedia } from "./UploadMedia";
 import Genres from "./Genres";
 import { UploadCoverImage } from "./UploadCoverImage";
-import "./UpdateBand.css"
+import "./UpdateBand.css";
 
 function UpdateBand() {
   const [bandName, setBandName] = useState("");
@@ -74,12 +74,12 @@ function UpdateBand() {
       },
       body: JSON.stringify(newBandServer),
     });
-    if (res.status === 201) {
+    if (res.status === 200) {
       const resMessage = await res.json();
-      setResponse(resMessage);
+      setResponse(resMessage.message);
     } else {
       const resMessage = await res.json();
-      setErrorMsg(resMessage.error);
+      setResponse(resMessage.error);
     }
   }
 
@@ -176,6 +176,7 @@ function UpdateBand() {
             </div>
           </div>
         </form>
+        <div className="response-message-musician">{response}</div>
       </div>
 
       <p className="update-musician-wrapper-p">EDITAR GÉNEROS</p>

@@ -21,11 +21,11 @@
 }
 
 .update-band-form-input {
-  width: 232px;
+  width: 216px;
   /* margin-left: 23px; */
   background-color: rgb(238, 236, 236);
   border: none;
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 15px;
 }

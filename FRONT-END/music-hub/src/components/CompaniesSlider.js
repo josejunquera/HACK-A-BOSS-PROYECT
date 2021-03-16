@@ -13,7 +13,47 @@ function CompaniesSlider() {
             <li className="highway-car">
               <span>
                 <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
+                  src="./empresas_colaboradoras/razzmatazz.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/logo_caracol.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/apolo.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/sala5.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/logo-13bats.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/tiket.png"
                   alt="razzmatazz"
                 />
               </span>
@@ -37,7 +77,31 @@ function CompaniesSlider() {
             <li className="highway-car">
               <span>
                 <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
+                  src="./empresas_colaboradoras/apolo.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/sala5.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/logo-13bats.png"
+                  alt="razzmatazz"
+                />
+              </span>
+            </li>
+            <li className="highway-car">
+              <span>
+                <img
+                  src="./empresas_colaboradoras/tiket.png"
                   alt="razzmatazz"
                 />
               </span>
@@ -61,7 +125,7 @@ function CompaniesSlider() {
             <li className="highway-car">
               <span>
                 <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
+                  src="./empresas_colaboradoras/apolo.png"
                   alt="razzmatazz"
                 />
               </span>
@@ -69,7 +133,7 @@ function CompaniesSlider() {
             <li className="highway-car">
               <span>
                 <img
-                  src="./empresas_colaboradoras/razzmatazz.png"
+                  src="./empresas_colaboradoras/sala5.png"
                   alt="razzmatazz"
                 />
               </span>
@@ -77,7 +141,7 @@ function CompaniesSlider() {
             <li className="highway-car">
               <span>
                 <img
-                  src="./empresas_colaboradoras/logo_caracol.png"
+                  src="./empresas_colaboradoras/logo-13bats.png"
                   alt="razzmatazz"
                 />
               </span>
@@ -85,120 +149,7 @@ function CompaniesSlider() {
             <li className="highway-car">
               <span>
                 <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/razzmatazz.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_caracol.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/razzmatazz.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_caracol.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/razzmatazz.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_caracol.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/razzmatazz.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_caracol.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_riviera.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/razzmatazz.png"
-                  alt="razzmatazz"
-                />
-              </span>
-            </li>
-            <li className="highway-car">
-              <span>
-                <img
-                  src="./empresas_colaboradoras/logo_caracol.png"
+                  src="./empresas_colaboradoras/tiket.png"
                   alt="razzmatazz"
                 />
               </span>

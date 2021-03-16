@@ -9,9 +9,9 @@ function ArtistSample() {
       </a>
       <div>
         <div>
-          <h2 screen="five">El arte de la maravillosa china meridional</h2>
-          <h3>Nikita Jrushchov</h3>
-          <p>Moscow, Russia</p>
+          <h2 screen="five">Nikolai Jrushchov</h2>
+          <h3>Guitarrista</h3>
+          <p>Barcelona, España</p>
         </div>
       </div>
       <a id="1" href="#1">
@@ -19,9 +19,9 @@ function ArtistSample() {
       </a>
       <div>
         <div>
-          <h2 screen="five">El arte de la maravillosa china meridional</h2>
-          <h3>Nikita Jrushchov</h3>
-          <p>Madrid, Spain</p>
+          <h2 screen="five">Ramón de Pitis </h2>
+          <h3>Bajista</h3>
+          <p>Badajoz, Spain</p>
         </div>
       </div>
       <a id="2" href="#2">
@@ -29,9 +29,9 @@ function ArtistSample() {
       </a>
       <div>
         <div>
-          <h2 screen="five">El arte de la maravillosa china meridional</h2>
-          <h3>Nikita Jrushchov</h3>
-          <p>Paris, France</p>
+          <h2 screen="five">Martina Ferreiro</h2>
+          <h3>Guitarrista</h3>
+          <p>A Coruña, España</p>
         </div>
       </div>
     </div>

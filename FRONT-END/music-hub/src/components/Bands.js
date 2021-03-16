@@ -61,7 +61,7 @@ function Bands() {
 
           <div className="secondary-browser-container">
             <div className="secondary-browser-container-1">
-              <label>
+              <label className="label-button-align">
                 <input
                   type="text"
                   name="location"
@@ -79,7 +79,7 @@ function Bands() {
                   <img src="/assets/x-button.png" alt="logo-borrado" />
                 </button>
               </label>
-              <label>
+              <label className="label-button-align">
                 {/* <p>Movilidad</p> */}
                 <select
                   id="movility"
@@ -106,7 +106,7 @@ function Bands() {
               </label>
             </div>
             <div className="secondary-browser-container-2">
-              <label>
+              <label className="label-button-align">
                 <select
                   id="busco-musico"
                   name="busco-musico"
@@ -129,7 +129,7 @@ function Bands() {
                 </button>
               </label>
 
-              <label>
+              <label className="label-button-align">
                 <select
                   id="busco-actuacion"
                   name="busco-actuacion"
@@ -151,7 +151,7 @@ function Bands() {
                   <img src="/assets/x-button.png" alt="logo-borrado" />
                 </button>
               </label>
-              <label>
+              <label className="label-button-align">
                 <select
                   id="genero"
                   name="genero"

@@ -9,7 +9,6 @@ function UpdateVenueEvent() {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [response, setResponse] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
   const [venueEventInfo, setVenueEventInfo] = useState("");
   const [token, setToken] = useContext(AuthContext);
   const [formState, setFormState] = useState("");
@@ -55,18 +54,20 @@ function UpdateVenueEvent() {
       },
       body: JSON.stringify(newVenueEventServer),
     });
-    if (res.status === 201) {
+    if (res.status === 200) {
       const resMessage = await res.json();
-      setResponse(resMessage);
+      setResponse("Perfil actualizado correctamente");
     } else {
       const resMessage = await res.json();
-      setErrorMsg(resMessage.error);
+      setResponse(resMessage.error);
     }
   }
 
   const jsxToReturn = venueEventInfo ? (
     <div className="update-venue-event-wrapper">
-      <p className="update-venue-event-wrapper-p">EDITAR PERFIL DE LOCAL/EVENTO</p>
+      <p className="update-venue-event-wrapper-p">
+        EDITAR PERFIL DE LOCAL/EVENTO
+      </p>
 
       <div className="update-venue-event">
         <form onSubmit={handleSubmit}>
@@ -101,20 +102,16 @@ function UpdateVenueEvent() {
                 className="update-venue-event-form-input"
               />
             </label>
-            {errorMsg && <div>{errorMsg}</div>}
           </div>
           <div className="update-venue-event-button">
-            <button  type="submit">
-              Guardar cambios
-            </button>
+            <button type="submit">Guardar cambios</button>
           </div>
         </form>
+        <div className="response-message-musician">{response}</div>
       </div>
-<div className="delete-venue">
-<ProfileDeleteAlert url="http://localhost:3000/api/v1/venues-events/" />
-</div>
-        
-
+      <div className="delete-venue">
+        <ProfileDeleteAlert url="http://localhost:3000/api/v1/venues-events/" />
+      </div>
     </div>
   ) : (
     <CreateVenueEvent />

@@ -7,6 +7,8 @@ export const UploadMedia = (props) => {
   const [filePicked, setFilePicked] = useState(false);
   const [token, setToken] = useContext(AuthContext);
   const [title, setTitle] = useState();
+  const [response, setResponse] = useState("");
+
   const { profileMedia, url, refreshMultimedia } = props;
 
   function uploadFile(event) {
@@ -25,6 +27,7 @@ export const UploadMedia = (props) => {
       .then((response) => response.json())
       .then((success) => {
         refreshMultimedia();
+        setResponse("Archivo subido correctamente");
       })
       .catch((error) => console.log(error));
   }
@@ -56,6 +59,7 @@ export const UploadMedia = (props) => {
         <button id="boton" type="submit">
           Subir archivo
         </button>
+        <div className="response-message-musician">{response}</div>
       </form>
     </div>
   );

@@ -1,9 +1,28 @@
 .sectionContent {
-  padding: 1rem 5rem;
+  padding: 0 3rem;
+  padding-bottom: 2rem;
 }
+
+.sectionContent h1 {
+  font-size: 16px;
+  padding: 0.2rem 0;
+  text-align: justify;
+  /* text-justify: inter-word; */
+}
+
+.sectionContent P {
+  font-size: 14px;
+  padding: 0.2rem 0;
+  text-align: justify;
+  /* text-justify: inter-word; */
+}
+
 .sectionContent div {
   padding: 1rem 0;
   text-align: justify;
   text-justify: inter-word;
-  line-height: 170%;
+  line-height: 150%;
+}
+.red-text {
+  color: rgb(191, 27, 40) !important;
 }

@@ -7,6 +7,7 @@ export const UploadCoverImage = (props) => {
   const [filePicked, setFilePicked] = useState(false);
   const [token, setToken] = useContext(AuthContext);
   const { profileMedia, url } = props;
+  const [response, setResponse] = useState("");
 
   function uploadFile(event) {
     event.preventDefault();
@@ -23,7 +24,9 @@ export const UploadCoverImage = (props) => {
     })
       .then((response) => response.json())
 
-      .then((success) => {})
+      .then((success) => {
+        setResponse("Imagen de portada actualizada");
+      })
       .catch((error) => console.log(error));
   }
 
@@ -45,6 +48,7 @@ export const UploadCoverImage = (props) => {
         <button id="boton" type="submit">
           Subir archivo
         </button>
+        <div className="response-message-musician">{response}</div>
       </form>
     </div>
   );
