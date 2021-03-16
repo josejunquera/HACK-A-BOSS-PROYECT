@@ -6,7 +6,6 @@ import ArtistSample from "../components/ArtistSample";
 import CoverBrowser from "../components/CoverBrowser";
 import CompaniesSlider from "../components/CompaniesSlider";
 import PageInfo from "../components/PageInfo";
-import React, { Suspense } from "react";
 
 function LandingPage() {
   return (

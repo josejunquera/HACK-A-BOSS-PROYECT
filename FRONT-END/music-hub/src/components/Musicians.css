@@ -11,6 +11,7 @@
 
 .musicians-browser-wrapper {
   padding-top: 203px;
+  padding-bottom: 20px;
 }
 
 .secondary-browser-container {
@@ -79,17 +80,16 @@
   justify-content: center;
   margin: auto;
   margin-top: 1rem;
-  padding:20px 10px 65px 20px;
+  padding: 20px 10px 65px 20px;
   background-size: 100%;
   background-position: center;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .individual-musician ul {
   list-style: none;
   text-decoration: none;
- 
 }
 
 .individual-band {
@@ -98,22 +98,21 @@
   justify-content: center;
   margin: auto;
   margin-top: 1rem;
-  padding:0px 10px 65px 20px;
+  padding: 0px 10px 65px 20px;
   background-size: 100%;
   background-position: center;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .individual-band ul {
   list-style: none;
   text-decoration: none;
- 
 }
 .link-musician {
   text-decoration: none;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
-  -webkit-text-stroke: 0.4px rgb(0, 0, 0); 
-  font-size:24px
+  -webkit-text-stroke: 0.4px rgb(0, 0, 0);
+  font-size: 24px;
 }

@@ -1,3 +1,4 @@
+import "./MusicianProfile.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
@@ -88,72 +89,84 @@ function MusicanProfile() {
   return (
     <div>
       <NavBar />
-
-      <div
-        style={{
-          backgroundImage: urlToShow,
-          backgroundRepeat: "no-repeat",
-          width: "250px",
-        }}
-      >
-        <ul className="musicians-list">
-          <li className="list">
-            <span className="repo-text">{musicianInfo.nombre_solista} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">{musicianInfo.localizacion} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">{musicianInfo.especialidad} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">{musicianInfo.movilidad} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">
-              Busco banda: {musicianInfo.busco_banda}
-            </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">
-              Busco actuación: {musicianInfo.busco_actuacion}
-            </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">
-              {musicianGenres.map((genero) => {
-                return genero.nombre_genero + " ";
-              })}
-            </span>
-          </li>
-        </ul>
+      <div className="individual-musician-profile-wrapper">
+        <div
+          className="individual-musician-profile"
+          style={{
+            backgroundImage: urlToShow,
+            backgroundRepeat: "no-repeat",
+            width: "100%",
+            height: "240px",
+          }}
+        >
+          <ul className="musicians-list">
+            <li className="list">
+              <span>{musicianInfo.nombre_solista} </span>
+            </li>
+            <li className="list">
+              <span>{musicianInfo.localizacion} </span>
+            </li>
+            <li className="list">
+              <span>{musicianInfo.especialidad} </span>
+            </li>
+            {/* <li className="list">
+              <span>Movilidad {musicianInfo.movilidad} </span>
+            </li> */}
+            {/* <li className="list">
+              <span>Busco banda: {musicianInfo.busco_banda}</span>
+            </li>
+            <li className="list">
+              <span>Busco actuación: {musicianInfo.busco_actuacion}</span>
+            </li> */}
+            <li className="list">
+              <span>
+                {musicianGenres.map((genero) => {
+                  return genero.nombre_genero + " ";
+                })}
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <ContactMusician nombreSolista={musicianInfo.nombre_solista} />
-      <div>
-        {audiosNames.map((audio) => {
-          return (
-            <audio
-              controls
-              src={`http://localhost:3006/musicians-media/user${id_usuario}/${audio}`}
-              alt="avatar"
-            ></audio>
-          );
-        })}
-      </div>
 
-      <div>
+      <div className="musician-videos-container">
         {videoNames.map((video) => {
           return (
-            <video
-              controls
-              height="200px"
-              src={`http://localhost:3006/musicians-media/user${id_usuario}/${video}`}
-              alt="avatar"
-            ></video>
+            <>
+              <p>{video.split(".").shift()}</p>
+
+              <video
+                controls
+                height="200px"
+                src={`http://localhost:3006/musicians-media/user${id_usuario}/${video}`}
+                alt="avatar"
+              ></video>
+            </>
           );
         })}
       </div>
-      <div>{musicianInfo.descripcion}</div>
+
+      <div className="musician-audios-container">
+        {audiosNames.map((audio) => {
+          return (
+            <>
+              <p>{audio.split(".").shift()}</p>
+
+              <audio
+                controls
+                src={`http://localhost:3006/musicians-media/user${id_usuario}/${audio}`}
+                alt="avatar"
+              ></audio>
+            </>
+          );
+        })}
+      </div>
+      <div className="artist-info-container">
+        <p className="artist-info-container-title">INFORMACIÓN DEL ARTISTA</p>
+        <p className="artist-info-container-info">{musicianInfo.descripcion}</p>
+      </div>
 
       <Footer />
     </div>

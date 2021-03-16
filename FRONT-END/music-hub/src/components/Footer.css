@@ -34,3 +34,7 @@
 #root > div > div > footer > div > a:nth-child(3) > img {
   margin-right: 1px;
 }
+
+#root > div > footer > div > a:nth-child(2) > img {
+  margin-left: 19px !important;
+}

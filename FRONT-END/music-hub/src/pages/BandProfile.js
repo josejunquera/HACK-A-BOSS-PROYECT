@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import ContactBand from "../components/ContactBand";
+import "./BandProfile.css";
 
 function BandProfile() {
   const { id_usuario } = useParams();
@@ -88,70 +89,85 @@ function BandProfile() {
   return (
     <div>
       <NavBar />
-
-      <div
-        style={{
-          backgroundImage: urlToShow,
-          backgroundRepeat: "no-repeat",
-          width: "250px",
-        }}
-      >
-        <ul className="bands-list">
-          <li className="list">
-            <span className="repo-text">{bandInfo.nombre_banda} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">{bandInfo.localizacion} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">{bandInfo.movilidad} </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">
-              Busco banda: {bandInfo.busco_solista}
-            </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">
-              Busco actuación: {bandInfo.busco_actuacion}
-            </span>
-          </li>
-          <li className="list">
-            <span className="repo-text">
-              {bandGenres.map((genero) => {
-                return genero.nombre_genero + " ";
-              })}
-            </span>
-          </li>
-        </ul>
+      <div className="individual-musician-profile-wrapper">
+        <div
+          className="individual-band-profile"
+          style={{
+            backgroundImage: urlToShow,
+            backgroundRepeat: "no-repeat",
+            width: "100%",
+            height: "240px",
+          }}
+        >
+          <ul className="musicians-list">
+            <li className="list">
+              <span>{bandInfo.nombre_banda} </span>
+            </li>
+            <li className="list">
+              <span className="repo-text">{bandInfo.localizacion} </span>
+            </li>
+            {/* <li className="list">
+              <span className="repo-text">{bandInfo.movilidad} </span>
+            </li> */}
+            {/* <li className="list">
+              <span className="repo-text">
+                Busco banda: {bandInfo.busco_solista}
+              </span>
+            </li>
+            <li className="list">
+              <span className="repo-text">
+                Busco actuación: {bandInfo.busco_actuacion}
+              </span>
+            </li> */}
+            <li className="list">
+              <span className="repo-text">
+                {bandGenres.map((genero) => {
+                  return genero.nombre_genero + " ";
+                })}
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <ContactBand nombreBanda={bandInfo.nombre_banda} />
 
-      <div>
-        {audiosNames.map((audio) => {
+      <div className="musician-videos-container">
+        {videoNames.map((video) => {
           return (
-            <audio
-              controls
-              src={`http://localhost:3006/band-media/user${id_usuario}/${audio}`}
-              alt="avatar"
-            ></audio>
+            <>
+              <p>{video.split(".").shift()}</p>
+
+              <video
+                controls
+                height="200px"
+                src={`http://localhost:3006/band-media/user${id_usuario}/${video}`}
+                alt="avatar"
+              ></video>
+            </>
           );
         })}
       </div>
 
-      <div>
-        {videoNames.map((video) => {
+      <div className="musician-audios-container">
+        {audiosNames.map((audio) => {
           return (
-            <video
-              controls
-              height="200px"
-              src={`http://localhost:3006/band-media/user${id_usuario}/${video}`}
-              alt="avatar"
-            ></video>
+            <>
+              <p>{audio.split(".").shift()}</p>
+
+              <audio
+                controls
+                src={`http://localhost:3006/band-media/user${id_usuario}/${audio}`}
+                alt="avatar"
+              ></audio>
+            </>
           );
         })}
       </div>
-      <div>{bandInfo.descripcion}</div>
+      <div className="artist-info-container">
+        <p className="artist-info-container-title">INFORMACIÓN DE LA BANDA</p>
+        <p className="artist-info-container-info">{bandInfo.descripcion}</p>
+      </div>
 
       <Footer />
     </div>

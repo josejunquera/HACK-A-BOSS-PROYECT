@@ -33,8 +33,8 @@
   color: rgb(191, 27, 40);
   display: block;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 8px;
+  top: 6px;
   font-size: 2rem;
 }
 

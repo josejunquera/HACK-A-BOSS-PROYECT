@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import "./Musicians.css";
+import Footer from "./Footer";
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -258,6 +259,7 @@ function Musicians() {
             />
           ))}
       </div>
+      <Footer />
     </>
   );
 }
@@ -286,7 +288,8 @@ const MusicoIndividual = (props) => {
     ? `url(${url}${urlCoverImage.split(".").pop()})`
     : `url(http://localhost:3006/users-media/CoverImage.jpg)`;
   return (
-    <Link className="link-musician"
+    <Link
+      className="link-musician"
       // style={{ textDecoration: "none" }}
       to={`/musicians/${musiciann.id_usuario}`}
     >
@@ -296,7 +299,7 @@ const MusicoIndividual = (props) => {
           backgroundImage: urlToShow,
           backgroundRepeat: "no-repeat",
           width: "350px",
-          height: "200px"
+          height: "200px",
         }}
       >
         <ul className="musicians-list">

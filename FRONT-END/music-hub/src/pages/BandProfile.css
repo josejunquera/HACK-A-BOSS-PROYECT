@@ -1,0 +1,19 @@
+.individual-band-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding: 108px 10px 10px 20px;
+  background-size: 100%;
+  background-position: center;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.4px rgb(0, 0, 0);
+  font-size: 20px;
+}
+
+.individual-band-profile ul {
+  list-style: none;
+  text-decoration: none;
+}

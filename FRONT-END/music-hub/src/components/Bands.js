@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import "./Musicians.css";
+import Footer from "./Footer";
 
 function Bands() {
   const [band, setBand] = useState([]);
@@ -135,6 +136,9 @@ function Bands() {
                   onChange={(e) => setLookingForGig(e.target.value)}
                   className="search-inputs"
                 >
+                  <option id="color-input" disabled selected>
+                    Busca Actuación
+                  </option>
                   <option value="si">Si</option>
                   <option value="no">No</option>
                 </select>
@@ -154,6 +158,9 @@ function Bands() {
                   onChange={(e) => setGenre(e.target.value)}
                   className="search-inputs"
                 >
+                  <option id="color-input" disabled selected>
+                    Género
+                  </option>
                   <option value="Rock">Rock</option>
                   <option value="Pop">Pop</option>
                   <option value="Jazz">Jazz</option>
@@ -243,6 +250,7 @@ function Bands() {
             <BandaIndividual key={bandn.id_usuario} bandn={bandn} />
           ))}
       </div>
+      <Footer />
     </>
   );
 }

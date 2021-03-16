@@ -105,12 +105,33 @@ function ContactBand(props) {
     <div>No tiene perfil de local/evento</div>
   );
 
+  function myFunction() {
+    const x = document.getElementById("form");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
   return (
-    <div>
-      <form>
-        <textarea onChange={(e) => setMessage(e.target.value)}></textarea>
-        {buttonContactMusicianToBand}
-        {buttonContactVenueEventToBand}
+    <div className="contact-musician-container">
+      <div>
+        <button className="contact-musician-button" onClick={myFunction}>
+          CONTACTAR{" "}
+        </button>
+      </div>
+      <form id="form">
+        <div className="contact-musician-textarea-container">
+          <textarea
+            onChange={(e) => setMessage(e.target.value)}
+            className="contact-musician-textarea"
+            placeholder="Escribe tu mensaje aquí..."
+          ></textarea>
+        </div>
+        <div className="contact-musician-buttons-container">
+          {buttonContactMusicianToBand}
+          {buttonContactVenueEventToBand}
+        </div>
       </form>
     </div>
   );
