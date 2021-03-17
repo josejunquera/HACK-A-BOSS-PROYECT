@@ -15,24 +15,24 @@ function Profile() {
   return (
     <div className="profile-buttons">
       <div className="buttons-wrapper">
-        <button type="submit">
-          <Link to={`${url}/user-profile`}>USUARIO</Link>
-        </button>
-        <button type="submit">
-          <Link to={`${url}/musician-profile`}>MÚSICO</Link>
-        </button>
-        <button type="submit">
-          <Link to={`${url}/band-profile`}>BANDA</Link>
-        </button>
-        <button type="submit">
-          <Link to={`${url}/venue-event-profile`}>LOCAL-EVENTO</Link>
-        </button>
-        <button type="submit">
-          <Link to={`${url}/messages`}>MENSAJES</Link>
-        </button>
-        <button type="submit">
-          <Link to={`${url}/change-password`}>CAMBIAR CONTRASEÑA</Link>
-        </button>
+        <Link to={`${url}/user-profile`}>
+          <button type="submit">USUARIO</button>
+        </Link>
+        <Link to={`${url}/musician-profile`}>
+          <button type="submit">MÚSICO</button>
+        </Link>
+        <Link to={`${url}/band-profile`}>
+          <button type="submit">BANDA</button>
+        </Link>
+        <Link to={`${url}/venue-event-profile`}>
+          <button type="submit">LOCAL-EVENTO</button>
+        </Link>
+        <Link to={`${url}/messages`}>
+          <button type="submit">MENSAJES</button>
+        </Link>
+        <Link to={`${url}/change-password`}>
+          <button type="submit">CAMBIAR CONTRASEÑA</button>
+        </Link>
       </div>
 
       <Switch>

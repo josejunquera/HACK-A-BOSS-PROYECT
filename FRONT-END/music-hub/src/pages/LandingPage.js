@@ -13,7 +13,7 @@ function LandingPage() {
       <NavBar />
 
       <section className="cover">
-        <h1 className="cover-title">ENCUENTRA TU LUGAR</h1>
+        <h1 className="cover-title">ENCUENTRA MÚSICOS</h1>
         <p className="cover-text">
           “Después del silencio, lo que más se acerca a expresar lo inexpresable
           es la música.”
