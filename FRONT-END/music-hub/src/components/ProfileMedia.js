@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { AuthContext } from "../App";
 import jwt_decode from "jwt-decode";
-import "./ProfileMedia.css"
+import "./ProfileMedia.css";
 
 function ProfileMediaImage(props) {
   const [multimedia, setMultimedia] = useState([]);
@@ -50,9 +50,9 @@ function ProfileMediaImage(props) {
         {multimedia.map((media) => {
           return (
             <div key={media.id_multimedia}>
-              <ul  >
-                <li >
-                  <span >{media.titulo} </span>
+              <ul>
+                <li>
+                  <span>{media.titulo} </span>
                 </li>
                 <li className="list">
                   <img
@@ -64,21 +64,23 @@ function ProfileMediaImage(props) {
                   ></img>
                 </li>
               </ul>
-              <button
-                type="button"
-                onClick={async function deleteMedia() {
-                  await fetch(`${deleteUrl}/${media.id_multimedia}`, {
-                    method: "DELETE",
-                    headers: {
-                      // "Content-type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                    },
-                  });
-                  refreshMultimedia();
-                }}
-              >
-                Borrar
-              </button>
+              <div className="delete-multimedia-button">
+                <button
+                  type="button"
+                  onClick={async function deleteMedia() {
+                    await fetch(`${deleteUrl}/${media.id_multimedia}`, {
+                      method: "DELETE",
+                      headers: {
+                        // "Content-type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                    refreshMultimedia();
+                  }}
+                >
+                  Borrar
+                </button>
+              </div>
             </div>
           );
         })}
@@ -91,11 +93,11 @@ function ProfileMediaImage(props) {
         {multimedia.map((media) => {
           return (
             <div key={media.id_multimedia}>
-              <ul >
-                <li >
-                  <span >{media.titulo} </span>
+              <ul>
+                <li>
+                  <span>{media.titulo} </span>
                 </li>
-                <li >
+                <li>
                   <video
                     controls
                     height="100px"
@@ -106,21 +108,23 @@ function ProfileMediaImage(props) {
                   ></video>
                 </li>
               </ul>
-              <button
-                type="button"
-                onClick={async function deleteMedia() {
-                  await fetch(`${deleteUrl}/${media.id_multimedia}`, {
-                    method: "DELETE",
-                    headers: {
-                      // "Content-type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                    },
-                  });
-                  refreshMultimedia();
-                }}
-              >
-                Borrar
-              </button>
+              <div className="delete-multimedia-button">
+                <button
+                  type="button"
+                  onClick={async function deleteMedia() {
+                    await fetch(`${deleteUrl}/${media.id_multimedia}`, {
+                      method: "DELETE",
+                      headers: {
+                        // "Content-type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                    refreshMultimedia();
+                  }}
+                >
+                  Borrar
+                </button>
+              </div>
             </div>
           );
         })}
@@ -133,11 +137,11 @@ function ProfileMediaImage(props) {
         {multimedia.map((media) => {
           return (
             <div key={media.id_multimedia}>
-              <ul  >
-                <li >
-                  <span >{media.titulo} </span>
+              <ul>
+                <li>
+                  <span>{media.titulo} </span>
                 </li>
-                <li >
+                <li>
                   <audio
                     controls
                     src={`${multimediaRoute}${id_usuario}/${
@@ -147,21 +151,23 @@ function ProfileMediaImage(props) {
                   ></audio>
                 </li>
               </ul>
-              <button
-                type="button"
-                onClick={async function deleteMedia() {
-                  await fetch(`${deleteUrl}/${media.id_multimedia}`, {
-                    method: "DELETE",
-                    headers: {
-                      // "Content-type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                    },
-                  });
-                  refreshMultimedia();
-                }}
-              >
-                Borrar
-              </button>
+              <div className="delete-multimedia-button">
+                <button
+                  type="button"
+                  onClick={async function deleteMedia() {
+                    await fetch(`${deleteUrl}/${media.id_multimedia}`, {
+                      method: "DELETE",
+                      headers: {
+                        // "Content-type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                      },
+                    });
+                    refreshMultimedia();
+                  }}
+                >
+                  Borrar
+                </button>
+              </div>
             </div>
           );
         })}

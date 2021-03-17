@@ -28,12 +28,11 @@ function MessagesVenueEvent() {
     loadVenueEventContracts();
   }, [token]);
 
-
   const jsxToReturnMusicians = musicianContracts[0] ? (
     <div>
       <ul>
         {musicianContracts.map((contract) => (
-          <div  key={contract.id_contrato} className="message">
+          <div key={contract.id_contrato} className="message">
             <li>{contract.nombre_solista}</li>
             <li>{contract.fecha.split("T").shift()}</li>
             <li>{contract.respuesta}</li>
@@ -51,7 +50,7 @@ function MessagesVenueEvent() {
       <ul>
         {bandContracts.map((contract) => (
           <div key={contract.id_contrato} className="message">
-            <li>{contract.nombre_solista}</li>
+            <li>{contract.nombre_banda}</li>
             <li>{contract.fecha.split("T").shift()}</li>
             <li>{contract.respuesta}</li>
             <li>{contract.contrato}</li>
@@ -60,7 +59,9 @@ function MessagesVenueEvent() {
       </ul>
     </div>
   ) : (
-    <p className="div-musician-messages-small">No tienes soliticudes de contratacion a bandas</p>
+    <p className="div-musician-messages-small">
+      No tienes soliticudes de contratacion a bandas
+    </p>
   );
 
   return (

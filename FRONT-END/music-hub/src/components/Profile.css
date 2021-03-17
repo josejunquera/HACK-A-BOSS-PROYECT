@@ -2,16 +2,18 @@
   padding-top: 95px;
 }
 
-.buttons-wrapper{
-  display:flex;
-  flex-wrap:wrap;
+.buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
   position: fixed;
-  background-color:white;
-  z-index:5;
+  background-color: white;
+  z-index: 5;
+  justify-content: center;
+  margin-right: 1px;
 }
 
-.buttons-wrapper button{
-  flex-grow:1;
+.buttons-wrapper button {
+  flex-grow: 1;
   width: 32vw;
   border-radius: 5px;
   font-size: 12px;
@@ -19,14 +21,11 @@
   background-color: rgb(191, 27, 40);
   text-decoration: none;
   border: none;
-  margin:2px 2px;
+  margin: 2px 2px;
   padding: 7px;
 }
 
-.buttons-wrapper button > *{
+.buttons-wrapper button > * {
   color: white;
   text-decoration: none;
-
 }
-
-

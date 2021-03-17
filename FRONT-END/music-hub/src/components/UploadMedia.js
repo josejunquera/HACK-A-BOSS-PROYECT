@@ -3,10 +3,10 @@ import { AuthContext } from "../App";
 import "./UploadMedia.css";
 
 export const UploadMedia = (props) => {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState("");
   const [filePicked, setFilePicked] = useState(false);
   const [token, setToken] = useContext(AuthContext);
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState("");
   const [response, setResponse] = useState("");
 
   const { profileMedia, url, refreshMultimedia } = props;

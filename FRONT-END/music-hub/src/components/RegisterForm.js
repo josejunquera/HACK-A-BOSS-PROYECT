@@ -117,8 +117,9 @@ function RegisterForm() {
           <div className="register-form-button">
             <button type="submit">Enviar</button>
           </div>
-
-          {errorMsg && <div>{errorMsg}</div>}
+          <div className="response-message-musician">
+            {errorMsg && <div>{errorMsg}</div>}
+          </div>
         </form>
       </div>
     </div>
