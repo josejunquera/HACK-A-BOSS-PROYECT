@@ -61,7 +61,7 @@ function MessagesMusician() {
       <div>
         <ul>
           {musicianContracts.map((contract) => (
-            <div className="message">
+            <div key={contract.id_contrato} className="message">
               <li>{contract.nombre_local_evento}</li>
               <li>{contract.fecha.split("T").shift()}</li>
               <li>{contract.contrato}</li>

@@ -36,7 +36,8 @@
   justify-content: center;
   margin-top: 40px;
   color: black;
-}
+  text-decoration: underline;
+  text-decoration-color: black;}
 
 .form-button {
   display: flex;

@@ -86,8 +86,9 @@ function Bands() {
                   name="movility"
                   onChange={(e) => setMovility(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Movilidad"
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled={true} value="Movilidad">
                     Movilidad
                   </option>
                   <option value="local">Local</option>
@@ -112,8 +113,10 @@ function Bands() {
                   name="busco-musico"
                   onChange={(e) => setLookingForMusician(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Busca Músico"
+                  
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled={true} value="Busca Músico">
                     Busca Músico
                   </option>
                   <option value="si">Si</option>
@@ -135,8 +138,9 @@ function Bands() {
                   name="busco-actuacion"
                   onChange={(e) => setLookingForGig(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Busca Actuación"
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled={true} value="Busca Actuación">
                     Busca Actuación
                   </option>
                   <option value="si">Si</option>
@@ -157,8 +161,9 @@ function Bands() {
                   name="genero"
                   onChange={(e) => setGenre(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Género"
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled={true} value="Género">
                     Género
                   </option>
                   <option value="Rock">Rock</option>
@@ -250,7 +255,7 @@ function Bands() {
             <BandaIndividual key={bandn.id_usuario} bandn={bandn} />
           ))}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

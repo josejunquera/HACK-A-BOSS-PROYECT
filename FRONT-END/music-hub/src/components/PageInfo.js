@@ -11,7 +11,7 @@ function PageInfo() {
             <span className="red-text">
               ¿Quieres conseguir más actuaciones?
             </span>{" "}
-            Muestrate a través de musicHub para encontrar más actuaciones dónde
+            Muestrate a través de musicHub para encontrar actuaciones dónde
             quieras.
           </p>
         </div>

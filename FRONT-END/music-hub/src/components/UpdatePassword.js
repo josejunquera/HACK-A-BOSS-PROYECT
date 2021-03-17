@@ -38,7 +38,7 @@ function UpdatePassword() {
       setResponse(resMessage.error);
     }
   }
-  console.log(response);
+
   return (
     <div className="update-password-wrapper">
       <p className="update-password-wrapper-p">CAMBIAR CONTRASEÑA</p>

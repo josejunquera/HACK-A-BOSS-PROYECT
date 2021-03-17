@@ -3,7 +3,7 @@ import "./ArtistSample.css";
 
 function ArtistSample() {
   return (
-    <div class="Slide">
+    <div className="Slide">
       <a id="0" href="#0">
         0
       </a>

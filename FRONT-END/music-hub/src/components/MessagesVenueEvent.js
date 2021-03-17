@@ -28,15 +28,12 @@ function MessagesVenueEvent() {
     loadVenueEventContracts();
   }, [token]);
 
-  //   console.log(contracts);
-  //   console.log(contracts.musicianContracts);
-  //   console.log(contracts.bandContracts);
 
   const jsxToReturnMusicians = musicianContracts[0] ? (
     <div>
       <ul>
         {musicianContracts.map((contract) => (
-          <div className="message">
+          <div  key={contract.id_contrato} className="message">
             <li>{contract.nombre_solista}</li>
             <li>{contract.fecha.split("T").shift()}</li>
             <li>{contract.respuesta}</li>
@@ -53,7 +50,7 @@ function MessagesVenueEvent() {
     <div>
       <ul>
         {bandContracts.map((contract) => (
-          <div className="message">
+          <div key={contract.id_contrato} className="message">
             <li>{contract.nombre_solista}</li>
             <li>{contract.fecha.split("T").shift()}</li>
             <li>{contract.respuesta}</li>

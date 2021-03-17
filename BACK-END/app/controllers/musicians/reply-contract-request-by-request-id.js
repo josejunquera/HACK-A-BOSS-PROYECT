@@ -54,7 +54,6 @@ async function replyContractRequest(req, res) {
       respuestaSolicitud,
       idContrato
     );
-    console.log(venueEventEmail[0].email);
 
     await sendEmailReplyContractRequest(
       venueEventEmail[0].email,

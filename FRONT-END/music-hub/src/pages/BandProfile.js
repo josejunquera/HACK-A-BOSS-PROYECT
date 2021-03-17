@@ -135,7 +135,7 @@ function BandProfile() {
       <div className="musician-videos-container">
         {videoNames.map((video) => {
           return (
-            <>
+            <div key={video.split(".").shift()}>
               <p>{video.split(".").shift()}</p>
 
               <video
@@ -144,7 +144,7 @@ function BandProfile() {
                 src={`http://localhost:3006/band-media/user${id_usuario}/${video}`}
                 alt="avatar"
               ></video>
-            </>
+            </div>
           );
         })}
       </div>
@@ -152,7 +152,7 @@ function BandProfile() {
       <div className="musician-audios-container">
         {audiosNames.map((audio) => {
           return (
-            <>
+            <div key={audio.split(".").shift()}>
               <p>{audio.split(".").shift()}</p>
 
               <audio
@@ -160,7 +160,7 @@ function BandProfile() {
                 src={`http://localhost:3006/band-media/user${id_usuario}/${audio}`}
                 alt="avatar"
               ></audio>
-            </>
+            </div>
           );
         })}
       </div>

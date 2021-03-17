@@ -77,6 +77,7 @@ function Messages() {
     <></>
   );
   const jsxToReturnBand = bandInfo.nombre_banda ? <MessagesBand /> : <></>;
+
   const jsxToReturnVenueEvent = venueEventInfo.nombre_local_evento ? (
     <MessagesVenueEvent />
   ) : (

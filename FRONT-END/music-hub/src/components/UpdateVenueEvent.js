@@ -28,9 +28,9 @@ function UpdateVenueEvent() {
       if (response.status === 200) {
         const body = await response.json();
         setVenueEventInfo(body);
-        setVenueEventName(venueEventInfo.nombre_local_evento);
-        setLocation(venueEventInfo.localizacion);
-        setDescription(venueEventInfo.descripcion);
+        setVenueEventName(body.nombre_local_evento);
+        setLocation(body.localizacion);
+        setDescription(body.descripcion);
         setFormState("activo");
       }
     };

@@ -32,10 +32,10 @@ function UpdateUser() {
       if (response.status === 200) {
         const body = await response.json();
         setUserInfo(body);
-        setUserName(userInfo.nombre_usuario);
-        setName(userInfo.nombre);
-        setSurname(userInfo.apellido);
-        setEmail(userInfo.email);
+        setUserName(body.nombre_usuario);
+        setName(body.nombre);
+        setSurname(body.apellido);
+        setEmail(body.email);
         setFormState("activo");
       }
     };

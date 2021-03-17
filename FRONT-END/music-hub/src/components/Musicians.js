@@ -89,8 +89,9 @@ function Musicians() {
                   name="movility"
                   onChange={(e) => setMovility(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Movilidad"
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled value="Movilidad">
                     Movilidad
                   </option>
                   <option value="local">Local</option>
@@ -116,8 +117,9 @@ function Musicians() {
                   name="busco-banda"
                   onChange={(e) => setLookingForBand(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Busca Banda"
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled value="Busca Banda">
                     Busca Banda
                   </option>
                   <option value="si">Si</option>
@@ -139,9 +141,10 @@ function Musicians() {
                   name="busco-actuacion"
                   onChange={(e) => setLookingForGig(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Busca Actuación"
                 >
-                  <option id="color-input" disabled selected>
-                    Busca Actuacion
+                  <option id="color-input" disabled value="Busca Actuación">
+                    Busca Actuación
                   </option>
 
                   <option value="si">Si</option>
@@ -163,8 +166,9 @@ function Musicians() {
                   name="genero"
                   onChange={(e) => setGenre(e.target.value)}
                   className="search-inputs"
+                  defaultValue="Género"
                 >
-                  <option id="color-input" disabled selected>
+                  <option id="color-input" disabled value="Género">
                     Género
                   </option>
                   <option value="Rock">Rock</option>
@@ -259,7 +263,7 @@ function Musicians() {
             />
           ))}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

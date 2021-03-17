@@ -49,8 +49,8 @@ function ProfileMediaImage(props) {
       <div className="multimedia-wrapper">
         {multimedia.map((media) => {
           return (
-            <>
-              <ul key={media.id_multimedia} >
+            <div key={media.id_multimedia}>
+              <ul  >
                 <li >
                   <span >{media.titulo} </span>
                 </li>
@@ -79,7 +79,7 @@ function ProfileMediaImage(props) {
               >
                 Borrar
               </button>
-            </>
+            </div>
           );
         })}
       </div>
@@ -90,8 +90,8 @@ function ProfileMediaImage(props) {
       <div className="multimedia-wrapper">
         {multimedia.map((media) => {
           return (
-            <>
-              <ul key={media.id_multimedia}>
+            <div key={media.id_multimedia}>
+              <ul >
                 <li >
                   <span >{media.titulo} </span>
                 </li>
@@ -121,7 +121,7 @@ function ProfileMediaImage(props) {
               >
                 Borrar
               </button>
-            </>
+            </div>
           );
         })}
       </div>
@@ -132,8 +132,8 @@ function ProfileMediaImage(props) {
       <div className="multimedia-wrapper">
         {multimedia.map((media) => {
           return (
-            <>
-              <ul key={media.id_multimedia} >
+            <div key={media.id_multimedia}>
+              <ul  >
                 <li >
                   <span >{media.titulo} </span>
                 </li>
@@ -162,7 +162,7 @@ function ProfileMediaImage(props) {
               >
                 Borrar
               </button>
-            </>
+            </div>
           );
         })}
       </div>

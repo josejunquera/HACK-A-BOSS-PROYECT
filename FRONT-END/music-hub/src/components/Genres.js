@@ -88,8 +88,8 @@ function Genres(props) {
       <div className="show-genres">
         {genresOfArtist.map((genre) => {
           return (
-            <div className="genres-container">
-              <ul key={genre.nombre_genero} className="genres-list">
+            <div key={genre.nombre_genero}className="genres-container">
+              <ul  className="genres-list">
                 <li className="list">
                   <span className="repo-text">{genre.nombre_genero}</span>
                 </li>

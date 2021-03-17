@@ -89,12 +89,11 @@ function ContactBand(props) {
     }
   };
 
-  console.log(nombreBanda);
 
   const buttonContactMusicianToBand = musicianInfo.nombre_solista ? (
     <button onClick={sendMessageAsMusician}>Enviar mensaje como solista</button>
   ) : (
-    <div>No tiene perfil de solista</div>
+    <button style={{backgroundColor:" rgb(238, 236, 236)",color:"black"}} disabled={true}>Crea un solista para contactar</button>
   );
 
   const buttonContactVenueEventToBand = venueEventInfo.nombre_local_evento ? (
@@ -102,7 +101,7 @@ function ContactBand(props) {
       Enviar mensaje como local/evento
     </button>
   ) : (
-    <div>No tiene perfil de local/evento</div>
+    <button style={{backgroundColor:" rgb(238, 236, 236)",color:"black"}} disabled={true}>Crea un local/evento para contratar</button>
   );
 
   function myFunction() {

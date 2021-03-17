@@ -134,7 +134,7 @@ function MusicanProfile() {
       <div className="musician-videos-container">
         {videoNames.map((video) => {
           return (
-            <>
+            <div key={video.split(".").shift()}>
               <p>{video.split(".").shift()}</p>
 
               <video
@@ -143,7 +143,7 @@ function MusicanProfile() {
                 src={`http://localhost:3006/musicians-media/user${id_usuario}/${video}`}
                 alt="avatar"
               ></video>
-            </>
+            </div>
           );
         })}
       </div>
@@ -151,7 +151,7 @@ function MusicanProfile() {
       <div className="musician-audios-container">
         {audiosNames.map((audio) => {
           return (
-            <>
+            <div key={audio.split(".").shift()}>
               <p>{audio.split(".").shift()}</p>
 
               <audio
@@ -159,7 +159,7 @@ function MusicanProfile() {
                 src={`http://localhost:3006/musicians-media/user${id_usuario}/${audio}`}
                 alt="avatar"
               ></audio>
-            </>
+            </div>
           );
         })}
       </div>
